@@ -1,2 +1,5 @@
-package com.foodieparty.fodieParty.models;public enum estado {
+package com.foodieparty.fodieParty.models;
+
+public enum EstadoPedido {
+    RECHAZADO,EN_PROGRESO,TERMINADO
 }

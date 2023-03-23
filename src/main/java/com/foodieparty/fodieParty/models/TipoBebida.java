@@ -1,2 +1,4 @@
-package com.foodieparty.fodieParty.models;public enum TipoBebida {
+package com.foodieparty.fodieParty.models;
+
+public enum TipoBebida {
 }
