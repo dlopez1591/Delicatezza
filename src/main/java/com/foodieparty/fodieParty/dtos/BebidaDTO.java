@@ -1,4 +1,58 @@
 package com.foodieparty.fodieParty.dtos;
+import com.foodieparty.fodieParty.models.Bebida;
+import com.foodieparty.fodieParty.models.TipoBebida;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BebidaDTO {
+
+    private long id;
+    private String nombre, descripcion, imagen;
+    private TipoBebida tipo;
+    private int disponibilidad;
+    private Double precio;
+    private List<BebidaPedidoDTO> bebidaPedidos;
+
+    public BebidaDTO(Bebida bebida){
+        this.id = bebida.getId();
+        this.nombre= bebida.getNombre();
+        this.descripcion= bebida.getDescripcion();
+        this.imagen=bebida.getImagen();
+        this.tipo=bebida.getTipo();
+        this.disponibilidad=bebida.getDisponibilidad();
+        this.precio= bebida.getPrecio();
+        this.bebidaPedidos = bebida.getBebidaPedidos().stream().map(bp->new BebidaPedidoDTO(bp)).collect(Collectors.toList());
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public TipoBebida getTipo() {
+        return tipo;
+    }
+
+    public int getDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public List<BebidaPedidoDTO> getBebidaPedidos() {
+        return bebidaPedidos;
+    }
 }
