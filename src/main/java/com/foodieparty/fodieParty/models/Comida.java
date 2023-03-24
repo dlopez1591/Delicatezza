@@ -1,5 +1,6 @@
 package com.foodieparty.fodieParty.models;
 
+import com.foodieparty.fodieParty.dtos.NuevaComidaDTO;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -18,13 +19,20 @@ public class Comida {
      private TipoComida tipoComida;
      private Double precio;
      private String iamgen;
-     private int disponibilidad;
+     private Boolean disponibilidad;
      @OneToMany(mappedBy = "comida",fetch = FetchType.EAGER)
      private Set<ComidaPedido> comidaPedido=new HashSet<>();
-     public Comida(){
-     }
+     public Comida(){}
 
-    public Comida(String nombre, String description, TipoComida tipoComida, Double precio, String iamgen, int disponibilidad) {
+     public Comida(NuevaComidaDTO nuevaComidaDTO){
+         this.nombre = nuevaComidaDTO.getNombre();
+         this.description = nuevaComidaDTO.getDescripcion();
+         this.tipoComida = nuevaComidaDTO.getTipoComida();
+         this.precio = nuevaComidaDTO.getPrecio();
+         this.iamgen = nuevaComidaDTO.getImagen();
+         this.disponibilidad = nuevaComidaDTO.getDisponibilidad();
+     }
+    public Comida(String nombre, String description, TipoComida tipoComida, Double precio, String iamgen, Boolean disponibilidad) {
         this.nombre = nombre;
         this.description = description;
         this.tipoComida = tipoComida;
@@ -77,11 +85,11 @@ public class Comida {
         this.iamgen = iamgen;
     }
 
-    public int getDisponibilidad() {
+    public Boolean getDisponibilidad() {
         return disponibilidad;
     }
 
-    public void setDisponibilidad(int disponibilidad) {
+    public void setDisponibilidad(Boolean disponibilidad) {
         this.disponibilidad = disponibilidad;
     }
 

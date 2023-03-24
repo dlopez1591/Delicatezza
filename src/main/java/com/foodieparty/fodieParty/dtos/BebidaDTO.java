@@ -8,7 +8,7 @@ public class BebidaDTO {
 
     private long id;
     private String nombre, descripcion, imagen;
-    private TipoBebida tipo;
+    private TipoBebida tipoBebida;
     private int disponibilidad;
     private Double precio;
     private List<BebidaPedidoDTO> bebidaPedidos;
@@ -18,7 +18,7 @@ public class BebidaDTO {
         this.nombre= bebida.getNombre();
         this.descripcion= bebida.getDescripcion();
         this.imagen=bebida.getImagen();
-        this.tipo=bebida.getTipo();
+        this.tipoBebida=bebida.getTipoBebida();
         this.disponibilidad=bebida.getDisponibilidad();
         this.precio= bebida.getPrecio();
         this.bebidaPedidos = bebida.getBebidaPedidos().stream().map(bp->new BebidaPedidoDTO(bp)).collect(Collectors.toList());
@@ -40,8 +40,8 @@ public class BebidaDTO {
         return imagen;
     }
 
-    public TipoBebida getTipo() {
-        return tipo;
+    public TipoBebida getTipoBebida() {
+        return tipoBebida;
     }
 
     public int getDisponibilidad() {

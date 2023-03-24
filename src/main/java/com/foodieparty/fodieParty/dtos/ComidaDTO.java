@@ -15,7 +15,7 @@ public class ComidaDTO {
     private TipoComida tipoComida;
     private Double precio;
     private String imagen;
-    private int disponibilidad;
+    private Boolean disponibilidad;
     private Set<ComidaPedidoDTO> comidaPedido;
     public ComidaDTO(Comida comida){
         this.id=comida.getId();
@@ -52,7 +52,7 @@ public class ComidaDTO {
         return imagen;
     }
 
-    public int getDisponibilidad() {
+    public Boolean getDisponibilidad() {
         return disponibilidad;
     }
 
