@@ -2,6 +2,7 @@ package com.foodieparty.fodieParty.dtos;
 
 import com.foodieparty.fodieParty.models.Bebida;
 import com.foodieparty.fodieParty.models.BebidaPedido;
+import com.foodieparty.fodieParty.models.Pedido;
 
 
 public class BebidaPedidoDTO {

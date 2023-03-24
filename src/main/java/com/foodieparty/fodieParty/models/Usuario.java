@@ -1,5 +1,6 @@
 package com.foodieparty.fodieParty.models;
 
+
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -10,13 +11,14 @@ import java.util.Set;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name="native", strategy = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private String nombre,apellido,email,contraseña,telefono;
-    @OneToMany(mappedBy = "usuario", fetch=FetchType.EAGER)
+    private String nombre, apellido, email, contraseña, telefono;
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
     private Set<Pedido> pedidos = new HashSet<>();
 
-    public Usuario(){}
+    public Usuario() {
+    }
 
     public Usuario(String nombre, String apellido, String email, String contraseña, String telefono) {
         this.nombre = nombre;
@@ -78,8 +80,9 @@ public class Usuario {
         return pedidos;
     }
 
-    public void agregarPedido(Pedido pedido){
+    public void agregarPedido(Pedido pedido) {
         pedido.setUsuario(this);
         pedidos.add(pedido);
     }
 }
+

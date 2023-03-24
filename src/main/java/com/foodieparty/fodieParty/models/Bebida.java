@@ -1,22 +1,19 @@
 package com.foodieparty.fodieParty.models;
-
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-
 @Entity
 public class Bebida {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO,  generator = "native")
-    @GenericGenerator(name="native", strategy="native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private String nombre, descripcion, imagen;
     private TipoBebida tipo;
     private int disponibilidad;
     private Double precio;
-    @OneToMany(mappedBy = "bebida", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "bebida", fetch = FetchType.EAGER)
     private Set<BebidaPedido> bebidaPedidos = new HashSet<>();
 
     public Bebida(String nombre, String descripcion, String imagen, TipoBebida tipo, int disponibilidad, Double precio) {
@@ -88,9 +85,8 @@ public class Bebida {
         this.bebidaPedidos = bebidaPedidos;
     }
 
-    public void agregarBebidaPedido(BebidaPedido bebidaPedido){
+    public void agregarBebidaPedido(BebidaPedido bebidaPedido) {
         bebidaPedido.setBebida(this);
         this.bebidaPedidos.add(bebidaPedido);
     }
-
 }

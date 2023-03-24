@@ -2,6 +2,7 @@ package com.foodieparty.fodieParty.dtos;
 
 import com.foodieparty.fodieParty.models.Usuario;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class UsuarioDTO {
