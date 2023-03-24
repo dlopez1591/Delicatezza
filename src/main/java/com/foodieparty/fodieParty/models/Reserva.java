@@ -14,16 +14,19 @@ public class Reserva {
     private LocalDateTime horarioDeEntrada;
     private LocalDateTime horarioDeSalida;
     private LocalDateTime cantidad_De_Personas;
+
+    private Double precio;
     @ManyToOne(fetch = FetchType.EAGER)
     private Usuario usuario;
     @ManyToOne(fetch = FetchType.EAGER)
     private Mesa mesa;
     public Reserva(){}
 
-    public Reserva(LocalDateTime horarioDeEntrada, LocalDateTime horarioDeSalida, LocalDateTime cantidad_De_Personas) {
+    public Reserva(LocalDateTime horarioDeEntrada, LocalDateTime horarioDeSalida, LocalDateTime cantidad_De_Personas,Double precio) {
         this.horarioDeEntrada = horarioDeEntrada;
         this.horarioDeSalida = horarioDeSalida;
         this.cantidad_De_Personas = cantidad_De_Personas;
+        this.precio=precio;
     }
 
     public long getId() {
@@ -68,5 +71,13 @@ public class Reserva {
 
     public void setMesa(Mesa mesa) {
         this.mesa = mesa;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
 }
