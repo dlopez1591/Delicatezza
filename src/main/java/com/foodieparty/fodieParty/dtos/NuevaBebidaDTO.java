@@ -17,6 +17,8 @@ public class NuevaBebidaDTO {
         this.precio = precio;
     }
 
+    public NuevaBebidaDTO(){}
+
     public String getNombre() {
         return nombre;
     }

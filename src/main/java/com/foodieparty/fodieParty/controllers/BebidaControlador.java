@@ -4,19 +4,26 @@ import com.foodieparty.fodieParty.dtos.NuevaBebidaDTO;
 import com.foodieparty.fodieParty.models.Bebida;
 import com.foodieparty.fodieParty.models.TipoBebida;
 import com.foodieparty.fodieParty.repositories.BebidaRepositorio;
+import com.foodieparty.fodieParty.services.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/api")
 public class BebidaControlador {
     @Autowired
     private BebidaRepositorio bebidaRepositorio;
+
+    @Autowired
+    private FileService fileService;
 
     @GetMapping("/bebidas")
     public List<BebidaDTO> getBebidas(){
@@ -30,36 +37,39 @@ public class BebidaControlador {
 
     @PostMapping("/crear/bebida")
     public ResponseEntity<Object> crearBebida(
-            @RequestBody NuevaBebidaDTO nuevaBebidaDTO
-            // NuevaBebidaDTO:
-            // String nombre, descripcion, imagen;
-            // TipoBebida tipo;
-            // int disponibilidad;
-            // Double precio;
+            @RequestParam("nombre") String nombre,
+            @RequestParam("descripcion") String descripcion,
+            @RequestParam("imagen") MultipartFile imagen,
+            @RequestParam("tipoBebida")TipoBebida tipoBebida,
+            @RequestParam("disponibilidad") int disponibilidad,
+            @RequestParam("precio") Double precio
             ){
-
-        if(nuevaBebidaDTO.getNombre()==null){
+        if(nombre==null){
             return new ResponseEntity<>("Nombre vacio (null)", HttpStatus.FORBIDDEN);
         }
-        if(nuevaBebidaDTO.getDescripcion()==null){
+        if(descripcion==null){
             return new ResponseEntity<>("Descripcion vacia (null)", HttpStatus.FORBIDDEN);
         }
-        if(nuevaBebidaDTO.getImagen()==null){
+        if(imagen==null){
             return new ResponseEntity<>("Imagen vacia (null)", HttpStatus.FORBIDDEN);
         }
-        if(nuevaBebidaDTO.getTipoBebida()==null){
+        if(tipoBebida==null){
             return new ResponseEntity<>("Tipo vacio (null)", HttpStatus.FORBIDDEN);
         }
-        if(nuevaBebidaDTO.getDisponibilidad()<=0){
+        if(disponibilidad<=0){
             return new ResponseEntity<>("Disponibilidad debe ser mayor a 0", HttpStatus.FORBIDDEN);
         }
-        if(nuevaBebidaDTO.getPrecio()<=0){
+        if(precio<=0){
             return new ResponseEntity<>("Precio debe ser mayor a 0", HttpStatus.FORBIDDEN);
         }
-
-        Bebida bebida = new Bebida(nuevaBebidaDTO);
-        bebidaRepositorio.save(bebida);
-        return new ResponseEntity<>("Bebida creada exitosamente", HttpStatus.CREATED);
+        try {
+            String urlImagen = fileService.upload(imagen);
+            Bebida bebida = new Bebida(nombre,descripcion,urlImagen,tipoBebida,disponibilidad,precio);
+            bebidaRepositorio.save(bebida);
+            return new ResponseEntity<>("Bebida creada exitosamente", HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al cargar la imagen",HttpStatus.FORBIDDEN);
+        }
     }
 
 }

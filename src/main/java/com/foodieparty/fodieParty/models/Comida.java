@@ -18,26 +18,18 @@ public class Comida {
      private String description;
      private TipoComida tipoComida;
      private Double precio;
-     private String iamgen;
+     private String imagen;
      private Boolean disponibilidad;
      @OneToMany(mappedBy = "comida",fetch = FetchType.EAGER)
      private Set<ComidaPedido> comidaPedido=new HashSet<>();
      public Comida(){}
 
-     public Comida(NuevaComidaDTO nuevaComidaDTO){
-         this.nombre = nuevaComidaDTO.getNombre();
-         this.description = nuevaComidaDTO.getDescripcion();
-         this.tipoComida = nuevaComidaDTO.getTipoComida();
-         this.precio = nuevaComidaDTO.getPrecio();
-         this.iamgen = nuevaComidaDTO.getImagen();
-         this.disponibilidad = nuevaComidaDTO.getDisponibilidad();
-     }
-    public Comida(String nombre, String description, TipoComida tipoComida, Double precio, String iamgen, Boolean disponibilidad) {
+    public Comida(String nombre, String description, TipoComida tipoComida, Double precio, String imagen, Boolean disponibilidad) {
         this.nombre = nombre;
         this.description = description;
         this.tipoComida = tipoComida;
         this.precio = precio;
-        this.iamgen = iamgen;
+        this.imagen = imagen;
         this.disponibilidad = disponibilidad;
     }
 
@@ -78,11 +70,11 @@ public class Comida {
     }
 
     public String getIamgen() {
-        return iamgen;
+        return imagen;
     }
 
     public void setIamgen(String iamgen) {
-        this.iamgen = iamgen;
+        this.imagen = iamgen;
     }
 
     public Boolean getDisponibilidad() {

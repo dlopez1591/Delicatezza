@@ -1,6 +1,8 @@
 package com.foodieparty.fodieParty.models;
 import com.foodieparty.fodieParty.dtos.NuevaBebidaDTO;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +16,7 @@ public class Bebida {
     private TipoBebida tipoBebida;
     private int disponibilidad;
     private Double precio;
+
     @OneToMany(mappedBy = "bebida", fetch = FetchType.EAGER)
     private Set<BebidaPedido> bebidaPedidos = new HashSet<>();
 
@@ -26,15 +29,6 @@ public class Bebida {
         this.tipoBebida = tipoBebida;
         this.disponibilidad = disponibilidad;
         this.precio = precio;
-    }
-
-    public Bebida(NuevaBebidaDTO nuevaBebidaDTO){
-        this.nombre=nuevaBebidaDTO.getNombre();
-        this.descripcion=nuevaBebidaDTO.getDescripcion();
-        this.imagen= nuevaBebidaDTO.getImagen();
-        this.tipoBebida=nuevaBebidaDTO.getTipoBebida();
-        this.disponibilidad= nuevaBebidaDTO.getDisponibilidad();
-        this.precio= nuevaBebidaDTO.getPrecio();
     }
 
     public long getId() {
