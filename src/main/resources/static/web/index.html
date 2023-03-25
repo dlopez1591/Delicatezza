@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 <body>
-<div id="app" class="d-flex flex-column align-items-center"> 
-    <header> 
+<div id="app" class="d-flex flex-column align-items-center w-100"> 
+    <header class="d-flex flex-row w-100"> 
         <!-- imagen logo  -->
         <div class="imagenLogo">
             <img src="" alt="" class="logo">
@@ -32,7 +32,7 @@
         </div>    
     </header>
     <!-- NAV BAR, POR EL MOMENTO DE PRUEBA pendiente por arreglar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary w-100">
         <div class="container-fluid">
           
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,9 +65,9 @@
         <!-- aca viene el multilenguaje, su implementacion sera de ultimas -->
       </nav>
       <!-- main, contendra todos los carrousel menos el footer  -->
-      <main>
+      <main class="d-flex flex-column w-100">
         <!-- articulo con titulo principal de platos fuertes -->
-        <article>
+        <article class="d-flex flex-column w-100">
                 <h2>-------------Menu------------</h2>
                 <!-- aca se implementa carousel de bootstrap manejamos autoplaying e indicators por default tiene 3 imagenes -->
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -100,7 +100,7 @@
 
         <!-- aca viene articulo con titulo de bebidas -->
 
-        <article>
+        <article class="d-flex flex-column w-100">
             <h2>-------------bebidas------------</h2>
             <!-- aca se implementa carousel de bootstrap manejamos autoplaying e indicators por default tiene 3 imagenes -->
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -132,7 +132,7 @@
     </article>
 
     <!-- aca viene articulo con titulo de postres -->
-    <article>
+    <article class="d-flex flex-column w-100">
         <h2>-------------postres------------</h2>
         <!-- aca se implementa carousel de bootstrap manejamos autoplaying e indicators por default tiene 3 imagenes -->
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -163,7 +163,7 @@
           </div>
 </article>
       </main>
-      <footer>
+      <footer class="d-flex flex-column w-100">
         <!-- este div contiene las redes sociales, desaparecera en responsive -->
         <div>
             <h2>--------------- 
