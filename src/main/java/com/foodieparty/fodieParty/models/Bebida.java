@@ -1,5 +1,8 @@
 package com.foodieparty.fodieParty.models;
+import com.foodieparty.fodieParty.dtos.NuevaBebidaDTO;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,17 +13,20 @@ public class Bebida {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private String nombre, descripcion, imagen;
-    private TipoBebida tipo;
+    private TipoBebida tipoBebida;
     private int disponibilidad;
     private Double precio;
+
     @OneToMany(mappedBy = "bebida", fetch = FetchType.EAGER)
     private Set<BebidaPedido> bebidaPedidos = new HashSet<>();
 
-    public Bebida(String nombre, String descripcion, String imagen, TipoBebida tipo, int disponibilidad, Double precio) {
+    public Bebida(){}
+
+    public Bebida(String nombre, String descripcion, String imagen, TipoBebida tipoBebida, int disponibilidad, Double precio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.imagen = imagen;
-        this.tipo = tipo;
+        this.tipoBebida = tipoBebida;
         this.disponibilidad = disponibilidad;
         this.precio = precio;
     }
@@ -41,8 +47,8 @@ public class Bebida {
         return imagen;
     }
 
-    public TipoBebida getTipo() {
-        return tipo;
+    public TipoBebida getTipoBebida() {
+        return tipoBebida;
     }
 
     public int getDisponibilidad() {
@@ -69,8 +75,8 @@ public class Bebida {
         this.imagen = imagen;
     }
 
-    public void setTipo(TipoBebida tipo) {
-        this.tipo = tipo;
+    public void setTipoBebida(TipoBebida tipoBebida) {
+        this.tipoBebida = tipoBebida;
     }
 
     public void setDisponibilidad(int disponibilidad) {
