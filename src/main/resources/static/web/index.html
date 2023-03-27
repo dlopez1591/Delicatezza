@@ -1,196 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido a Delicatezza!</title>
-    <link rel="stylesheet" href="./asstets/styles/index.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-</head>
-<body>
-<div id="app" class="d-flex flex-column align-items-center w-100"> 
-    <header class="d-flex flex-row w-100"> 
-        <!-- imagen logo  -->
-        <div class="imagenLogo">
-            <img src="" alt="" class="logo">
-        </div>
-        <!-- redes sociales y boton log in -->
-        <div class="logInRedesSociales">
-            <!-- boton log in -->
-            <div class="botonLogIn">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles/index.css">
+</head>
+
+<body>
+    <div id="app" class="d-flex flex-column  w-100">
+        <header class="d-flex flex-row w-100 justify-content-center">
+            <!-- imagen logo  -->
+            <div class="logo_img bg-5">
+                <p class="logo_img animated-shadow">DELICATEZZA</p>
+                <!-- <img class="img" src="../assets/imgs/icon.jpg" alt=""> -->
             </div>
-            <!-- contenedor de las redes sociales -->
-            <div class="redesSociales">
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-whatsapp"></i>
-                <i class="bi bi-instagram"></i>
+            <!-- redes sociales y boton log in -->
+            <div class="logInRedesSociales">
+                <!-- boton log in -->
+                <div class="botonLogIn">
+
+                </div>
+                <!-- contenedor de las redes sociales -->
+                <!-- <div class="redesSociales">
+                    <i class="bi bi-facebook"></i>
+                    <i class="bi bi-whatsapp"></i>
+                    <i class="bi bi-instagram"></i>
+                </div> -->
             </div>
-        </div>    
-    </header>
-    <!-- NAV BAR, POR EL MOMENTO DE PRUEBA pendiente por arreglar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary w-100">
-        <div class="container-fluid">
-          
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown link
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
+        </header>
+        <!-- NAV BAR, POR EL MOMENTO DE PRUEBA pendiente por arreglar -->
+        <!-- <nav class="navbar navbar-dark navbar-expand-lg">
+
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link aHover" href="#">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <button v-on:click="alertCrearAccount" class="button1" v-if="accounts.length < 3">Add
+                        Account</button>
+
+                    <button class="button1">
+                        <a href="./transfer.html" v-on:click="createCard" class="button1">Transfer</a>
+                    </button>
+                    <button class="button1">
+                        <a href="./loan-application.html" v-on:click="createLoan" class="button1">Apply Loan</a>
+                    </button>
+                    <button v-on:click="alertLogOut" class="button1">
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </nav> -->
         <!-- aca viene el multilenguaje, su implementacion sera de ultimas -->
-      </nav>
-      <!-- main, contendra todos los carrousel menos el footer  -->
-      <main class="d-flex flex-column w-100">
-        <!-- articulo con titulo principal de platos fuertes -->
-        <article class="d-flex flex-column w-100">
-                <h2>-------------Menu------------</h2>
+        <!-- main, contendra todos los carrousel menos el footer  -->
+        <main class="d-flex flex-column w-100 justify-content-center">
+            <!-- articulo con titulo principal de platos fuertes -->
+            <article class="d-flex flex-column w-100 ">
+                <h2 class=" d-flex justify-content-center" style="color: #F5C800;" data-aos="fade-right">Menu
+                </h2>
                 <!-- aca se implementa carousel de bootstrap manejamos autoplaying e indicators por default tiene 3 imagenes -->
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div id="carouselExampleIndicators"
+                    class="carousel slide d-flex justify-content-center align-items-center" data-bs-ride="carousel">
                     <div class="carousel-indicators">
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img src="..." class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                      </div>
+                        <div class="carousel-item active">
+                            <img src="/assets/imgs/menu1.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="w-100">Hotdog</h5>
+                                <p class="w-100 p-carrusel">Hotdog con aderesos, mas papas extras!</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/assets/imgs/menu2.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="w-100">Hamburguesa con papas</h5>
+                                <p class="w-100 p-carrusel">Una hamburguesa grande con papas</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/assets/imgs/menu3.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="w-100">Combo Hamburguesa</h5>
+                                <p class="w-100 p-carrusel">Doble de carne, mas queso extra y panceta!</p>
+                            </div>
+                        </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
                     </button>
-                  </div>
-        </article>
-
-        <!-- aca viene articulo con titulo de bebidas -->
-
-        <article class="d-flex flex-column w-100">
-            <h2>-------------bebidas------------</h2>
-            <!-- aca se implementa carousel de bootstrap manejamos autoplaying e indicators por default tiene 3 imagenes -->
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="..." class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-    </article>
+            </article>
 
-    <!-- aca viene articulo con titulo de postres -->
-    <article class="d-flex flex-column w-100">
-        <h2>-------------postres------------</h2>
-        <!-- aca se implementa carousel de bootstrap manejamos autoplaying e indicators por default tiene 3 imagenes -->
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <!-- aca viene articulo con titulo de bebidas -->
+
+            <article class="d-flex flex-column w-100">
+                <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;"
+                    data-aos="fade-down-right"> Bebidas</h2>
+                <!-- aca se implementa carousel de bootstrap manejamos autoplaying e indicators por default tiene 3 imagenes -->
+                <div id="carouselExampleIndicators"
+                    class="carousel slide d-flex justify-content-center align-items-center" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/assets/imgs/bebidas-alco-(1).jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="w-100">Hamburguesa con papas</h5>
+                                <p class="w-100 p-carrusel">Una hamburguesa grande con papas</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/assets/imgs/bebidas-alcoh-(2).jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="w-100">Hamburguesa con papas</h5>
+                                <p class="w-100 p-carrusel">Una hamburguesa grande con papas</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/assets/imgs/bebidas-alcoh-(3).jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block texto-carrusel">
+                                <h5 class="w-100">Hamburguesa con papas</h5>
+                                <p class="w-100 p-carrusel">Una hamburguesa grande con papas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- aca viene articulo con titulo de postres -->
+            <article class="d-flex flex-column w-100">
+                <h2 class=" d-flex justify-content-center" style="color: #ffbc00db;" data-aos="fade-right"> Postres</h2>
+                <!-- aca se implementa carousel de bootstrap manejamos autoplaying e indicators por default tiene 3 imagenes -->
+                <div id="carouselExampleIndicators"
+                    class="carousel slide d-flex justify-content-center align-items-center" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/assets/imgs/postre.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="w-100">Hamburguesa con papas</h5>
+                                <p class="w-100 p-carrusel">Una hamburguesa grande con papas</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/assets/imgs/postre1.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="w-100">Hamburguesa con papas</h5>
+                                <p class="w-100 p-carrusel">Una hamburguesa grande con papas</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/assets/imgs/postre.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="w-100">Hamburguesa con papas</h5>
+                                <p class="w-100 p-carrusel">Una hamburguesa grande con papas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </article>
+        </main>
+        <footer class="d-flex align-items-center flex-wrap justify-content-around">
+            <div class="d-flex justify-content-evenly imgs ">
+                <div>
+                    <a href="https://github.com/joaquinfleitas" target="_blank">
+                        <i class="fa-brands fa-github " style="font-size: 2rem; color: white;"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="tel:+5491127218740" target="_blank">
+                        <i class="fa-solid fa-phone" style="font-size: 2rem; color: white;"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="https://wa.me/5491127218740" target="_blank">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 2rem; color: white;"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="https://joaquinfleitas71@gmail.com" target="_blank">
+                        <i class="fa-solid fa-envelope" style="font-size: 2rem; color: white;"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="discord:joaquinfleitas#1479" target="_blank">
+                        <i class="fa-brands fa-discord" style="font-size: 2rem; color: white;"></i>
+                    </a>
+                </div>
             </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="..." class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-              </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Conocenos!
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Equipo de Desarrollo</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>| Cohort FS041 Full Stack JAVA</p>
+                            <p>| Developer Fernando Marzialetti</p>
+                            <p>| Developer Matias Loiza</p>
+                            <p>| Developer Joaquin Alain Fleitas</p>
+                            <p>| Developer Daniel Lopez</p>
+                            <p>| Developer Yasmin Ledesma</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-</article>
-      </main>
-      <footer class="d-flex flex-column w-100">
-        <!-- este div contiene las redes sociales, desaparecera en responsive -->
-        <div>
-            <h2>--------------- 
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-whatsapp"></i>
-                <i class="bi bi-instagram"></i>
-                ---------------
-            </h2>
-            
-        </div>
-      </footer>
-</div>
+            <div class="p d-flex gap-3" style="margin: 10px;">
+                <p>| &#169 Todos los derechos reservados hacia el Team de Desarrollo 'Delicatezza'</p>
+                <p>| Cohort FS041 Full Stack JAVA</p>
+            </div>
+        </footer>
+    </div>
     <!-- bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
     <!-- axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- VUE  -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- script index -->
-    <script src="./asstets/scripts/index.js"></script>
+    <script src="/asstets/scripts/index.js"></script>
     <!-- sweet alert  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- AOS inicializacion  -->
+    <script src="https://kit.fontawesome.com/4753464142.js" crossorigin="anonymous"></script>
     <script>
         AOS.init();
-      </script>
+    </script>
 </body>
+
 </html>
