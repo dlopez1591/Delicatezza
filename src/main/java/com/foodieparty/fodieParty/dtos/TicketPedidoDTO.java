@@ -1,15 +1,11 @@
 package com.foodieparty.fodieParty.dtos;
-
-import com.foodieparty.fodieParty.models.Pedido;
 import com.foodieparty.fodieParty.models.TicketPedido;
-
-import javax.persistence.OneToOne;
 import java.util.List;
 
 public class TicketPedidoDTO {
 
     private long id;
-    private String detalle;
+    private List<String> detalle;
     private Double total;
 
     private PedidoDTO pedido;
@@ -25,7 +21,7 @@ public class TicketPedidoDTO {
         return id;
     }
 
-    public String getDetalle() {
+    public List<String> getDetalle() {
         return detalle;
     }
 

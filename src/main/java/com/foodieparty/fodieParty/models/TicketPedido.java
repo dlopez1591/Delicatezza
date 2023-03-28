@@ -5,13 +5,16 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.List;
 
+
 @Entity
 public class TicketPedido {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private String detalle;
+    @ElementCollection
+    private List<String> detalle;
+
     private Double total;
     @OneToOne
     @JoinColumn(name="pedido_id")
@@ -19,7 +22,7 @@ public class TicketPedido {
 
     public TicketPedido(){}
 
-    public TicketPedido(String detalle, Double total) {
+    public TicketPedido(List<String> detalle, Double total) {
         this.detalle = detalle;
         this.total = total;
     }
@@ -28,11 +31,11 @@ public class TicketPedido {
         return id;
     }
 
-    public String getDetalle() {
+    public List<String> getDetalle() {
         return detalle;
     }
 
-    public void setDetalle(String detalle) {
+    public void setDetalle(List<String> detalle) {
         this.detalle = detalle;
     }
 
@@ -51,4 +54,5 @@ public class TicketPedido {
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
+
 }

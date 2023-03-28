@@ -64,7 +64,7 @@ public class PedidoControlador {
                 detallePedidoDTO.getDireccion(),
                 usuario);
         //Preparar variables para contabilizar el total y concatenar detalles del ticket.
-        String detalleTicket="";
+        List<String> detalleTicket=new ArrayList<>();
         Double total = 0.0;
         //Recorrer la lista idComidaYCantidad
         for(long[] idComidaYCantidad: detallePedidoDTO.getListaComidasId()){
@@ -74,7 +74,7 @@ public class PedidoControlador {
             pedido.agregarComidaPedido(comidaPedido);
             comidaPedidoRepositorio.save(comidaPedido);
             total+=comidaPedido.getPrecioPorCantidad();
-            detalleTicket+=comida.getNombre()+" x "+idComidaYCantidad[1]+" = $"+comida.getPrecio()*idComidaYCantidad[1]+", ";
+            detalleTicket.add(comida.getNombre()+" x "+idComidaYCantidad[1]+" = $"+comida.getPrecio()*idComidaYCantidad[1]);
         }
         //Recorrer la lista idBebidaYCantidad
         for(long[] idBebidaYCantidad: detallePedidoDTO.getListaBebidasId()){
@@ -90,10 +90,9 @@ public class PedidoControlador {
             pedido.agregarBebidaPedido(bebidaPedido);
             bebidaPedidoRepositorio.save(bebidaPedido);
             total+=bebidaPedido.getPrecioPorCantidad();
-            detalleTicket+=bebida.getNombre()+" x "+idBebidaYCantidad[1]+" = $"+bebida.getPrecio()*idBebidaYCantidad[1]+", ";
+            detalleTicket.add(bebida.getNombre()+" x "+idBebidaYCantidad[1]+" = $"+bebida.getPrecio()*idBebidaYCantidad[1]);
         }
-        //Borrar la ultima coma del String detalle
-        detalleTicket = detalleTicket.substring(0, detalleTicket.length() - 2);
+
         //Crear un ticket para el pedido
         TicketPedido ticketPedido = new TicketPedido(detalleTicket,total);
 
