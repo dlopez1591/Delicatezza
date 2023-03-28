@@ -1,21 +1,25 @@
 package com.foodieparty.fodieParty.dtos;
 
 import com.foodieparty.fodieParty.models.Reserva;
+import com.foodieparty.fodieParty.models.TicketReserva;
 import com.foodieparty.fodieParty.models.Usuario;
 
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ReservaDTO {
     private long id;
-    private LocalDateTime fecha;
+    private LocalDate fecha;
     private byte cantidad_De_Personas;
     private Double precio;
 
     private Boolean estado;
 
     private UsuarioDTO usuario;
+
+    private TicketReservaDTO ticketReserva;
 
     public ReservaDTO(Reserva reserva) {
         this.id = reserva.getId();
@@ -24,13 +28,14 @@ public class ReservaDTO {
         this.precio = reserva.getPrecio();
         this.estado = reserva.getEstado();
         this.usuario = new UsuarioDTO(reserva.getUsuario());
+        this.ticketReserva = new TicketReservaDTO(reserva.getTicketReserva());
     }
 
     public long getId() {
         return id;
     }
 
-    public LocalDateTime getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 

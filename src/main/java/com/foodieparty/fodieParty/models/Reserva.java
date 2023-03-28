@@ -3,6 +3,7 @@ package com.foodieparty.fodieParty.models;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,19 +12,21 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private LocalDateTime fecha;
+    private LocalDate fecha;
     private byte cantidad_De_Personas;
-    private Double precio;
+    private Double precio = 1500.0;
 
     private Boolean estado;
     @ManyToOne(fetch = FetchType.EAGER)
     private Usuario usuario;
+
+    @OneToOne(mappedBy="reserva")
+    private TicketReserva ticketReserva;
     public Reserva(){}
 
-    public Reserva(LocalDateTime fecha, byte cantidad_De_Personas, Double precio, Boolean estado) {
+    public Reserva(LocalDate fecha, byte cantidad_De_Personas, Boolean estado) {
         this.fecha = fecha;
         this.cantidad_De_Personas = cantidad_De_Personas;
-        this.precio = precio;
         this.estado = estado;
     }
 
@@ -31,7 +34,7 @@ public class Reserva {
         return id;
     }
 
-    public LocalDateTime getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
@@ -51,7 +54,7 @@ public class Reserva {
         return usuario;
     }
 
-    public void setFecha(LocalDateTime fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -70,4 +73,17 @@ public class Reserva {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    public TicketReserva getTicketReserva() {
+        return ticketReserva;
+    }
+
+    public void setTicketReserva(TicketReserva ticketReserva) {
+        this.ticketReserva = ticketReserva;
+    }
+    public void agregarTicketReserva(TicketReserva ticketReserva) {
+        ticketReserva.setReserva(this);
+        this.ticketReserva=ticketReserva;
+    }
+
 }

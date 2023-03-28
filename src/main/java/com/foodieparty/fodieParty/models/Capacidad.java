@@ -15,8 +15,11 @@ public class Capacidad {
     private long id;
     private byte capacidad;
 
-    public Capacidad(byte capacidad) {
+    private Double precioPorReserva;
+    public Capacidad(){};
+    public Capacidad(byte capacidad, Double precioPorReserva) {
         this.capacidad = capacidad;
+        this.precioPorReserva=precioPorReserva;
     }
 
     public long getId() {
@@ -30,4 +33,17 @@ public class Capacidad {
     public void setCapacidad(byte capacidad) {
         this.capacidad = capacidad;
     }
+
+    public Double getPrecioPorReserva() {
+        return precioPorReserva;
+    }
+
+    public void setPrecioPorReserva(Double precioPorReserva) {
+        this.precioPorReserva = precioPorReserva;
+    }
+
+    public Boolean tieneCapacidad(Integer personasConReserva, Integer personasAReservar){
+        return capacidad-personasConReserva>=personasAReservar;
+    }
+
 }
