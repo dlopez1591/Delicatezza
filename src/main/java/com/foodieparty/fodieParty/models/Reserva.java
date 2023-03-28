@@ -11,73 +11,63 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private LocalDateTime horarioDeEntrada;
-    private LocalDateTime horarioDeSalida;
-    private LocalDateTime cantidad_De_Personas;
-
+    private LocalDateTime fecha;
+    private byte cantidad_De_Personas;
     private Double precio;
+
+    private Boolean estado;
     @ManyToOne(fetch = FetchType.EAGER)
     private Usuario usuario;
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Mesa mesa;
     public Reserva(){}
 
-    public Reserva(LocalDateTime horarioDeEntrada, LocalDateTime horarioDeSalida, LocalDateTime cantidad_De_Personas,Double precio) {
-        this.horarioDeEntrada = horarioDeEntrada;
-        this.horarioDeSalida = horarioDeSalida;
+    public Reserva(LocalDateTime fecha, byte cantidad_De_Personas, Double precio, Boolean estado) {
+        this.fecha = fecha;
         this.cantidad_De_Personas = cantidad_De_Personas;
-        this.precio=precio;
+        this.precio = precio;
+        this.estado = estado;
     }
 
     public long getId() {
         return id;
     }
 
-    public LocalDateTime getHorarioDeEntrada() {
-        return horarioDeEntrada;
+    public LocalDateTime getFecha() {
+        return fecha;
     }
 
-    public void setHorarioDeEntrada(LocalDateTime horarioDeEntrada) {
-        this.horarioDeEntrada = horarioDeEntrada;
-    }
-
-    public LocalDateTime getHorarioDeSalida() {
-        return horarioDeSalida;
-    }
-
-    public void setHorarioDeSalida(LocalDateTime horarioDeSalida) {
-        this.horarioDeSalida = horarioDeSalida;
-    }
-
-    public LocalDateTime getCantidad_De_Personas() {
+    public byte getCantidad_De_Personas() {
         return cantidad_De_Personas;
-    }
-
-    public void setCantidad_De_Personas(LocalDateTime cantidad_De_Personas) {
-        this.cantidad_De_Personas = cantidad_De_Personas;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Mesa getMesa() {
-        return mesa;
-    }
-
-    public void setMesa(Mesa mesa) {
-        this.mesa = mesa;
     }
 
     public Double getPrecio() {
         return precio;
     }
 
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setCantidad_De_Personas(byte cantidad_De_Personas) {
+        this.cantidad_De_Personas = cantidad_De_Personas;
+    }
+
     public void setPrecio(Double precio) {
         this.precio = precio;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

@@ -2,7 +2,6 @@ package com.foodieparty.fodieParty.controllers;
 
 import com.foodieparty.fodieParty.dtos.ReservaDTO;
 import com.foodieparty.fodieParty.models.Usuario;
-import com.foodieparty.fodieParty.repositories.MesaRepositorio;
 import com.foodieparty.fodieParty.repositories.ReservaRepositorio;
 import com.foodieparty.fodieParty.repositories.UsuarioRepositorio;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
@@ -22,8 +21,6 @@ public class ReservaControlador {
     private ReservaRepositorio reservaRepositorio;
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
-    @Autowired
-    private MesaRepositorio mesaRepositorio;
 
     @GetMapping("/reserva")
     public List<ReservaDTO> getReserva(){
@@ -36,7 +33,7 @@ public class ReservaControlador {
     @GetMapping("/usuario/autenticado/reserva")
     public List<ReservaDTO> getReservasUsuario(Authentication authentication){
           Usuario usuario=usuarioRepositorio.findByEmail(authentication.name());
-          return usuario.getReserva().stream().map(ReservaDTO::new).collect(toList());
+          return usuario.getReservas().stream().map(ReservaDTO::new).collect(toList());
     }
 //    @PostMapping("/crear/reserva")
 //    public ResponseEntity<Object> crearReserva(Authentication authentication,@RequestBody ReservaUsuarioDTO reservaUsuario){
