@@ -556,13 +556,13 @@ h5 {
 }
 
 .login-box a:hover {
-    background: #03f40f;
+    background: var(--bs-orange);
     color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 5px #03f40f,
-        0 0 2px #03f40f,
-        0 0 5px #03f40f,
-        0 0 7px #03f40f;
+    box-shadow: 0 0 5px #F5C800,
+        0 0 2px #F5C800,
+        0 0 5px #F5C800,
+        0 0 7px #F5C800;
 }
 
 .login-box a span {

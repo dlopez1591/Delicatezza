@@ -78,27 +78,58 @@
             <div class="modal-dialog">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="login-box">
-                <form>
+            <div class="login-box" v-show="cambio == 1">
+                <form @submit.prevent>
                     <div class="user-box">
-                        <input type="text" name="" required="">
-                        <label>Username</label>
+                        <input v-model="email" required="" name="" type="text">
+                        <label>Email</label>
                     </div>
                     <div class="user-box">
-                        <input type="password" name="" required="">
+                        <input v-model="password" required="" name="" type="password">
                         <label>Password</label>
                     </div>
-                    <a href="#">
-                        SEND
+                    <a v-on:click="login" href="#">
                         <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Login
+                    </a>
+                </form>
+                <p>Don't have an account? <a href="#" class="a2" @click="cambiar">Click here!</a></p>
+            </div>
+            <!-- register -->
+            <div class="login-box" v-show="cambio == 0">
+                <form @submit.prevent>
+                    <div class="user-box">
+                        <input v-model="firstName" required="" name="" type="text">
+                        <label>First Name</label>
+                    </div>
+                    <div class="user-box">
+                        <input v-model="lastName" required="" name="" type="text">
+                        <label>Last Name</label>
+                    </div>
+                    <div class="user-box">
+                        <input v-model="email" required="" name="" type="email">
+                        <label>Email</label>
+                    </div>
+                    <div class="user-box">
+                        <input v-model="password" required="" name="" type="password">
+                        <label>Password</label>
+                    </div>
+                    <a v-on:click="register" href="#">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Register
                     </a>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </form>
+                <p> if you create account click here for back <a href="#" class="a2" @click="cambiar">Click here!</a></p>
             </div>
-            
-
         </div>
     </div>
     <!-- aca viene el multilenguaje, su implementacion sera de ultimas -->
@@ -360,7 +391,7 @@
     <!-- VUE  -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- script index -->
-    <script src="/asstets/scripts/index.js"></script>
+    <script src="/assets/scripts/index.js"></script>
     <!-- sweet alert  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- AOS -->
