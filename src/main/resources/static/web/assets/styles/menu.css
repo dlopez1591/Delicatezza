@@ -451,14 +451,17 @@ footer {
 }
 .form-control{
     background-color: transparent !important;
+    box-shadow:-1px -4px 43px rgba(253, 13, 53, 0.295);
 }
 .form-control:focus {
     border-color: #fe8686;
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(253, 13, 53, 0.25);
+    box-shadow:-1px -4px 43px rgba(253, 13, 53, 0.466);
+    
 }
 ::placeholder {
     color: #F5C800 !important;
+
   }
 .mini-bar{
     width: 95%;
@@ -497,7 +500,6 @@ footer {
     background-repeat: no-repeat;
     filter: opacity(.3) blur(.3em);
 }
-
 .button::after {
     content: "";
     position: absolute;
@@ -511,7 +513,6 @@ footer {
     opacity: 0;
     pointer-events: none;
 }
-
 .button .p1 {
     display: inline-block;
     /* width: 135px;
@@ -522,8 +523,6 @@ footer {
     filter: blur(.02em);
     z-index: 5;
 }
-
-
 .fil0 {
     fill: #935E28
 }
@@ -656,11 +655,37 @@ footer {
         text-shadow: 0 0 15px #fbfd7b8a;
     }
 }
-
-/* BUTTON */
-
-
 /* FINAL FOOTER */
+
+
+/* CARRITO */
+.btn-carrito{
+    z-index: 999;
+    border-radius: 1rem;
+    margin-bottom: 1.2rem;
+    margin-right: 1.5rem;
+    border-color: #F5C800;
+    box-shadow:-1px -4px 43px rgba(253, 13, 53, 0.466);
+    background-color: #0000008c;
+}
+.btn-carrito:hover{
+    border-color: #fcda42;
+    box-shadow:-1px -4px 43px rgba(255, 243, 78, 0.514);
+    text-shadow: rgba(248, 38, 38, 0.959) -1px -4px 42px;
+}
+.btn-carrito .material-symbols-outlined{
+    font-size: 23px;
+    color: #F5C800;
+}
+.btn-carrito .material-symbols-outlined:hover{
+    text-shadow: -1px -4px 43px rgba(255, 243, 78, 0.514);
+}
+.modal-carrito .modal-body, .total-carrito{
+    font-size: 1.5rem;
+    font-family: 'Arizonia';
+}
+
+
 @media (max-width: 650px) {
     body {
         background-image: url(/assets/imgs/fondo-pared-ladrillo-grunge.jpg);
@@ -705,3 +730,4 @@ footer {
         font-size: 34px;
     }
 }
+
