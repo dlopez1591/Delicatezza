@@ -16,6 +16,8 @@ public class Usuario {
     private String nombre, apellido, email, contraseña, telefono;
     @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
     private Set<Pedido> pedidos = new HashSet<>();
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
+    private Set<Reserva> reserva = new HashSet<>();
 
     public Usuario() {
     }
@@ -78,6 +80,14 @@ public class Usuario {
 
     public Set<Pedido> getPedidos() {
         return pedidos;
+    }
+
+    public Set<Reserva> getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Set<Reserva> reserva) {
+        this.reserva = reserva;
     }
 
     public void agregarPedido(Pedido pedido) {
