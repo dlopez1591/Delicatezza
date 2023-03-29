@@ -83,7 +83,6 @@ public class Usuario {
         return pedidos;
     }
 
-
     public Set<Reserva> getReservas() {
         return reservas;
     }
@@ -95,19 +94,18 @@ public class Usuario {
     public void agregarReserva(Reserva reserva){
         reserva.setUsuario(this);
         reservas.add(reserva);
-
-    public Set<Reserva> getReserva() {
-        return reserva;
-    }
-
-    public void setReserva(Set<Reserva> reserva) {
-        this.reserva = reserva;
-
     }
 
     public void agregarPedido(Pedido pedido) {
         pedido.setUsuario(this);
         pedidos.add(pedido);
     }
-}
 
+    public Set<Reserva> getReserva() {
+        return reservas;
+    }
+
+    public void setReserva(Set<Reserva> reserva) {
+        this.reservas = reserva;
+    }
+}

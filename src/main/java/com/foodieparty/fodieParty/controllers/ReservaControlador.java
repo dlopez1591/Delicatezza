@@ -11,6 +11,7 @@ import com.foodieparty.fodieParty.repositories.ReservaRepositorio;
 import com.foodieparty.fodieParty.repositories.TicketReservaRepositorio;
 import com.foodieparty.fodieParty.repositories.UsuarioRepositorio;
 
+import com.foodieparty.fodieParty.services.ReservaServicio;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,6 +40,9 @@ public class ReservaControlador {
 
     @Autowired
     private TicketReservaRepositorio ticketReservaRepositorio;
+
+    @Autowired
+    private ReservaServicio reservaServicio;
 
 
     @GetMapping("/reserva")

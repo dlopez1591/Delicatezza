@@ -4,7 +4,7 @@ import com.foodieparty.fodieParty.dtos.PedidoDTO;
 import com.foodieparty.fodieParty.models.Usuario;
 import com.foodieparty.fodieParty.repositories.PedidoRepositorio;
 import com.foodieparty.fodieParty.repositories.UsuarioRepositorio;
-import com.foodieparty.fodieParty.services.PedidosServicioImpl;
+import com.foodieparty.fodieParty.services.PedidosServicio;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 @Service
-public class PedidoServicioImpl implements PedidosServicioImpl {
+public class PedidoServicioImpl implements PedidosServicio {
     @Autowired
     private PedidoRepositorio pedidoRepositorio;
     @Autowired

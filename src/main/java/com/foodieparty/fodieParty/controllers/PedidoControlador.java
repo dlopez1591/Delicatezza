@@ -6,6 +6,7 @@ import com.foodieparty.fodieParty.dtos.PedidoDTO;
 import com.foodieparty.fodieParty.models.*;
 import com.foodieparty.fodieParty.repositories.*;
 
+import com.foodieparty.fodieParty.services.PedidosServicio;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,7 +37,8 @@ public class PedidoControlador {
     private BebidaPedidoRepositorio bebidaPedidoRepositorio;
     @Autowired
     private TicketPedidoRepositorio ticketPedidoRepositorio;
-
+    @Autowired
+    private PedidosServicio pedidosServicio;
     @GetMapping("/pedidos")
     public List<PedidoDTO> getPedido(){
         return pedidosServicio.getPedido();

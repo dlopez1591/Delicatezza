@@ -2,7 +2,7 @@ package com.foodieparty.fodieParty.services.impl;
 
 import com.foodieparty.fodieParty.dtos.ReservaDTO;
 import com.foodieparty.fodieParty.models.Usuario;
-import com.foodieparty.fodieParty.repositories.MesaRepositorio;
+
 import com.foodieparty.fodieParty.repositories.ReservaRepositorio;
 import com.foodieparty.fodieParty.repositories.UsuarioRepositorio;
 import com.foodieparty.fodieParty.services.ReservaServicio;
@@ -21,8 +21,6 @@ public class ReservaServicioImpl implements ReservaServicio {
     private ReservaRepositorio reservaRepositorio;
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
-    @Autowired
-    private MesaRepositorio mesaRepositorio;
     @Override
     public List<ReservaDTO> getReserva() {
         return reservaRepositorio.findAll().stream().map(ReservaDTO::new).collect(toList());
