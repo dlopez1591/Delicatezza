@@ -422,6 +422,9 @@ footer {
     -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
 }
+.navbar-toggler{
+    background-color: #800000a6 !important;
+}
 
 /* nav filtros */
 .linksitos{
@@ -461,6 +464,7 @@ footer {
 }
 ::placeholder {
     color: #F5C800 !important;
+    font-family:  'Arizonia', cursive !important;
 
   }
 .mini-bar{
