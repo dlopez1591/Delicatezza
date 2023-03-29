@@ -11,20 +11,262 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    font-family: 'Arizonia', cursive;
+    /* font-family: 'Arizonia', cursive; */
     cursor: url(../imgs/hot-dog-icon\ \(2\).png), auto;
 }
-button:hover{
-    cursor: url(../assets/imgs/hot-dog-icon\ \(2\).png), auto;
+/* .navbar{
+    background-color: transparent !important;
+    
+} */
+.nav-link{
+    color: white;
+    font-family: 'Allerta Stencil', sans-serif;
+    font-size: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 0, 0, 0.500);
+    box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
+    color: var(--bs-orange);
+    font-family: 'Allerta Stencil', sans-serif;
+    background: 50% 100%/50% 50% no-repeat radial-gradient(ellipse at bottom, #f5c80074, transparent, transparent);
+    -webkit-background-clip: text;
+    -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
+    animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
 }
-a:hover{
-    cursor: url(../assets/imgs/hot-dog-icon\ \(2\).png), auto;
-}
-footer:hover{
-    cursor: url(../assets/imgs/hot-dog-icon\ \(2\).png), auto;
-}
-/* .url{cursor:url(../assets/imgs/hot-dog-icon.png), auto;} */
 
+button:hover {
+    cursor: url(../assets/imgs/hot-dog-icon\ \(2\).png), auto;
+}
+
+a:hover {
+    cursor: url(../assets/imgs/hot-dog-icon\ \(2\).png), auto;
+}
+
+footer:hover {
+    cursor: url(../assets/imgs/hot-dog-icon\ \(2\).png), auto;
+}
+.img-ham{
+    width: 6rem;
+}
+
+/* .url{cursor:url(../assets/imgs/hot-dog-icon.png), auto;} */
+/* BUTTON */
+.button {
+    position: relative;
+    padding: 0;
+    width: 115px;
+    /* height: 65px; */
+    background: transparent;
+    font-size: 17px;
+    border: none;
+    border-radius: 2px;
+    /* box-shadow: inset 0 0 10px #ffffff1c; */
+}
+
+.p1 {
+    font-family: 'Allerta Stencil', sans-serif;
+    text-decoration: none;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 135px;
+    height: 65px;
+    /* background: radial-gradient(circle at 100% -50%, #ffffff69 45%, #d4d4d44f 60%, #ffffff36 2%); */
+    /* background-size: 200%; */
+    background-repeat: no-repeat;
+    filter: opacity(.3) blur(.3em);
+}
+
+.button::after {
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    filter: blur(2.5em);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.button .p1 {
+    display: inline-block;
+    /* width: 135px;
+    line-height: 65px; */
+    font-size: 17px;
+    font-weight: 900;
+    color: white;
+    filter: blur(.02em);
+    z-index: 5;
+}
+
+/* .button .svg-1 {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(0, -50%) rotate(45deg);
+    width: 2.5rem;
+    height: auto;
+    filter: blur(.1rem) opacity(.5);
+    z-index: -5;
+} */
+
+.fil0 {
+    fill: #935E28
+}
+
+.button:hover {
+    filter: blur(.05em);
+    animation: lightBox 1s ease-in-out forwards;
+}
+
+.button:hover::after {
+    animation: light 1s ease-in-out forwards;
+}
+
+.button:hover p {
+    animation: lightText 1s ease-in-out forwards;
+}
+
+@keyframes lightBox {
+    0% {
+        border: 1px solid rgba(255, 0, 0, 0.500);
+        box-shadow: 0 0 5px 0px rgba(255, 0, 0, 0.500), inset 0 0 10px rgba(255, 0, 0, 0.500);
+    }
+
+    20% {
+        border: 1px solid #ffffff1c;
+        box-shadow: none;
+    }
+
+    30% {
+        border: 1px solid rgba(255, 0, 0, 0.500);
+        box-shadow: 0 0 10px 0px rgba(255, 0, 0, 0.600), inset 0 0 15px rgba(255, 0, 0, 0.600);
+    }
+
+    38% {
+        border: 1px solid #ffffff1c;
+        box-shadow: none;
+    }
+
+    45% {
+        border: 1px solid rgba(255, 0, 0, 0.500);
+        box-shadow: 0 0 15px 0px rgba(255, 0, 0, 0.650), inset 0 0 20px rgba(255, 0, 0, 0.650);
+    }
+
+    50% {
+        border: 1px solid #ffffff1c;
+        box-shadow: none;
+    }
+
+    53% {
+        border: 1px solid rgba(255, 0, 0, 0.500);
+        box-shadow: 0 0 15px 0px rgba(255, 0, 0, 0.700), inset 0 0 25px rgba(255, 0, 0, 0.700);
+    }
+
+    65% {
+        border: 1px solid #ffffff1c;
+        box-shadow: none;
+    }
+
+    100% {
+        border: 1px solid rgba(255, 255, 255, 0.87);
+        box-shadow: 0 0 15px 0px rgba(255, 255, 255, 0.87), inset 0 0 25px rgba(255, 255, 255, 0.87);
+    }
+}
+
+@keyframes light {
+    0% {
+        opacity: .7;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: .7;
+    }
+
+    38% {
+        opacity: 0;
+    }
+
+    45% {
+        opacity: .7;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    53% {
+        opacity: .7;
+    }
+
+    65% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: .7;
+    }
+}
+
+@keyframes lightText {
+    0% {
+        color: #fbfd7b;
+        text-shadow: 0 0 5px #fbfd7b8a;
+    }
+
+    20% {
+        color: #ffffff;
+        text-shadow: none;
+    }
+
+    30% {
+        color: #fbfd7b;
+        text-shadow: 0 0 10px #fbfd7b8a;
+    }
+
+    38% {
+        color: #ffffff;
+        text-shadow: none;
+    }
+
+    45% {
+        color: #fbfd7b;
+        text-shadow: 0 0 15px #fbfd7b8a;
+    }
+
+    50% {
+        color: #ffffff;
+        text-shadow: none;
+    }
+
+    53% {
+        color: #fbfd7b;
+        text-shadow: 0 0 15px #fbfd7b8a;
+    }
+
+    65% {
+        color: #ffffff;
+        text-shadow: none;
+    }
+
+    100% {
+        color: #fbfd7b;
+        text-shadow: 0 0 15px #fbfd7b8a;
+    }
+}
+
+/* BUTTON */
 /* .logo {
     width: 8rem;
     font-size: 25px;
@@ -40,6 +282,7 @@ footer:hover{
 .animated-shadow {
     /* color: #ffffff; */
     font-size: 90px;
+    /* font-family: 'Arizonia', cursive; */
     font-family: 'Allerta Stencil', sans-serif;
 
     height: 140px;
@@ -144,7 +387,9 @@ h2 {
     -webkit-animation: reveal 500ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
 }
-
+.h2-text{
+    padding: 20px 0 10px 0;
+}
 @-webkit-keyframes reveal {
     80% {
         letter-spacing: 8px;
@@ -187,7 +432,7 @@ h2::before {
     box-shadow: 1px 2px 5px var(--bs-orange);
     align-items: center;
     top: 0.1em;
-    
+
 }
 
 h2::before {
@@ -215,7 +460,7 @@ h5 {
 .p-carrusel {
     font-size: 1.2rem;
     color: var(--bs-orange);
-    text-shadow: 2px 1px 6px #F5C800;
+    text-shadow: 2px 1px 6px black;
     font-family: 'Allerta Stencil', sans-serif;
 }
 
@@ -223,9 +468,10 @@ h5 {
     flex-wrap: wrap;
 }
 
-.carousel{
+.carousel {
     margin-bottom: 15px;
 }
+
 .carousel-caption {
     background: rgba(0, 0, 0, 0.728) !important;
     border-bottom: 1px solid rgba(255, 0, 0, 0.500);
@@ -234,8 +480,127 @@ h5 {
     box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
 }
 
-/* H2 Y P DEL CARRUSEL */
+.text-info {
+    background: rgba(0, 0, 0, 0.728) !important;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.500);
+    border-left: 1px solid rgba(255, 0, 0, 0.500);
+    border-right: 1px solid rgba(255, 0, 0, 0.500);
+    box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
+    max-width: 75rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+}
 
+.text-menu {
+    font-size: 2rem;
+    padding-top: 10px;
+}
+
+/* H2 Y P DEL CARRUSEL */
+.modal-footer{
+    border-top: none !important;
+    justify-content: center !important;
+}
+/* LOGIN */
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 350px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgb(30, 25, 25);
+    box-sizing: border-box;
+    box-shadow: 0 0px 30px var(--bs-orange);
+    border-radius: 10px;
+}
+
+.login-box .user-box {
+    position: relative;
+}
+
+.login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid var(--bs-orange);
+    outline: none;
+    background: transparent;
+}
+
+.login-box .user-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.login-box .user-box input:focus~label,
+.login-box .user-box input:valid~label {
+    top: -20px;
+    left: 0;
+    color: #bdb8b8;
+    font-size: 12px;
+}
+
+.login-box form a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px
+}
+
+.login-box a:hover {
+    background: #03f40f;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03f40f,
+        0 0 2px #03f40f,
+        0 0 5px #03f40f,
+        0 0 7px #03f40f;
+}
+
+.login-box a span {
+    position: absolute;
+    display: block;
+}
+
+@keyframes btn-anim1 {
+    0% {
+        left: -100%;
+    }
+
+    50%,
+    100% {
+        left: 100%;
+    }
+}
+
+.login-box a span:nth-child(1) {
+    bottom: 2px;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--bs-orange));
+    animation: btn-anim1 2s linear infinite;
+}
+
+/* LOGIN */
 /* FOOTER */
 
 footer {
@@ -260,15 +625,17 @@ footer {
     font-size: 2.5rem !important;
     transition: all 0.3s;
 }
-.modal{
+
+.modal {
     text-shadow: none;
     color: white;
 }
-.modal-content{
+
+.modal-content {
     background-color: #0000003b;
 }
 
-.p{
+.p {
     position: relative;
     color: white;
     /* font-family: 'Allerta Stencil', sans-serif; */
@@ -280,7 +647,7 @@ footer {
     text-align: center;
 }
 
-.p::after{
+.p::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -292,7 +659,8 @@ footer {
     transform-origin: right left;
     transition: transform 0.6s ease-in;
 }
-.p:hover:after{
+
+.p:hover:after {
     transform: scaleX(1);
     transform-origin: bottom;
 }
@@ -302,7 +670,10 @@ footer {
 
 @media (max-width: 650px) {
     body {
-        background-image: url(../assets/imgs/fondo-pared-ladrillo-grunge.jpg);
+        background-image: url(/assets/imgs/fondo-pared-ladrillo-grunge.jpg);
+    }
+    .nav-item{
+        width: 50% !important;
     }
 
     h2 {
@@ -326,9 +697,40 @@ footer {
         text-shadow: -4px 4px 17px var(--bs-orange);
         letter-spacing: 10px;
         margin-top: 10px;
+        height: 70px;
     }
 
     footer {
         font-size: 15px;
+    }
+
+    .p-carrusel {
+        font-size: 1rem;
+    }
+
+    h5 {
+        font-size: 25px;
+    }
+}
+@media (max-width: 991px){
+    .navbar-nav{
+        align-items: center;
+    }
+    .nav-item{
+        width: 35%;
+    }
+    .container-fluid{
+        justify-content: center !important;
+    }
+    .navbar-toggler{
+        border: 1px solid rgba(255, 0, 0, 0.500);
+    box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
+    color: var(--bs-orange);
+    margin-bottom: 1rem;
+    font-family: 'Allerta Stencil', sans-serif;
+    background: 50% 100%/50% 50% no-repeat radial-gradient(ellipse at bottom, #f5c80074, transparent, transparent);
+    -webkit-background-clip: text;
+    -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
+    animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
     }
 }
