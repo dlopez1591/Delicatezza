@@ -684,7 +684,10 @@ footer {
     font-size: 1.5rem;
     font-family: 'Arizonia';
 }
-
+.fondo-modal {
+    background-color: #8b0000f5 !important;
+    border-radius: 0.5rem !important;
+}
 
 @media (max-width: 650px) {
     body {
