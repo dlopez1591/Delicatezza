@@ -147,7 +147,7 @@ footer{
 }
 
 footer {
-    min-height: 15vh;
+    min-height: 10vh;
     background-color: #000000a6;
     text-shadow: 1px 1px 2px var(--bs-orange);
     color: white;
