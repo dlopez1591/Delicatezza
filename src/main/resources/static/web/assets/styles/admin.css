@@ -1,0 +1,208 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-width: 90vw;
+    min-height: 90vh;
+    background-image: url(../imgs/3d-render-focos-pared-ladrillo-grunge.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Arizonia', cursive;
+    cursor: url(../imgs/hot-dog-icon\ \(2\).png), auto;
+}
+h2{
+    color:#F5C800;
+    margin: 30px;
+    font-size: 30px;
+    
+}
+
+.encabezado{
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7763480392156863) 100%);
+    width: 100%;
+    height: 10%;
+}
+.imgHeader{
+    width: 300px;
+    height: 220px;
+    
+}
+.boton{
+    border: 2px solid white;
+    box-shadow: inset 0 0 15px yellow, 0 0 15px yellow;
+    width: 250px;
+    padding: 5px;
+    margin: 20px;
+    background-color: rgba(0, 0, 0, 0.575);
+    color: rgb(245, 200, 0);
+    border-radius: 10px;
+    font-size: 40px;
+    text-align: center;
+}
+
+.botonLogOut{
+    border: 2px solid white;
+    box-shadow: inset 0 0 15px red, 0 0 15px red;
+    width: 250px;
+    padding: 5px;
+    margin: 20px;
+    background-color: rgba(0, 0, 0, 0.575);
+    color:red;
+    border-radius: 10px;
+    font-size: 40px;
+    text-align: center;
+}
+
+.neon{
+    margin :15px;
+    font-size: 80px;
+    text-shadow: 0 0 15px rgb(245, 200, 0), 0 0 30px rgb(245, 200, 0), 0 0 50px rgb(245, 200, 0);
+    font-family: 'Arizonia', cursive;
+    color: aliceblue;
+    animation: parpadear 1.3s infinite backwards;
+}
+@keyframes parpadear {
+    to {
+      color: gray;
+      text-shadow: none;
+    }
+  }
+.dashBoard{
+    background-color: rgba(0, 0, 0, 0.575);
+    padding: 15px;
+    border-radius: 15px;
+    margin-right: 10px;
+    width: 40%;
+    border: 2px solid white;
+    box-shadow: inset 0 0 15px yellow, 0 0 15px yellow;
+    margin: 20px;
+}
+.buttonDash{
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+}
+
+
+
+/* FOOTER */
+footer{
+    min-width: 99vw;
+}
+.media-icon {
+    position: relative;
+    display: flex;
+    z-index: 2;
+}
+
+.media-icon .media-li {
+    position: relative;
+    list-style: none;
+    margin: 10px;
+}
+
+.media-icon .media-li .media-a {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2em;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.media-icon .media-li .media-a:hover {
+    transform: translateY(-7px);
+}
+
+.media-icon .media-li .media-a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: skewX(45deg) translateX(150px);
+    transition: 0.5s;
+}
+
+.media-icon .media-li .media-a:hover::before {
+    transform: skewX(45deg) translateX(-150px);
+}
+
+footer {
+    min-height: 15vh;
+    background-color: #000000a6;
+    text-shadow: 1px 1px 2px var(--bs-orange);
+    color: white;
+    padding-right: 1rem;
+    margin-top: 10px;
+    box-shadow: rgb(233 12 12 / 30%) 0px 4px 29px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+.imgs {
+    width: 20rem;
+    margin: 10px;
+}
+
+.imgs i:hover {
+    font-size: 2.5rem !important;
+    transition: all 0.3s;
+}
+
+.modal {
+    text-shadow: none;
+    color: white;
+}
+
+.modal-content {
+    background-color: #0000003b;
+}
+
+.p {
+    position: relative;
+    color: white;
+    background: -webkit-linear-gradient(#F5C800, var(--bs-orange));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    justify-content: center;
+    text-align: center;
+}
+
+.p::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--bs-orange);
+    transform: scaleX(0);
+    transform-origin: right left;
+    transition: transform 0.6s ease-in;
+}
+
+.p:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom;
+}
+
+/* FINAL FOOTER */
