@@ -12,6 +12,8 @@ public class UsuarioDTO {
 
     private List<PedidoDTO> pedidos;
 
+    private List<ReservaDTO> reservas;
+
     public UsuarioDTO(Usuario usuario){
         this.id=usuario.getId();
         this.nombre= usuario.getNombre();
@@ -20,6 +22,7 @@ public class UsuarioDTO {
         this.contraseña= usuario.getContraseña();
         this.telefono= usuario.getTelefono();
         this.pedidos=usuario.getPedidos().stream().map(p->new PedidoDTO(p)).collect(Collectors.toList());
+        this.reservas=usuario.getReservas().stream().map(r->new ReservaDTO(r)).collect(Collectors.toList());
     }
 
     public long getId() {
@@ -50,4 +53,7 @@ public class UsuarioDTO {
         return pedidos;
     }
 
+    public List<ReservaDTO> getReservas() {
+        return reservas;
+    }
 }
