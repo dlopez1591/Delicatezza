@@ -5,10 +5,12 @@ import com.foodieparty.fodieParty.models.Capacidad;
 import com.foodieparty.fodieParty.models.Reserva;
 import com.foodieparty.fodieParty.models.TicketReserva;
 import com.foodieparty.fodieParty.models.Usuario;
+
 import com.foodieparty.fodieParty.repositories.CapacidadRepositorio;
 import com.foodieparty.fodieParty.repositories.ReservaRepositorio;
 import com.foodieparty.fodieParty.repositories.TicketReservaRepositorio;
 import com.foodieparty.fodieParty.repositories.UsuarioRepositorio;
+
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,7 @@ import static java.util.stream.Collectors.toList;
 @RequestMapping("/api")
 public class ReservaControlador {
     @Autowired
+
     private ReservaRepositorio reservaRepositorio;
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
@@ -37,16 +40,18 @@ public class ReservaControlador {
     @Autowired
     private TicketReservaRepositorio ticketReservaRepositorio;
 
+
     @GetMapping("/reserva")
     public List<ReservaDTO> getReserva(){
-        return reservaRepositorio.findAll().stream().map(ReservaDTO::new).collect(toList());
+        return reservaServicio.getReserva();
     }
     @GetMapping("/reservas/{id}")
     public Optional<ReservaDTO> getReservaPorId(@PathVariable Long id){
-        return reservaRepositorio.findById(id).map(ReservaDTO::new);
+        return reservaServicio.getReservaPorId(id);
     }
     @GetMapping("/usuario/autenticado/reserva")
     public List<ReservaDTO> getReservasUsuario(Authentication authentication){
+
           Usuario usuario=usuarioRepositorio.findByEmail(authentication.name());
           return usuario.getReservas().stream().map(ReservaDTO::new).collect(toList());
     }
@@ -80,5 +85,6 @@ public class ReservaControlador {
         ticketReservaRepositorio.save(ticketReserva);
         reservaRepositorio.save(reserva);
         return new ResponseEntity<>("Reserva realizada con exito",HttpStatus.ACCEPTED);
+
     }
 }

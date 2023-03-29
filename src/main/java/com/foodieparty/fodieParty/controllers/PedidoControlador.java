@@ -2,6 +2,7 @@ package com.foodieparty.fodieParty.controllers;
 
 import com.foodieparty.fodieParty.dtos.DetallePedidoDTO;
 import com.foodieparty.fodieParty.dtos.PedidoDTO;
+
 import com.foodieparty.fodieParty.models.*;
 import com.foodieparty.fodieParty.repositories.*;
 
@@ -15,11 +16,13 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
+
 import static java.util.stream.Collectors.toList;
 @RestController
 @RequestMapping("/api")
 public class PedidoControlador {
     @Autowired
+
     private PedidoRepositorio pedidoRepositorio;
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
@@ -36,16 +39,15 @@ public class PedidoControlador {
 
     @GetMapping("/pedidos")
     public List<PedidoDTO> getPedido(){
-        return pedidoRepositorio.findAll().stream().map(PedidoDTO::new).collect(toList());
+        return pedidosServicio.getPedido();
     }
     @GetMapping("/pedido/{id}")
     public Optional<PedidoDTO> getPedidoPorId(@PathVariable Long id){
-        return pedidoRepositorio.findById(id).map(PedidoDTO::new);
+        return pedidosServicio.getPedidoPorId(id);
     }
     @GetMapping("/usuario/autenticado/pedido")
     public List<PedidoDTO> getPedidosUsuario(Authentication authentication){
-         Usuario usuario=usuarioRepositorio.findByEmail(authentication.name());
-          return usuario.getPedidos().stream().map(PedidoDTO::new).collect(toList());
+         return pedidosServicio.getPedidosUsuario(authentication);
     }
 
     @Transactional
