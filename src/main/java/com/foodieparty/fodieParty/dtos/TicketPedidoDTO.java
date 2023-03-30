@@ -8,13 +8,11 @@ public class TicketPedidoDTO {
     private List<String> detalle;
     private Double total;
 
-    private PedidoDTO pedido;
-
     public TicketPedidoDTO(TicketPedido ticketPedido){
         this.id = ticketPedido.getId();
         this.detalle = ticketPedido.getDetalle();
         this.total = ticketPedido.getTotal();
-        this.pedido = new PedidoDTO(ticketPedido.getPedido());
+
     };
 
     public long getId() {
@@ -29,7 +27,4 @@ public class TicketPedidoDTO {
         return total;
     }
 
-    public PedidoDTO getPedido() {
-        return pedido;
-    }
 }

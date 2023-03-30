@@ -2,7 +2,11 @@ package com.foodieparty.fodieParty.controllers;
 
 
 import com.foodieparty.fodieParty.dtos.UsuarioDTO;
+import com.foodieparty.fodieParty.models.Pedido;
+import com.foodieparty.fodieParty.models.Reserva;
 import com.foodieparty.fodieParty.models.Usuario;
+import com.foodieparty.fodieParty.repositories.PedidoRepositorio;
+import com.foodieparty.fodieParty.repositories.ReservaRepositorio;
 import com.foodieparty.fodieParty.repositories.UsuarioRepositorio;
 import com.foodieparty.fodieParty.services.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +29,10 @@ public class UsuarioControlador {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
+    @Autowired
+    private PedidoRepositorio pedidoRepositorio;
+    @Autowired
+    private ReservaRepositorio reservaRepositorio;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -51,13 +59,6 @@ public class UsuarioControlador {
 
     // revisar este metodo aparentemente no esta guardando en la base de datos!
 
-    @Transactional
-   @DeleteMapping("/borrar/usuario")
-    public ResponseEntity<Object> borrarUsuario(@RequestParam String email){
-        usuarioRepositorio.deleteByEmail(email);
-        return new ResponseEntity<>("Usuario borrado", HttpStatus.ACCEPTED);
-    }
-
 
     //metodo para editar un usuario OJO REVISAR Y VERIFICAR SERVICIOS E IMPLEMENTACION:
 
@@ -76,5 +77,24 @@ public class UsuarioControlador {
         return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
     }
 
+    @Transactional
+    @DeleteMapping("/borrar/usuario")
+    public ResponseEntity<Object> borrarUsuario(@RequestParam long id){
+        Usuario usuario=usuarioRepositorio.findById(id).orElse(null);
+        List<Pedido> pedidos=usuario.getPedidos().stream().collect(toList());
+        List<Reserva> reservas=usuario.getReservas().stream().collect(toList());
+        if (pedidos!=null){
+            for (Pedido pedido:pedidos){
+                pedidoRepositorio.deleteById(pedido.getId());
+            }
+        }
+        if (reservas!=null){
+            for (Reserva reserva:reservas){
+                reservaRepositorio.deleteById(reserva.getId());
+            }
+        }
+        usuarioRepositorio.deleteById(id);
+        return new ResponseEntity<>("Usuario borrado", HttpStatus.ACCEPTED);
+    }
 
 }
