@@ -641,6 +641,7 @@ footer {
     color: white;
     padding-right: 1rem;
     margin-top: 10px;
+    border-top: 1px solid rgba(255, 0, 0, 0.500);
     box-shadow: rgb(233 12 12 / 30%) 0px 4px 29px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
