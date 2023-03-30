@@ -360,9 +360,10 @@ footer {
     flex-wrap: wrap;
 }
 .card{
-    background-color: #000000;
+    background: rgba(0, 0, 0, 0.728) !important;
+    border: 1px solid rgba(255, 0, 0, 0.500);
     box-shadow: rgba(233, 12, 12, 0.404) 0px 4px 29px;
-    border: #da0641;
+
 }
 .card-title{
     color: rgb(245, 200, 0);
@@ -374,35 +375,28 @@ footer {
 }
 .precio{
     color: #F5C800;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-style:italic ;
-    text-shadow: 2px 3px 3px var(--bs-orange);
+    font-style: italic ;
+    /* text-shadow: 2px 3px 3px var(--bs-orange); */
     font-family: 'Allerta Stencil', sans-serif;
-    background: 50% 100%/50% 50% no-repeat radial-gradient(ellipse at bottom, var(--bs-orange), transparent, transparent);
+    /* background: 50% 100%/50% 50% no-repeat radial-gradient(ellipse at bottom, var(--bs-orange), transparent, transparent);
     -webkit-background-clip: text;
     -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
+ */
 }
 .btn-comida{
     color: #F5C800;
-    text-shadow: 2px 3px 3px var(--bs-orange);
+    /* text-shadow: 2px 3px 3px var(--bs-orange); */
     font-family: 'Allerta Stencil', sans-serif;
-    background: 50% 100%/50% 50% no-repeat radial-gradient(ellipse at bottom, var(--bs-orange), transparent, transparent);
+   /*  background: 50% 100%/50% 50% no-repeat radial-gradient(ellipse at bottom, var(--bs-orange), transparent, transparent);
     -webkit-background-clip: text;
     -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
-    box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
+    box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px; */
 }
-
 
 .img-comida{
-    height: 100%;
-   
-}
-
-/* banner */
-.videito{
-     max-width:100%;
+    height: 100%;   
 }
 
 /* navbar */
@@ -497,7 +491,7 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 135px;
+   /*  width: 135px; */
     height: 65px;
     /* background: radial-gradient(circle at 100% -50%, #ffffff69 45%, #d4d4d44f 60%, #ffffff36 2%); */
     /* background-size: 200%; */
@@ -698,6 +692,10 @@ footer {
         background-image: url(/assets/imgs/fondo-pared-ladrillo-grunge.jpg);
     }
 
+    .nav-item {
+        width: 50% !important;
+    }
+
     h2 {
         font-size: 40px;
     }
@@ -738,3 +736,32 @@ footer {
     }
 }
 
+@media (max-width: 991px) {
+    .navbar-nav {
+        align-items: center;
+    }
+
+    .nav-item {
+        width: 35%;
+    }
+
+    .container-fluid {
+        justify-content: center !important;
+    }
+
+    .navbar-toggler {
+        border: 1px solid rgba(255, 0, 0, 0.500);
+        box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
+        color: var(--bs-orange);
+        margin-bottom: 1rem;
+        font-family: 'Allerta Stencil', sans-serif;
+        background: 50% 100%/50% 50% no-repeat radial-gradient(ellipse at bottom, #f5c80074, transparent, transparent);
+        -webkit-background-clip: text;
+        -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
+        animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
+    }
+
+    .linksitos{
+        font-size: 1.5rem !important;
+    }
+}
