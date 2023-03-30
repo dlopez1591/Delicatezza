@@ -36,61 +36,42 @@
       <!-- imagen logo  -->
       <div class="logo_img bg-5">
         <p class="logo_img animated-shadow">DELICATEZZA</p>
-        <!-- <img class="img" src="../assets/imgs/icon.jpg" alt=""> -->
       </div>
       <!-- redes sociales y boton log in -->
       <div class="logInRedesSociales">
-        <!-- boton log in -->
-        <div class="botonLogIn">
-
-        </div>
-        <!-- contenedor de las redes sociales -->
-        <!-- <div class="redesSociales">
-                    <i class="bi bi-facebook"></i>
-                    <i class="bi bi-whatsapp"></i>
-                    <i class="bi bi-instagram"></i>
-                </div> -->
       </div>
     </header>
     <!-- NAV BAR, POR EL MOMENTO DE PRUEBA pendiente por arreglar -->
-    <!-- <nav class="navbar navbar-dark navbar-expand-lg">
-
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link aHover" href="#">Contacto</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <button v-on:click="alertCrearAccount" class="button1" v-if="accounts.length < 3">Add
-                        Account</button>
-
-                    <button class="button1">
-                        <a href="./transfer.html" v-on:click="createCard" class="button1">Transfer</a>
-                    </button>
-                    <button class="button1">
-                        <a href="./loan-application.html" v-on:click="createLoan" class="button1">Apply Loan</a>
-                    </button>
-                    <button v-on:click="alertLogOut" class="button1">
-                        Logout
-                    </button>
-                </div>
-            </div>
-        </nav> -->
-
+    <div class="">
+      <nav class="navbar navbar-expand-lg ">
+          <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                  <ul class="navbar-nav gap-3">
+                      <li class="nav-item button" type="button">
+                          <a class="nav-link " href="/index.html"><i class="bi bi-house"></i> Inicio</a>
+                      </li>
+                      <li class="nav-item button" type="button">
+                          <a class="nav-link" href="#"><i class="bi bi-egg-fried"></i>Menu</a>
+                      </li>
+                      <li class="nav-item button" type="button">
+                          <a class="nav-link" href="#"><i class="bi bi-check2-circle"></i> Reserva</a>
+                      </li>
+                      <button type="button" class="nav-item button " data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop">
+                          <a class="nav-link"><i class="bi bi-person-fill"></i>Logout</a>
+                      </button>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+    </div>
     <!-- aca viene el multilenguaje, su implementacion sera de ultimas -->
 
-    <main class="d-flex flex-column w-100 justify-content-center">
+    <main class="d-flex flex-column w-100 justify-content-center align-items-center">
       <!-- carrito -->
       
       
@@ -132,63 +113,28 @@
           </div>
         </div>
       </div>
+<!-- navbar -->
 
       <!-- Navbar content -->
-      <div class="">
-        <nav class="navbar navbar-expand-lg ">
-          <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span style="font-size: 2rem;" class="material-symbols-outlined">
-                lunch_dining
-                </span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-              <ul class="navbar-nav gap-3">
-                <li class="nav-item button">
-                  <a class="nav-link " href="./index.html"><i class="bi bi-house"></i> Inicio</a>
-                </li>
-                <li class="nav-item button">
-                  <a class="nav-link" href="#"><span class="material-symbols-outlined">restaurant_menu </span> Menu</a>
-                </li>
-                <li class="nav-item button">
-                  <a class="nav-link" href="#"><i class="bi bi-check2-circle"></i> Reserva</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-      <div class=" navbarcito ">
-        <div class="collapse navbar-collapse d-flex mini-bar" id="navbarNav">
-          <ul class="navbar-nav lista-nav d-flex flex-row">
-            <li class="nav-item">
-              <a class="nav-link linksitos" href="#"><span class="material-symbols-outlined icono">lunch_dining</span>
+      <div class=" navbarcito d-flex">
+            <li class="list-style" type="button">
+              <a class="linksitos" href="#">
                 Principal</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link linksitos" href="#"><span class="material-symbols-outlined icono">local_bar</span>
+            <li class="list-style" type="button">
+              <a class="linksitos" href="#">
                 Bebidas</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link linksitos" href="#"><span class="material-symbols-outlined icono">icecream</span>
+            <li class="list-style" type="button">
+              <a class="linksitos" href="#">
                 Postres</a>
             </li>
-
-          </ul>
-
-          <form class="" role="search">
-            <input class="form-control me-2 buscador" type="search" placeholder="Search" aria-label="Search" style="color:coral; font-family: 'Courier New', Courier, monospace;">
-          </form>
-        </div>
       </div>
-
-
       <!-- principal -->
       <article class="seccionComida d-flex justify-content-center flex-column align-items-center">
         <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right"> Platos
           fuertes</h2>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
+        <div class="card mb-3" >
           <div class="row g-0">
             <div class="col-md-4">
               <img src="./assets/imgs/menu1.jpg" class="img-comida img-fluid rounded-start" alt="...">
@@ -209,10 +155,10 @@
             </div>
           </div>
         </div>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
+        <div class="card mb-3" data-aos="flip-up">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="./assets/imgs/menu2.jpg" class="img-comida img-fluid rounded-start" alt="...">
+              <img src="./assets/imgs/menu4.jpg" class="img-comida img-fluid rounded-start" alt="...">
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -230,7 +176,7 @@
             </div>
           </div>
         </div>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
+        <div class="card mb-3"  data-aos="flip-up">
           <div class="row g-0">
             <div class="col-md-4">
               <img src="./assets/imgs/menu3.jpg" class="img-comida img-fluid rounded-start" alt="...">
@@ -257,7 +203,7 @@
       <article class="seccionComida d-flex justify-content-center flex-column align-items-center">
         <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
           Bebidas</h2>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
+        <div class="card mb-3"  data-aos="flip-up">
           <div class="row g-0">
             <div class="col-md-4">
               <img src="./assets/imgs/bebida-sin-alcoho.jpg" class="img-comida img-fluid rounded-start" alt="...">
@@ -278,7 +224,7 @@
             </div>
           </div>
         </div>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
+        <div class="card mb-3"  data-aos="flip-up">
           <div class="row g-0">
             <div class="col-md-4">
               <img src="./assets/imgs/bebidas-alco-(1).jpg" class="img-comida img-fluid rounded-start" alt="...">
@@ -299,7 +245,7 @@
             </div>
           </div>
         </div>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
+        <div class="card mb-3"  data-aos="flip-up">
           <div class="row g-0">
             <div class="col-md-4">
               <img src="./assets/imgs/bebidas-alcoh-(2).jpg" class="img-comida img-fluid rounded-start" alt="...">
@@ -326,7 +272,7 @@
       <article class="seccionComida d-flex justify-content-center flex-column align-items-center">
         <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
           Postres</h2>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
+        <div class="card mb-3"  data-aos="flip-up">
           <div class="row g-0">
             <div class="col-md-4">
               <img src="./assets/imgs/postre.jpg" class="img-comida img-fluid rounded-start" alt="...">
@@ -347,7 +293,7 @@
             </div>
           </div>
         </div>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
+        <div class="card mb-3"  data-aos="flip-up">
           <div class="row g-0">
             <div class="col-md-4">
               <img src="./assets/imgs/postre1.jpg" class="img-comida img-fluid rounded-start" alt="...">
@@ -368,7 +314,7 @@
             </div>
           </div>
         </div>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
+        <div class="card mb-3"  data-aos="flip-up">
           <div class="row g-0">
             <div class="col-md-4">
               <img src="./assets/imgs/postre2.jpg" class="img-comida img-fluid rounded-start" alt="...">

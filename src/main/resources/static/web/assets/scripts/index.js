@@ -24,7 +24,7 @@ createApp({
                         icon: 'success',
                         color: 'var(--bs-highlight-bg)',
                         background: '#000000c1',
-                        title: 'Your login have been successful',
+                        text: 'Your login have been successful',
                         showConfirmButton: false,
                         timer: 2000
                     })
@@ -42,8 +42,7 @@ createApp({
                         icon: 'error',
                         color: 'var(--bs-highlight-bg)',
                         background: '#000000c1',
-                        title: 'Oops... something wrongs',
-                        text: 'Show your dates!',
+                        text: 'Revisa tus datos!',
                     })
                 });
         },
