@@ -75,7 +75,7 @@ footer:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 135px;
+    /* width: 135px; */
     height: 65px;
     /* background: radial-gradient(circle at 100% -50%, #ffffff69 45%, #d4d4d44f 60%, #ffffff36 2%); */
     /* background-size: 200%; */
@@ -709,7 +709,7 @@ footer {
 
 @media (max-width: 650px) {
     body {
-        background-image: url(/assets/imgs/fondo-pared-ladrillo-grunge.jpg);
+        background-image: url(../imgs/fondo-pared-ladrillo-grunge.jpg);
     }
 
     .nav-item {

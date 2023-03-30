@@ -695,7 +695,7 @@ footer {
 
 @media (max-width: 650px) {
     body {
-        background-image: url(/assets/imgs/fondo-pared-ladrillo-grunge.jpg);
+        background-image: url(../imgs/fondo-pared-ladrillo-grunge.jpg);
     }
 
     h2 {
