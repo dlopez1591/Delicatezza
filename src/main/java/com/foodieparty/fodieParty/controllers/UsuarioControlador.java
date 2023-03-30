@@ -2,8 +2,10 @@ package com.foodieparty.fodieParty.controllers;
 
 
 import com.foodieparty.fodieParty.dtos.UsuarioDTO;
+import com.foodieparty.fodieParty.repositories.UsuarioRepositorio;
 import com.foodieparty.fodieParty.services.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,9 @@ import static java.util.stream.Collectors.toList;
 public class UsuarioControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
+
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
 
     @GetMapping("/usuario")
     public List<UsuarioDTO> getUsuario(){
@@ -32,8 +37,14 @@ public class UsuarioControlador {
     //}
     @PostMapping("/crear/usuario")
     public ResponseEntity<Object> registrarUsuario(@RequestParam String nombre, @RequestParam String apellido,
-            @RequestParam String email, @RequestParam String pasword,@RequestParam String telefono) {
-            return usuarioServicio.registrarUsuario(nombre,apellido,email,pasword,telefono);
+            @RequestParam String email, @RequestParam String password,@RequestParam String telefono) {
+            return usuarioServicio.registrarUsuario(nombre,apellido,email,password,telefono);
 
+    }
+
+    @PostMapping("/borrar/usuario")
+    public ResponseEntity<Object> borrarUsuario(@RequestParam String email){
+        usuarioRepositorio.deleteByEmail(email);
+        return new ResponseEntity<>("Usuario borrado", HttpStatus.ACCEPTED);
     }
 }
