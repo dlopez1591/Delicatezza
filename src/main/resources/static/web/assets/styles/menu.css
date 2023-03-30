@@ -346,8 +346,13 @@ footer {
     max-width: 65rem;
     margin-top: 2rem;
 }
-.th{
+.table th{
     width: 45% !important;
+    font-size: 17px;
+    border-right: 1px solid rgba(255, 0, 0, 0.500) !important;
+}
+.table td{
+    font-size: 17px;
 }
 
 .cardComida {
@@ -411,8 +416,11 @@ footer {
     -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
 }
-
-
+.active{
+    color: rgba(236, 217, 45, 0.861) !important;
+    box-shadow: rgba(236, 217, 45, 0.861) -1px -4px 43px;
+    border: 1px solid rgba(236, 217, 45, 0.861);
+}
 
 /*  filtros */
 

@@ -33,7 +33,11 @@ body {
     -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
 }
-
+.active{
+    color: rgba(236, 217, 45, 0.861) !important;
+    box-shadow: rgba(236, 217, 45, 0.861) -1px -4px 43px;
+    border: 1px solid rgba(236, 217, 45, 0.861);
+}
 
 .img-ham {
     width: 6rem;
