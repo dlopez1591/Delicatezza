@@ -12,7 +12,7 @@ body {
     background-size: cover;
     background-position: center;
     /* font-family: 'Arizonia', cursive; */
-    cursor: url(../imgs/hot-dog-icon\ \(2\).png), auto;
+    cursor: url(../imgs/hotdog-icon.png), auto;
 }
 
 /* .navbar{
@@ -34,23 +34,11 @@ body {
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
 }
 
-button:hover {
-    cursor: url(../assets/imgs/hot-dog-icon\ \(2\).png), auto;
-}
-
-a:hover {
-    cursor: url(../assets/imgs/hot-dog-icon\ \(2\).png), auto;
-}
-
-footer:hover {
-    cursor: url(../assets/imgs/hot-dog-icon\ \(2\).png), auto;
-}
 
 .img-ham {
     width: 6rem;
 }
 
-/* .url{cursor:url(../assets/imgs/hot-dog-icon.png), auto;} */
 /* BUTTON */
 .button {
     position: relative;
@@ -75,7 +63,7 @@ footer:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 135px;
+    /* width: 135px; */
     height: 65px;
     /* background: radial-gradient(circle at 100% -50%, #ffffff69 45%, #d4d4d44f 60%, #ffffff36 2%); */
     /* background-size: 200%; */
