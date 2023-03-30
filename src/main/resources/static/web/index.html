@@ -28,7 +28,6 @@
             <!-- imagen logo  -->
             <div class="logo_img bg-5">
                 <p class="logo_img animated-shadow">DELICATEZZA</p>
-                <!-- <img class="img" src="../assets/imgs/icon.jpg" alt=""> -->
             </div>
             <!-- redes sociales y boton log in -->
             <div class="logInRedesSociales">
@@ -36,17 +35,11 @@
                 <div class="botonLogIn">
 
                 </div>
-                <!-- contenedor de las redes sociales -->
-                <!-- <div class="redesSociales">
-                    <i class="bi bi-facebook"></i>
-                    <i class="bi bi-whatsapp"></i>
-                    <i class="bi bi-instagram"></i>
-                </div> -->
             </div>
         </header>
         <!-- NAV BAR, POR EL MOMENTO DE PRUEBA pendiente por arreglar -->
         <!-- Navbar content -->
-        <div class="" >
+        <div class="">
             <nav class="navbar navbar-expand-lg ">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -64,7 +57,8 @@
                             <li class="nav-item button">
                                 <a class="nav-link" href="#"><i class="bi bi-check2-circle"></i> Reserva</a>
                             </li>
-                            <button type="button" class="nav-item button " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="nav-item button " data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
                                 <a class="nav-link"><i class="bi bi-person-fill"></i>Login</a>
                             </button>
                         </ul>
@@ -74,51 +68,73 @@
         </div>
 
         <!-- <div class="container-fluid justify-content-center"> -->
-            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button> -->
-            <!-- Modal -->
-            <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="login-box">
-                    <form>
-                        <div class="user-box">
-                            <input type="text" name="" required="">
-                            <label>Username</label>
-                        </div>
-                        <div class="user-box">
-                            <input type="password" name="" required="">
-                            <label>Password</label>
-                        </div>
-                        <a href="#">
-                            SEND
-                            <span></span>
-                        </a>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </form>
-                </div>
-            <!-- </div> -->
-            <!-- <button v-on:click="alertCrearAccount" class="button1" v-if="accounts.length < 3">Add
-                        Account</button>
-
-                    <button class="button1">
-                        <a href="./transfer.html" v-on:click="createCard" class="button1">Transfer</a>
-                    </button>
-                    <button class="button1">
-                        <a href="./loan-application.html" v-on:click="createLoan" class="button1">Apply Loan</a>
-                    </button>
-                    <button v-on:click="alertLogOut" class="button1">
-                        Logout
-                    </button> -->
+        <!-- Modal -->
+        <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="login-box" v-show="cambio == 1">
+                <form @submit.prevent>
+                    <div class="user-box">
+                        <input v-model="email" required="" name="" type="text">
+                        <label>Email</label>
+                    </div>
+                    <div class="user-box">
+                        <input v-model="password" required="" name="" type="password">
+                        <label>Password</label>
+                    </div>
+                    <a v-on:click="login" href="#">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Login
+                    </a>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </form>
+                <p>Don't have an account? <a href="#" class="a2" @click="cambiar">Click here!</a></p>
+            </div>
+            <!-- register -->
+            <div class="login-box" v-show="cambio == 0">
+                <form @submit.prevent>
+                    <div class="user-box">
+                        <input v-model="firstName" required="" name="" type="text">
+                        <label>First Name</label>
+                    </div>
+                    <div class="user-box">
+                        <input v-model="lastName" required="" name="" type="text">
+                        <label>Last Name</label>
+                    </div>
+                    <div class="user-box">
+                        <input v-model="email" required="" name="" type="email">
+                        <label>Email</label>
+                    </div>
+                    <div class="user-box">
+                        <input v-model="password" required="" name="" type="password">
+                        <label>Password</label>
+                    </div>
+                    <a v-on:click="register" href="#">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Register
+                    </a>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </form>
+                <p> if you create account click here for back <a href="#" class="a2" @click="cambiar">Click here!</a></p>
+            </div>
         </div>
     </div>
-    <!-- </nav> -->
     <!-- aca viene el multilenguaje, su implementacion sera de ultimas -->
     <!-- main, contendra todos los carrousel menos el footer  -->
     <main class="d-flex flex-column w-100 justify-content-center align-items-center">
@@ -188,7 +204,8 @@
         </article>
 
         <!-- aca viene articulo con titulo de bebidas -->
-        <h2 class=" d-flex justify-content-center t-stroke h2-text" style="color: #ffbc00db;" data-aos="fade-down-right">
+        <h2 class=" d-flex justify-content-center t-stroke h2-text" style="color: #ffbc00db;"
+            data-aos="fade-down-right">
             Bebidas</h2>
         <div class="d-flex justify-content-center flex-column align-items-center text-info" data-aos="flip-left"
             data-aos-easing="ease-out-cubic" data-aos-duration="2000">
@@ -319,34 +336,21 @@
         </article>
 
     </main>
-    <footer class="d-flex align-items-center flex-wrap justify-content-around">
-        <div class="d-flex justify-content-evenly imgs ">
-            <div>
-                <a href="https://github.com/joaquinfleitas" target="_blank">
-                    <i class="fa-brands fa-github " style="font-size: 2rem; color: white;"></i>
-                </a>
-            </div>
-            <div>
-                <a href="tel:+5491127218740" target="_blank">
-                    <i class="fa-solid fa-phone" style="font-size: 2rem; color: white;"></i>
-                </a>
-            </div>
-            <div>
-                <a href="https://wa.me/5491127218740" target="_blank">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 2rem; color: white;"></i>
-                </a>
-            </div>
-            <div>
-                <a href="https://joaquinfleitas71@gmail.com" target="_blank">
-                    <i class="fa-solid fa-envelope" style="font-size: 2rem; color: white;"></i>
-                </a>
-            </div>
-            <div>
-                <a href="discord:joaquinfleitas#1479" target="_blank">
-                    <i class="fa-brands fa-discord" style="font-size: 2rem; color: white;"></i>
-                </a>
-            </div>
-        </div>
+    <footer class="d-flex align-items-center flex-wrap justify-content-around flex-column">
+        <section>
+            <ul class="media-icon flex-wrap">
+                <li class="media-li"><a href="#" class="media-a"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                </li>
+                <li class="media-li"><a href="#" class="media-a"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                </li>
+                <li class="media-li"><a href="#" class="media-a"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </li>
+                <li class="media-li"><a href="#" class="media-a"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                </li>
+                <li class="media-li"><a href="#" class="media-a"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                </li>
+            </ul>
+        </section>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
             Conocenos!
@@ -390,7 +394,7 @@
     <!-- VUE  -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- script index -->
-    <script src="/asstets/scripts/index.js"></script>
+    <script src="/assets/scripts/index.js"></script>
     <!-- sweet alert  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- AOS -->
