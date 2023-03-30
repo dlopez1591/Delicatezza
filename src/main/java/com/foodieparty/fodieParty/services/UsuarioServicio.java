@@ -1,6 +1,7 @@
 package com.foodieparty.fodieParty.services;
 
 import com.foodieparty.fodieParty.dtos.UsuarioDTO;
+import com.foodieparty.fodieParty.models.Usuario;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,4 +14,6 @@ public interface UsuarioServicio {
     Optional<UsuarioDTO> getUsuarioPorId( Long id);
     ResponseEntity<Object> registrarUsuario( String nombre,  String apellido,
                                              String email,  String pasword, String telefono);
+    Usuario findByEmail(String email);
+
 }

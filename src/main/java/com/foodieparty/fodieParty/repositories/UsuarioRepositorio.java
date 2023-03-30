@@ -8,5 +8,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource
 public interface UsuarioRepositorio extends JpaRepository <Usuario, Long>{
     Usuario findByEmail(String email);
+
+    void deleteByEmail(String email);
 }
 

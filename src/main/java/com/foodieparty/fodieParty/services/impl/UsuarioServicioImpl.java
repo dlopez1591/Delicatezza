@@ -24,6 +24,11 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     }
 
     @Override
+    public Usuario findByEmail(String email) {
+        return usuarioRepositorio.findByEmail(email);
+    }
+
+    @Override
     public Optional<UsuarioDTO> getUsuarioPorId(Long id) {
         return usuarioRepositorio.findById(id).map(UsuarioDTO::new);
     }
