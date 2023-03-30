@@ -2,6 +2,7 @@ package com.foodieparty.fodieParty.controllers;
 
 
 import com.foodieparty.fodieParty.dtos.UsuarioDTO;
+import com.foodieparty.fodieParty.models.Usuario;
 import com.foodieparty.fodieParty.repositories.UsuarioRepositorio;
 import com.foodieparty.fodieParty.services.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,4 +48,24 @@ public class UsuarioControlador {
         usuarioRepositorio.deleteByEmail(email);
         return new ResponseEntity<>("Usuario borrado", HttpStatus.ACCEPTED);
     }
+
+    //metodo para editar un usuario OJO REVISAR Y VERIFICAR SERVICIOS E IMPLEMENTACION:
+
+    @PutMapping("/actualizar/usuario")
+    public ResponseEntity<Object> actualizarUsuario(@RequestParam Long id, @RequestParam String nombre, @RequestParam String apellido,@RequestParam String email, @RequestParam String telefono) {
+        Optional<Usuario> usuarioExistente = usuarioRepositorio.findById(id);
+        if(usuarioExistente.isPresent()) {
+            Usuario usuario = usuarioExistente.get();
+            usuario.setNombre(nombre);
+            usuario.setApellido(apellido);
+            usuario.setEmail(email);
+            usuario.setTelefono(telefono);
+            usuarioRepositorio.save(usuario);
+            return new ResponseEntity<>("Usuario actualizado", HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
+    }
+
+
+
 }
