@@ -16,7 +16,7 @@ public class ComidaDTO {
     private Double precio;
     private String imagen;
     private Boolean disponibilidad;
-    private Set<ComidaPedidoDTO> comidaPedido;
+
     public ComidaDTO(Comida comida){
         this.id=comida.getId();
         this.nombre= comida.getNombre();
@@ -25,7 +25,6 @@ public class ComidaDTO {
         this.precio= comida.getPrecio();
         this.imagen= comida.getIamgen();
         this.disponibilidad= comida.getDisponibilidad();
-        this.comidaPedido=comida.getComidaPedido().stream().map(ComidaPedidoDTO::new).collect(toSet());
     }
 
     public long getId() {
@@ -56,7 +55,4 @@ public class ComidaDTO {
         return disponibilidad;
     }
 
-    public Set<ComidaPedidoDTO> getComidaPedido() {
-        return comidaPedido;
-    }
 }

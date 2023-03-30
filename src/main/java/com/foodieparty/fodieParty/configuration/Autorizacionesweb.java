@@ -20,7 +20,7 @@ public class Autorizacionesweb{
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-//        http.authorizeRequests().anyRequest().permitAll();
+        http.authorizeRequests().anyRequest().permitAll();
                 //.antMatchers(HttpMethod.POST, "/crear/usuario").hasAuthority("CLIENT");
 
         http.formLogin()
@@ -29,7 +29,6 @@ public class Autorizacionesweb{
                 .loginPage("/api/login");
 
         http.logout().logoutUrl("/api/logout").deleteCookies("JSESSIONID");
-
 
         // turn off checking for CSRF tokens
         http.csrf().disable();

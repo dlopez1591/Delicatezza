@@ -6,8 +6,9 @@ import com.foodieparty.fodieParty.models.Usuario;
 import com.foodieparty.fodieParty.repositories.ReservaRepositorio;
 import com.foodieparty.fodieParty.repositories.UsuarioRepositorio;
 import com.foodieparty.fodieParty.services.ReservaServicio;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class ReservaServicioImpl implements ReservaServicio {
 
     @Override
     public List<ReservaDTO> getReservasUsuario(Authentication authentication) {
-        Usuario usuario=usuarioRepositorio.findByEmail(authentication.name());
+        Usuario usuario=usuarioRepositorio.findByEmail(authentication.getName());
         return usuario.getReserva().stream().map(ReservaDTO::new).collect(toList());
     }
 }

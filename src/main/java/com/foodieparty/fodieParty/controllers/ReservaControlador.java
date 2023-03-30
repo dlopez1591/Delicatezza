@@ -12,10 +12,11 @@ import com.foodieparty.fodieParty.repositories.TicketReservaRepositorio;
 import com.foodieparty.fodieParty.repositories.UsuarioRepositorio;
 
 import com.foodieparty.fodieParty.services.ReservaServicio;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,7 +57,7 @@ public class ReservaControlador {
     @GetMapping("/usuario/autenticado/reserva")
     public List<ReservaDTO> getReservasUsuario(Authentication authentication){
 
-          Usuario usuario=usuarioRepositorio.findByEmail(authentication.name());
+          Usuario usuario=usuarioRepositorio.findByEmail(authentication.getName());
           return usuario.getReservas().stream().map(ReservaDTO::new).collect(toList());
     }
     @Transactional
@@ -66,7 +67,7 @@ public class ReservaControlador {
             @RequestParam Integer cantidadPersonas,
             @RequestParam String fechaString
     ){
-        Usuario usuario = usuarioRepositorio.findByEmail("pepe@pepe.com");
+        Usuario usuario = usuarioRepositorio.findByEmail(authentication.getName());
         LocalDate fecha = LocalDate.parse(fechaString);
         Integer capacidadOcupada = 0;
         Capacidad capacidad = capacidadRepositorio.findAll().get(0);
@@ -83,11 +84,11 @@ public class ReservaControlador {
         TicketReserva ticketReserva = new TicketReserva(
           "fecha: "+fecha+", personas: "+cantidadPersonas, capacidad.getPrecioPorReserva()
         );
-
         reserva.agregarTicketReserva(ticketReserva);
         usuario.agregarReserva(reserva);
         ticketReservaRepositorio.save(ticketReserva);
         reservaRepositorio.save(reserva);
+        usuarioRepositorio.save(usuario);
         return new ResponseEntity<>("Reserva realizada con exito",HttpStatus.ACCEPTED);
 
     }

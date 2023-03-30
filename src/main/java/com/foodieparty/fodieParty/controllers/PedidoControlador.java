@@ -67,6 +67,7 @@ public class PedidoControlador {
                 detallePedidoDTO.getTipoRetiro(),
                 detallePedidoDTO.getDireccion(),
                 usuario);
+
         //Preparar variables para contabilizar el total y concatenar detalles del ticket.
         List<String> detalleTicket=new ArrayList<>();
         Double total = 0.0;

@@ -8,8 +8,10 @@ import com.foodieparty.fodieParty.services.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +24,9 @@ public class UsuarioControlador {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/usuario")
     public List<UsuarioDTO> getUsuario(){
@@ -39,20 +44,19 @@ public class UsuarioControlador {
     @PostMapping("/crear/usuario")
     public ResponseEntity<Object> registrarUsuario(@RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String email, @RequestParam String password,@RequestParam String telefono) {
-            return usuarioServicio.registrarUsuario(nombre,apellido,email,password,telefono);
+            return usuarioServicio.registrarUsuario(nombre,apellido,email,passwordEncoder.encode(password),telefono);
 
     }
 
 
     // revisar este metodo aparentemente no esta guardando en la base de datos!
+
+    @Transactional
    @DeleteMapping("/borrar/usuario")
     public ResponseEntity<Object> borrarUsuario(@RequestParam String email){
         usuarioRepositorio.deleteByEmail(email);
         return new ResponseEntity<>("Usuario borrado", HttpStatus.ACCEPTED);
     }
-
-
-
 
 
     //metodo para editar un usuario OJO REVISAR Y VERIFICAR SERVICIOS E IMPLEMENTACION:
@@ -71,8 +75,6 @@ public class UsuarioControlador {
         }
         return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
     }
-
-
 
 
 }

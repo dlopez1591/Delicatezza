@@ -16,6 +16,8 @@ public class TicketReserva {
     @JoinColumn(name="reserva_id")
     private Reserva reserva;
 
+    public TicketReserva(){};
+
     public  TicketReserva(String detalle, Double total){
         this.detalle=detalle;
         this.total=total;
