@@ -35,7 +35,8 @@ public class RestauranteFoodiePartyApplication {
 			usuarioRepositorio.save(pepito);
 			Usuario juan = new Usuario("juan", "cardenas", "juancardenas123@hotmail.com", "juan123", "123456");
 			usuarioRepositorio.save(juan);
-			Usuario daniel = new Usuario("daniel", "lopez", "dlopez1591@gmail.com", "Yas!!!", "123456");
+			Usuario daniel = new Usuario("daniel", "lopez", "dlopez1591@gmail.com", "daniel123", "123456");
+			usuarioRepositorio.save(daniel);
 			Bebida bebida1 = new Bebida("agua","botellita de agua","urlImagen", TipoBebida.AGUA,40,100.0);
 			Bebida bebida2 = new Bebida("birra","vaso de birra","urlImagen", TipoBebida.ALCOHOLICA,40,350.0);
 			bebidaRepositorio.save(bebida1);

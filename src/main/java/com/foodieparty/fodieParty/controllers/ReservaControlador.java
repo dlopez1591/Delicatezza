@@ -44,7 +44,7 @@ public class ReservaControlador {
     @Autowired
     private ReservaServicio reservaServicio;
 
-
+// verificar la respuesta de los controladores de reservas
     @GetMapping("/reserva")
     public List<ReservaDTO> getReserva(){
         return reservaServicio.getReserva();

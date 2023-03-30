@@ -289,6 +289,61 @@ footer {
 
 /* FINAL FOOTER */
 
+
+/* estilos modal editar cliente  */
+
+.neonEditar{
+    margin :15px;
+    font-size: 40px;
+    text-shadow: 0 0 15px rgb(245, 200, 0), 0 0 30px rgb(245, 200, 0), 0 0 50px rgb(245, 200, 0);
+    font-family: 'Arizonia', cursive;
+    color: aliceblue;
+    animation: parpadear 1.3s infinite backwards;
+    
+}
+.letraFormulario{
+    color:#F5C800;
+    font-family: 'Quicksand', sans-serif;
+}
+.inputFormulario{
+    background-color: rgba(0, 0, 0, 0.419);
+    color: rgb(0, 55, 255);
+    font-family: 'Quicksand', sans-serif;
+    color: rgb(0, 255, 255);
+    box-shadow: inset 0 0 25px rgb(0, 55, 255), 0 0 15px rgb(0, 4, 254);
+}
+.btnCloseModal{
+    background-color: rgba(0, 0, 0, 0.328);
+    color:red;
+    width: 150px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    border: 2px solid white;
+    box-shadow: inset 0 0 15px red, 0 0 15px red;
+    padding:5px;
+}
+.btnCloseModal:hover{
+    box-shadow: inset 0 0 40px red, 0 0 40px red;
+}
+.btnEditConfirm{
+    background-color: rgba(0, 0, 0, 0.328);
+    color:rgb(245, 200, 0);
+    width: 150px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    border: 2px solid white;
+    box-shadow: inset 0 0 15px rgb(245, 200, 0), 0 0 15px rgb(245, 200, 0);
+    padding:5px;
+}
+.btnEditConfirm:hover{
+    box-shadow: inset 0 0 40px rgb(245, 200, 0), 0 0 40px rgb(245, 200, 0);
+}
+/* fin de estilos de editar cliente  */
+
 @media only screen and (min-width:320px) and (max-width: 650px){
     .navButtons{
         width: 100%;
