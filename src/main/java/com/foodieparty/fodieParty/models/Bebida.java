@@ -95,4 +95,13 @@ public class Bebida {
         bebidaPedido.setBebida(this);
         this.bebidaPedidos.add(bebidaPedido);
     }
+
+    public Boolean tieneStock(long cant){
+        return disponibilidad >= cant;
+    }
+
+    public void reducirStock(long cant){
+        disponibilidad-=cant;
+    }
+
 }

@@ -13,36 +13,51 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private LocalDateTime localDateTime;
+    private LocalDateTime fecha;
     private double precioTotal;
     private TipoRetiro tipoRetiro;
     private String direccion;
     private EstadoPedido estadoPedido;
     @OneToMany(mappedBy = "comida",fetch = FetchType.EAGER)
-    private Set<ComidaPedido> comidaPedido=new HashSet<>();
+    private Set<ComidaPedido> comidaPedidos=new HashSet<>();
+
+    @OneToMany(mappedBy = "bebida",fetch = FetchType.EAGER)
+    private Set<BebidaPedido> bebidaPedidos=new HashSet<>();
     @ManyToOne(fetch = FetchType.EAGER)
     private Usuario usuario;
+
+    @OneToOne(mappedBy="pedido")
+    private TicketPedido ticketPedido;
+
     public Pedido(){
     }
 
-    public Pedido(LocalDateTime localDateTime, double precioTotal, TipoRetiro tipoRetiro, String direccion, EstadoPedido estadoPedido) {
-        this.localDateTime = localDateTime;
+    public Pedido(LocalDateTime fecha, double precioTotal, TipoRetiro tipoRetiro, String direccion, EstadoPedido estadoPedido) {
+        this.fecha = fecha;
         this.precioTotal = precioTotal;
         this.tipoRetiro = tipoRetiro;
         this.direccion = direccion;
         this.estadoPedido = estadoPedido;
     }
 
+    public Pedido(TipoRetiro tipoRetiro, String direccion, Usuario usuario) {
+        this.fecha = LocalDateTime.now();
+        this.tipoRetiro = tipoRetiro;
+        this.direccion = direccion;
+        this.usuario = usuario;
+        this.estadoPedido=EstadoPedido.EN_PROGRESO;
+    }
+
     public long getId() {
         return id;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public LocalDateTime getFecha() {
+        return fecha;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
     }
 
     public double getPrecioTotal() {
@@ -77,12 +92,12 @@ public class Pedido {
         this.estadoPedido = estadoPedido;
     }
 
-    public Set<ComidaPedido> getComidaPedido() {
-        return comidaPedido;
+    public Set<ComidaPedido> getComidaPedidos() {
+        return comidaPedidos;
     }
 
-    public void setComidaPedido(Set<ComidaPedido> comidaPedido) {
-        this.comidaPedido = comidaPedido;
+    public void setComidaPedidos(Set<ComidaPedido> comidaPedido) {
+        this.comidaPedidos = comidaPedido;
     }
 
     public Usuario getUsuario() {
@@ -93,8 +108,35 @@ public class Pedido {
         this.usuario = usuario;
     }
 
+    public Set<BebidaPedido> getBebidaPedidos() {
+        return bebidaPedidos;
+    }
+
+    public void setBebidaPedidos(Set<BebidaPedido> bebidaPedidos) {
+        this.bebidaPedidos = bebidaPedidos;
+    }
+
+    public TicketPedido getTicketPedido() {
+        return ticketPedido;
+    }
+
+    public void setTicketPedido(TicketPedido ticketPedido) {
+        this.ticketPedido = ticketPedido;
+    }
+
     public void agregarComidaPedido(ComidaPedido comidaPedido1){
         comidaPedido1.setPedido(this);
-        comidaPedido.add(comidaPedido1);
+        comidaPedidos.add(comidaPedido1);
     }
+
+    public void agregarBebidaPedido(BebidaPedido bebidaPedido) {
+        bebidaPedido.setPedido(this);
+        bebidaPedidos.add(bebidaPedido);
+    }
+
+    public void agregarTicketPedido(TicketPedido ticketPedido) {
+        ticketPedido.setPedido(this);
+        this.ticketPedido=ticketPedido;
+    }
+
 }
