@@ -1,6 +1,7 @@
 package com.foodieparty.fodieParty.services.impl;
 
 import com.foodieparty.fodieParty.dtos.PedidoDTO;
+import com.foodieparty.fodieParty.models.Pedido;
 import com.foodieparty.fodieParty.models.Usuario;
 import com.foodieparty.fodieParty.repositories.PedidoRepositorio;
 import com.foodieparty.fodieParty.repositories.UsuarioRepositorio;
@@ -35,5 +36,10 @@ public class PedidoServicioImpl implements PedidosServicio {
     public List<PedidoDTO> getPedidosUsuario(Authentication authentication) {
         Usuario usuario=usuarioRepositorio.findByEmail(authentication.name());
         return usuario.getPedidos().stream().map(PedidoDTO::new).collect(toList());
+    }
+
+    @Override
+    public void save(Pedido pedido) {
+        pedidoRepositorio.save(pedido);
     }
 }

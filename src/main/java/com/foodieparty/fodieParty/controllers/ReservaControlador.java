@@ -56,8 +56,7 @@ public class ReservaControlador {
     @GetMapping("/usuario/autenticado/reserva")
     public List<ReservaDTO> getReservasUsuario(Authentication authentication){
 
-          Usuario usuario=usuarioRepositorio.findByEmail(authentication.name());
-          return usuario.getReservas().stream().map(ReservaDTO::new).collect(toList());
+          return reservaServicio.getReservasUsuario(authentication);
     }
     @Transactional
     @PostMapping("/crear/reserva")
@@ -66,29 +65,6 @@ public class ReservaControlador {
             @RequestParam Integer cantidadPersonas,
             @RequestParam String fechaString
     ){
-        Usuario usuario = usuarioRepositorio.findByEmail("pepe@pepe.com");
-        LocalDate fecha = LocalDate.parse(fechaString);
-        Integer capacidadOcupada = 0;
-        Capacidad capacidad = capacidadRepositorio.findAll().get(0);
-        List<Reserva> reservaALaFecha = reservaRepositorio.findAll()
-                .stream()
-                .filter(r-> r.getFecha().getDayOfYear() == fecha.getDayOfYear())
-                .collect(toList());
-        for(Reserva reserva: reservaALaFecha){capacidadOcupada+=reserva.getCantidad_De_Personas();}
-        if(!capacidadRepositorio.findAll().get(0).tieneCapacidad(capacidadOcupada,cantidadPersonas)){
-            return new ResponseEntity<>("No hay capacidad disponible",HttpStatus.FORBIDDEN);
-        }
-
-        Reserva reserva = new Reserva(fecha,cantidadPersonas.byteValue(),true);
-        TicketReserva ticketReserva = new TicketReserva(
-          "fecha: "+fecha+", personas: "+cantidadPersonas, capacidad.getPrecioPorReserva()
-        );
-
-        reserva.agregarTicketReserva(ticketReserva);
-        usuario.agregarReserva(reserva);
-        ticketReservaRepositorio.save(ticketReserva);
-        reservaRepositorio.save(reserva);
-        return new ResponseEntity<>("Reserva realizada con exito",HttpStatus.ACCEPTED);
-
+        return reservaServicio.crearReserva(authentication,cantidadPersonas,fechaString);
     }
 }

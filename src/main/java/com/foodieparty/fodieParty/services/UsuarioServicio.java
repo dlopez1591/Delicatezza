@@ -15,5 +15,7 @@ public interface UsuarioServicio {
     ResponseEntity<Object> registrarUsuario( String nombre,  String apellido,
                                              String email,  String pasword, String telefono);
     Usuario findByEmail(String email);
+    void save(Usuario usuario);
+    ResponseEntity<Object> borrarUsuario(long id);
 
 }

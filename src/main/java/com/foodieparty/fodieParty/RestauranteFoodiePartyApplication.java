@@ -2,10 +2,12 @@ package com.foodieparty.fodieParty;
 
 import com.foodieparty.fodieParty.models.*;
 import com.foodieparty.fodieParty.repositories.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,6 +16,8 @@ import java.util.List;
 
 @SpringBootApplication
 public class RestauranteFoodiePartyApplication {
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	public static void main(String[] args) {
 		SpringApplication.run(RestauranteFoodiePartyApplication.class, args);
@@ -31,7 +35,7 @@ public class RestauranteFoodiePartyApplication {
 		return (args) -> {
 //			public Usuario(String nombre, String apellido, String email, String contraseña, String telefono)
 
-			Usuario pepito = new Usuario("pepito","pepe","pepe@pepe.com","pepe","1111");
+			Usuario pepito = new Usuario("pepito","pepe","pepe@pepe.com", passwordEncoder.encode("pepe"),"1111");
 			usuarioRepositorio.save(pepito);
 			Bebida bebida1 = new Bebida("agua","botellita de agua","urlImagen", TipoBebida.AGUA,40,100.0);
 			Bebida bebida2 = new Bebida("birra","vaso de birra","urlImagen", TipoBebida.ALCOHOLICA,40,350.0);
