@@ -17,17 +17,21 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
+  <!-- icono google -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/styles/menu.css">
+  <link rel="stylesheet" href="./assets/styles/menu.css">
+
+  <!-- favicon temporal para evitar error de server  -->
+  <link rel="icon" type="image/x-icon" href="./assets/imgs/favicon.png">
 </head>
 
-<body>
+<body> <!-- JOACO -->
   <div id="app" class="d-flex flex-column  w-100">
     <!-- Button trigger modal -->
 
-    <button type="button" style="position: sticky; top: 90vh; width: 3rem; left:95%;" class="btn  btn-carrito " data-bs-toggle="modal"
+    <button type="button" class="btn  btn-carrito " data-bs-toggle="modal"
     data-bs-target="#carrito">
     <span class="material-symbols-outlined">shopping_cart_checkout</span>
   </button>
@@ -36,63 +40,45 @@
       <!-- imagen logo  -->
       <div class="logo_img bg-5">
         <p class="logo_img animated-shadow">DELICATEZZA</p>
-        <!-- <img class="img" src="../assets/imgs/icon.jpg" alt=""> -->
       </div>
       <!-- redes sociales y boton log in -->
       <div class="logInRedesSociales">
-        <!-- boton log in -->
-        <div class="botonLogIn">
-
-        </div>
-        <!-- contenedor de las redes sociales -->
-        <!-- <div class="redesSociales">
-                    <i class="bi bi-facebook"></i>
-                    <i class="bi bi-whatsapp"></i>
-                    <i class="bi bi-instagram"></i>
-                </div> -->
       </div>
     </header>
     <!-- NAV BAR, POR EL MOMENTO DE PRUEBA pendiente por arreglar -->
-    <!-- <nav class="navbar navbar-dark navbar-expand-lg">
-
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link aHover" href="#">Contacto</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <button v-on:click="alertCrearAccount" class="button1" v-if="accounts.length < 3">Add
-                        Account</button>
-
-                    <button class="button1">
-                        <a href="./transfer.html" v-on:click="createCard" class="button1">Transfer</a>
-                    </button>
-                    <button class="button1">
-                        <a href="./loan-application.html" v-on:click="createLoan" class="button1">Apply Loan</a>
-                    </button>
-                    <button v-on:click="alertLogOut" class="button1">
-                        Logout
-                    </button>
-                </div>
-            </div>
-        </nav> -->
-
+    <div class="">
+      <nav class="navbar navbar-expand-lg ">
+          <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                  <ul class="navbar-nav gap-3">
+                      <li class="nav-item button" type="button">
+                          <a class="nav-link " href="/index.html"><i class="bi bi-house"></i> Inicio</a>
+                      </li>
+                      <li class="nav-item button" type="button">
+                          <a class="nav-link" href="#"><i class="bi bi-egg-fried"></i>Menu</a>
+                      </li>
+                      <li class="nav-item button" type="button">
+                          <a class="nav-link" href="#"><i class="bi bi-check2-circle"></i> Reserva</a>
+                      </li>
+                      <button type="button" class="nav-item button " data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop">
+                          <a class="nav-link"><i class="bi bi-person-fill"></i>Logout</a>
+                      </button>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+    </div>
     <!-- aca viene el multilenguaje, su implementacion sera de ultimas -->
 
-    <main class="d-flex flex-column w-100 justify-content-center">
+    <main class="d-flex flex-column w-100 justify-content-center align-items-center">
       <!-- carrito -->
       
+
       
       <!-- Modal -->
       <div class="modal fade modal-carrito" id="carrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -133,262 +119,168 @@
         </div>
       </div>
 
-      <!-- Navbar content -->
-      <div class="">
-        <nav class="navbar navbar-expand-lg ">
-          <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span style="font-size: 2rem;" class="material-symbols-outlined">
-                lunch_dining
-                </span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-              <ul class="navbar-nav gap-3">
-                <li class="nav-item button">
-                  <a class="nav-link " href="./index.html"><i class="bi bi-house"></i> Inicio</a>
-                </li>
-                <li class="nav-item button">
-                  <a class="nav-link" href="#"><span class="material-symbols-outlined">fastfood</span> Menu</a>
-                </li>
-                <li class="nav-item button">
-                  <a class="nav-link" href="#"><i class="bi bi-check2-circle"></i> Reserva</a>
-                </li>
-              </ul>
+      <!-- cantidad comida modal -->
+      <!-- Modal -->
+      <div class="modal fade" id="agregar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Que cantidad deseas?</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <label class="cantidadDeComida">
+                <input v-model="cantidadSolicitada" id="numero" type="number" min="1" pattern="^[0-9]+"
+                  placeholder=" Cantidad que desea">
+              </label>
+              <div>
+                resumen: <p v-if="comidaEnMesa!='undefined'">descripcion, nombre y cantidad</p>
+              </div>
+              {{comidaEnMesa}}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-outline-warning"
+                @click="añadirAlCarrito(comidaEnMesa.id,cantidadSolicitada)">Aceptar</button>
             </div>
           </div>
-        </nav>
+        </div>
       </div>
-      <div class=" navbarcito ">
-        <div class="collapse navbar-collapse d-flex mini-bar" id="navbarNav">
-          <ul class="navbar-nav lista-nav d-flex flex-row">
-            <li class="nav-item ">
-              <a class="nav-link linksitos" href="#"><span class="material-symbols-outlined icono">lunch_dining</span>
+
+<!-- navbar -->
+
+      <!-- Navbar content -->
+      <div class=" navbarcito d-flex">
+            <li class="list-style" type="button">
+              <a class="linksitos" href="#principal">
                 Principal</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link linksitos" href="#"><span class="material-symbols-outlined icono">local_bar</span>
-                Bebidas</a>
+            <li class="list-style" type="button">
+              <a class="linksitos" href="#guarnicion">
+                Guarnicion</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link linksitos" href="#"><span class="material-symbols-outlined icono">icecream</span>
+            <li class="list-style" type="button">
+              <a class="linksitos" href="#postres">
                 Postres</a>
             </li>
-
-          </ul>
-
-          <form class="" role="search">
-            <input class="form-control me-2 buscador" type="search" placeholder="Search" aria-label="Search" style="color:coral; font-family: 'Courier New', Courier, monospace;">
-          </form>
-        </div>
+            <li class="list-style" type="button">
+              <a class="linksitos" href="#bebidas">
+                Bebidas</a>
+            </li>
       </div>
 
 
       <!-- principal -->
-      <article class="seccionComida d-flex justify-content-center flex-column align-items-center">
+      <article id="principal" class="seccionComida d-flex justify-content-center flex-column align-items-center">
         <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right"> Platos
           fuertes</h2>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
+        <div class="card mb-3"  v-for="comida of principal" >
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="./assets/imgs/menu1.jpg" class="img-comida img-fluid rounded-start" alt="...">
+              <img :src="comida.imagen" class="img-comida img-fluid rounded-start" :alt="comida.nombre">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">Pancho con Papas</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>
+                <h5 class="card-title">{{comida.nombre}}</h5>
+                <p class="card-text">{{comida.description}}</p>
                 <div class="d-flex justify-content-between">
                   <div>
-                    <h6 class="precio">Precio $3333</h6>
+                    <h6 class="precio">Precio ${{comida.precio}}</h6>
                   </div>
-                  <div><button type="button" class="btn btn-outline-warning btn-comida">Agregar</button>
-                  </div>
+                  <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
+                    data-bs-target="#agregar" v-on:click="alertAgregar(comida)">Agregar</button>
+                </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
+
+      </article>
+
+      <!-- guarniciones -->
+      <article id="guarniciones" class="seccionComida d-flex justify-content-center flex-column align-items-center">
+        <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right"> 
+        Guarnicion</h2>
+        <div class="card mb-3" v-for="comida of guarnicion">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="./assets/imgs/menu2.jpg" class="img-comida img-fluid rounded-start" alt="...">
+              <img :src="comida.imagen" class="img-comida img-fluid rounded-start" :alt="comida.nombre">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">Hamburguesa con papas</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>
+                <h5 class="card-title">{{comida.nombre}}</h5>
+                <p class="card-text">{{comida.description}}</p>
                 <div class="d-flex justify-content-between">
                   <div>
-                    <h6 class="precio">Precio $3333</h6>
+                    <h6 class="precio">Precio ${{comida.precio}}</h6>
                   </div>
-                  <div><button type="button" class="btn btn-outline-warning btn-comida">Agregar</button>
-                  </div>
+                  <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
+                    data-bs-target="#agregar" v-on:click="alertAgregar(comida)">Agregar</button>
+                </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="./assets/imgs/menu3.jpg" class="img-comida img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">Doble Harburguesa</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h6 class="precio">Precio $3333</h6>
-                  </div>
-                  <div><button type="button" class="btn btn-outline-warning btn-comida">Agregar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </article>
 
       <!-- bebidas -->
-      <article class="seccionComida d-flex justify-content-center flex-column align-items-center">
+      <article id="bebidas" class="seccionComida d-flex justify-content-center flex-column align-items-center">
         <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
           Bebidas</h2>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
+        <div class="card mb-3"  data-aos="flip-up" v-for="bebida of bebidas">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="./assets/imgs/bebida-sin-alcoho.jpg" class="img-comida img-fluid rounded-start" alt="...">
+              <img :src="bebida.imagen" class="img-comida img-fluid rounded-start" :alt="bebida.nombre">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">Fernetacio</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>
+                <h5 class="card-title">{{bebida.nombre}}</h5>
+                <p class="card-text">{{bebida.descripcion}}</p>
                 <div class="d-flex justify-content-between">
                   <div>
-                    <h6 class="precio">Precio $3333</h6>
+                    <h6 class="precio">Precio $ {{bebida.precio}}</h6>
                   </div>
-                  <div><button type="button" class="btn btn-outline-warning btn-comida">Agregar</button>
-                  </div>
+                  <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
+                    data-bs-target="#agregar" v-on:click="alertAgregar(bebida)">Agregar</button>
+                </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="./assets/imgs/bebidas-alco-(1).jpg" class="img-comida img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">Whiscola</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h6 class="precio">Precio $3333</h6>
-                  </div>
-                  <div><button type="button" class="btn btn-outline-warning btn-comida">Agregar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="./assets/imgs/bebidas-alcoh-(2).jpg" class="img-comida img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">El Petiso</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h6 class="precio">Precio $3333</h6>
-                  </div>
-                  <div><button type="button" class="btn btn-outline-warning btn-comida">Agregar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </article>
 
       <!-- postres -->
-      <article class="seccionComida d-flex justify-content-center flex-column align-items-center">
+      <article id="postres" class="seccionComida d-flex justify-content-center flex-column align-items-center">
         <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
           Postres</h2>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
+        <div class="card mb-3"  data-aos="flip-up" v-for="comida of postre">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="./assets/imgs/postre.jpg" class="img-comida img-fluid rounded-start" alt="...">
+              <img :src="comida.imagen" class="img-comida img-fluid rounded-start" :alt="comida.nombre">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">Brownie con helado</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>
+                <h5 class="card-title">{{comida.nombre}}</h5>
+                <p class="card-text">{{comida.description}}</p>
                 <div class="d-flex justify-content-between">
                   <div>
-                    <h6 class="precio">Precio $3333</h6>
+                    <h6 class="precio">Precio $ {{comida.precio}}</h6>
                   </div>
-                  <div><button type="button" class="btn btn-outline-warning btn-comida">Agregar</button>
-                  </div>
+                  <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
+                    data-bs-target="#agregar" v-on:click="alertAgregar(comida)">Agregar</button>
+                </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="./assets/imgs/postre1.jpg" class="img-comida img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">Cono Chocolate</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h6 class="precio">Precio $3333</h6>
-                  </div>
-                  <div><button type="button" class="btn btn-outline-warning btn-comida">Agregar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card mb-3" style="max-width: 700px;" data-aos="flip-up">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="./assets/imgs/postre2.jpg" class="img-comida img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">Flancito</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h6 class="precio">Precio $3333</h6>
-                  </div>
-                  <div><button type="button" class="btn btn-outline-warning btn-comida">Agregar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </article>
 
     </main>
@@ -423,12 +315,12 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p>| Cohort FS041 Full Stack JAVA</p>
-              <p>| Developer Fernando Marzialetti</p>
-              <p>| Developer Matias Loiza</p>
-              <p>| Developer Joaquin Alain Fleitas</p>
-              <p>| Developer Daniel Lopez</p>
-              <p>| Developer Yasmin Ledesma</p>
+              <a href="https://github.com/dlopez1591/Delicatezza" target="_blank"><img src="/assets/imgs/github.png" alt=""></a><p> | Cohort FS041 Full Stack JAVA </p>
+              <a href="https://fdmarzialetti@gmail.com" target="_blank"><img src="/assets/imgs/gmail.png" alt=""></a>  <a href="https://github.com/fdmarzialetti" target="_blank"><img src="/assets/imgs/github.png" alt=""></a> <a href="https://www.linkedin.com/in/fernando-daniel-marzialetti-b46b73201/" target="_blank"><img src="/assets/imgs/linkedin.png" alt=""></a> <p>| Fernando Marzialetti</p>
+              <a href="https://matiasloiza10@gmail.com"><img src="/assets/imgs/gmail.png" alt="" target="_blank"></a>  <a href="https://github.com/matias9809" target="_blank"><img src="/assets/imgs/github.png" alt=""></a> <a href="https://www.linkedin.com/in/matias-loiza-79a313178/" target="_blank"><img src="/assets/imgs/linkedin.png" alt=""></a> <p>| Matias Loiza</p>
+              <a href="https://joaquinfleitas71@gmail.com" target="_blank"><img src="/assets/imgs/gmail.png" alt=""></a>  <a href="https://github.com/joaquinfleitas" target="_blank"><img src="/assets/imgs/github.png" alt="" target="_blank"></a> <a href="https://www.linkedin.com/in/joaquin-fleitas-7b0222174/" target="_blank"><img src="/assets/imgs/linkedin.png" alt=""></a> <p>| Joaquin Alain Fleitas</p>
+              <a href="dlopez1591@gmail.com" target="_blank"><img src="/assets/imgs/gmail.png" alt="" target="_blank"></a>  <a href="https://github.com/dlopez1591" target="_blank"><img src="/assets/imgs/github.png" alt=""></a> <a href="https://www.linkedin.com/in/daniel-lopezayala/" target="_blank"><img src="/assets/imgs/linkedin.png" alt=""></a> <p>| Daniel Lopez</p>
+              <a href="https://yasminledesma9@gmail.com" target="_blank"><img src="/assets/imgs/gmail.png" alt=""></a>  <a href="https://github.com/YasminLedesma" target="_blank"><img src="/assets/imgs/github.png" alt=""></a> <a href="https://www.linkedin.com/in/yasm%C3%ADn-ledesma-b3b5a7238/" target="_blank"><img src="/assets/imgs/linkedin.png" alt=""></a> <p>| Yasmin Ledesma</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -442,6 +334,7 @@
       </div>
     </footer>
   </div>
+  
   <!-- bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
@@ -451,7 +344,7 @@
   <!-- VUE  -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <!-- script index -->
-  <script src="/asstets/scripts/menu.js"></script>
+  <script src="./assets/scripts/menu.js"></script>
   <!-- sweet alert  -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- AOS -->
