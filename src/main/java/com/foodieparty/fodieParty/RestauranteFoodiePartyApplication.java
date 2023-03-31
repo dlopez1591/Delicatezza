@@ -45,12 +45,12 @@ public class RestauranteFoodiePartyApplication {
 			usuarioRepositorio.save(juan);
 			Usuario daniel = new Usuario("daniel", "lopez", "dlopez1591@gmail.com", passwordEncoder.encode("daniel123"), "123456");
 			usuarioRepositorio.save(daniel);
-			Bebida bebida1 = new Bebida("Agua","botellita de agua","urlImagen", TipoBebida.AGUA,40,100.0);
-			Bebida bebida2 = new Bebida("Birra","vaso de birra","urlImagen", TipoBebida.ALCOHOLICA,40,350.0);
+			Bebida bebida1 = new Bebida("Jugo","Jugo de naranja natural","https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/42bb3965-1df3-47cf-a0d4-cb436a9601a2.jpg?alt=media", TipoBebida.AGUA,40,100.0);
+			Bebida bebida2 = new Bebida("Birra","vaso de birra ipa","https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/9b789c94-465b-48c5-b9d3-7fb22d24c3f0.jpg?alt=media", TipoBebida.ALCOHOLICA,40,350.0);
 			bebidaRepositorio.save(bebida1);
 			bebidaRepositorio.save(bebida2);
-			Comida comida1 = new Comida("Panchito","ia tu sabe", TipoComida.PRINCIPAL,250.0,"urlImagen",true);
-			Comida comida2 = new Comida("Burguer","con doble soque", TipoComida.PRINCIPAL,450.0,"urlImagen",true);
+			Comida comida1 = new Comida("Panchito","Panchito con adereso y papitas", TipoComida.PRINCIPAL,250.0,"https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/dead24cf-2065-4e92-9ba4-27ed2b9c42e7.jpg?alt=media",true);
+			Comida comida2 = new Comida("Burguer","Hamburguesa Doble Queso", TipoComida.PRINCIPAL,450.0,"https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/0e97cb9c-4252-4875-9143-658e39d91ff3.jpg?alt=media",true);
 			comidaRepositorio.save(comida1);
 			comidaRepositorio.save(comida2);
 

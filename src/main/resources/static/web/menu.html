@@ -56,16 +56,16 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                   <ul class="navbar-nav gap-3">
                     <li class="nav-item button" type="button">
-                      <a class="nav-link " href="/index.html"><i class="bi bi-house"></i> Inicio</a>
+                      <a class="nav-link " href="./index.html"><i class="bi bi-house"></i> Inicio</a>
                     </li>
                     <li class="nav-item button" type="button">
                       <a class="nav-link active active-1" href="#"><i class="bi bi-egg-fried"></i>Menu</a>
                     </li>
                     <li class="nav-item button" type="button">
-                      <a class="nav-link" href="#"><i class="bi bi-check2-circle"></i> Reserva</a>
+                      <a class="nav-link" href="./reserva.html"><i class="bi bi-check2-circle"></i> Reserva</a>
                     </li>
                     <li class="nav-item button" type="button">
-                      <a class="nav-link" href="/pedidos.html"><i class="bi bi-check2-circle"></i> Pedidos</a>
+                      <a class="nav-link" href="./pedidos.html"><i class="bi bi-check2-circle"></i> Pedidos</a>
                     </li>
                     <button type="button" class="nav-item button " data-bs-toggle="modal"
                       data-bs-target="#staticBackdrop">
@@ -94,27 +94,20 @@
                 <div class="modal-body">
                   pum babe
                   <ul>
-                    <li class="item-carrito d-flex justify-content-between">
-                      <div>blablabla</div>
-                      <div>$ 3333</div>
-                    </li>
-                    <li class="item-carrito d-flex justify-content-between">
-                      <div>blablabla</div>
-                      <div>$ 3333</div>
-                    </li>
-                    <li class="item-carrito d-flex justify-content-between">
-                      <div>blablabla</div>
-                      <div>$ 3333</div>
+                    <li v-for="item of listitaPedido" class="item-carrito d-flex justify-content-between">
+                      <div>{{item.nombre}}</div>
+                      <div>$ {{item.precio}} c/u</div>
                     </li>
                   </ul>
                 </div>
                 <div class="total-carrito d-flex justify-content-end me-2 mb-3">
-                  El total de tu compra es: $ 33333
+                  El total de tu compra es: $ {{total}}
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-warning btn-comida" data-bs-dismiss="modal">Seguir
                     comprando</button>
-                  <button type="button" class="btn btn-outline-warning btn-comida">Abonar</button>
+                  <button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
+                    data-bs-target="#crearPedido">Crear Pedido</button>
                 </div>
               </div>
             </div>
@@ -126,34 +119,138 @@
           </button>
 
           <!-- cantidad comida modal -->
-      <!-- Modal -->
-      <div class="modal fade" id="agregar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-      aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">
-              Tu Producto <span class="material-symbols-outlined">fastfood</span></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <label class="cantidadDeComida">Indica la cantidad: <br>
-              <input v-model="cantidadSolicitada" id="numero" type="number" min="1" pattern="^[0-9]+"
-                placeholder=" Cantidad que desea">
-            </label>
-            <div>
-              resumen: <p v-if="comidaEnMesa!='undefined'">{{comidaEnMesa}}</p>
-            </div>
+          <!-- Modal -->
+          <div class="modal fade" id="agregarComida" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Tu Producto <span class="material-symbols-outlined">fastfood</span></h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <label class="cantidadDeComida">Indica la cantidad: <br>
+                    <input v-model="cantidadSolicitada" id="numero" type="number" min="1" pattern="^[0-9]+"
+                      placeholder=" Cantidad que desea">
+                  </label>
+                  <div>
+                    <h5>Resumen del producto por Unidad:</h5>
+                    <p> Nombre: {{comidaEnMesa.nombre}}</p>
+                    <p> Descripcion: {{comidaEnMesa.description}}</p>
+                     <p> Precio: {{comidaEnMesa.precio}}</p>
+                    </div>
 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal"
+                    @click="agregarComidas(comidaEnMesa.id, cantidadSolicitada)">Aceptar</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-outline-warning"
-              @click="añadirAlCarrito(comidaEnMesa.id,cantidadSolicitada)">Aceptar</button>
+          <!-- cantidad comida modal -->
+          <!-- Modal -->
+          <div class="modal fade" id="agregarBebida" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Tu Producto <span class="material-symbols-outlined">fastfood</span></h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <label class="cantidadDeComida">Indica la cantidad: <br>
+                    <input v-model="cantidadSolicitada" id="numero" type="number" min="1" pattern="^[0-9]+"
+                      placeholder=" Cantidad que desea">
+                  </label>
+                  <div>
+                    <h5>Resumen del producto por Unidad:</h5>
+                    <p> Nombre: {{comidaEnMesa.nombre}}</p>
+                    <p v-if="comidaEnMesa.tipoComida"> Descripcion: {{comidaEnMesa.description}}</p>
+                    <p v-if="comidaEnMesa.tipoBebida"> Descripcion: {{comidaEnMesa.descripcion}}</p> 
+                    <p> Precio: {{comidaEnMesa.precio}}</p>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal"
+                    @click=" agregarBebidas(comidaEnMesa.id, cantidadSolicitada)">Aceptar</button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
+
+          <!-- Modal carrito-->
+          <div class="modal fade modal-carrito" id="crearPedido" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog fondo-modal">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Realizar Pedido</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form @submit.prevent>
+                    <p>
+                      Tipo de retiro:
+                    </p>
+                    <p>
+                    <div class="form-check">
+                      <input v-model="tipoRetiro" value="LOCAL" class="form-check-input" type="radio"
+                        name="flexRadioDefault" id="flexRadioDefault1" checked>
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        LOCAL
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input v-model="tipoRetiro" value="DOMICILIO" class="form-check-input" type="radio"
+                        name="flexRadioDefault" id="flexRadioDefault2">
+                      <label class="form-check-label" for="flexRadioDefault2">
+                        DOMICILIO
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input v-model="tipoRetiro" value="RETIRO" class="form-check-input" type="radio"
+                        name="flexRadioDefault" id="flexRadioDefault1">
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        RETIRO
+                      </label>
+                    </div>
+                    </p>
+                    <div class="user-box">
+                      Direccion
+                      <input v-model="direccion" required="" name="" type="text">
+                    </div>
+
+                    <div class="mb-2 space2">
+                      Numero de tarjeta:
+                       <input type="text" v-model="number">
+                    </div>
+                    
+                    <div class="mb-2 space2" >
+                      Numero de cvv:
+                       <input type="text" v-model="cvv" >
+                    </div>
+
+                  </form>
+                </div>
+                <div class="total-carrito d-flex justify-content-end me-2 mb-3">
+                  El total de tu compra es: $ {{total}}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-warning btn-comida" data-bs-dismiss="modal">
+                    Cancelar
+                  </button>
+                  <button type="button" class="btn btn-outline-warning btn-comida" @click="crearPedido">Crear Pedido
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- Navbar content -->
           <div class=" navbarcito d-flex flex-wrap justify-content-center">
@@ -196,7 +293,7 @@
                         <h6 class="precio">Precio ${{comida.precio}}</h6>
                       </div>
                       <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
-                          data-bs-target="#agregar" v-on:click="alertAgregar(comida)">Agregar</button>
+                          data-bs-target="#agregarComida" v-on:click="alertAgregar(comida)">Agregar</button>
                       </div>
                     </div>
                   </div>
@@ -205,37 +302,11 @@
             </div>
           </article>
 
-          <!-- guarnicion -->
+         
 
-          <article id="guarnicion" class="seccionComida d-flex justify-content-center flex-column align-items-center">
-            <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
-              Guarniciones</h2>
-            <div class="card mb-3" v-for="comida of guarnicion">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img :src="comida.imagen" class="img-comida img-fluid rounded-start" :alt="comida.nombre">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">{{comida.nombre}}</h5>
-                    <p class="card-text">{{comida.description}}</p>
-                    <div class="d-flex justify-content-between">
-                      <div>
-                        <h6 class="precio">Precio ${{comida.precio}}</h6>
-                      </div>
-                      <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
-                          data-bs-target="#agregar" v-on:click="alertAgregar(comida)">Agregar</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
+          <!-- bebidas -->
 
-           <!-- bebidas -->
-
-           <article id="bebidas" class="seccionComida d-flex justify-content-center flex-column align-items-center">
+          <article id="bebidas" class="seccionComida d-flex justify-content-center flex-column align-items-center">
             <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
               Bebidas</h2>
             <div class="card mb-3" v-for="bebida of bebidas">
@@ -252,7 +323,7 @@
                         <h6 class="precio">Precio ${{bebida.precio}}</h6>
                       </div>
                       <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
-                          data-bs-target="#agregar" v-on:click="alertAgregar(bebida)">Agregar</button>
+                          data-bs-target="#agregarBebida" v-on:click="alertAgregar(bebida)">Agregar</button>
                       </div>
                     </div>
                   </div>
@@ -260,7 +331,7 @@
               </div>
             </div>
           </article>
-          
+
           <!-- postre -->
 
           <article id="postres" class="seccionComida d-flex justify-content-center flex-column align-items-center">
@@ -280,7 +351,7 @@
                         <h6 class="precio">Precio ${{comida.precio}}</h6>
                       </div>
                       <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
-                          data-bs-target="#agregar" v-on:click="alertAgregar(comida)">Agregar</button>
+                          data-bs-target="#agregarComida" v-on:click="alertAgregar(comida)">Agregar</button>
                       </div>
                     </div>
                   </div>
@@ -288,7 +359,34 @@
               </div>
             </div>
           </article>
-         
+
+           <!-- guarnicion -->
+
+           <article id="guarnicion" class="seccionComida d-flex justify-content-center flex-column align-items-center">
+            <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
+              Guarniciones</h2>
+            <div class="card mb-3" v-for="comida of guarnicion">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img :src="comida.imagen" class="img-comida img-fluid rounded-start" :alt="comida.nombre">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{comida.nombre}}</h5>
+                    <p class="card-text">{{comida.description}}</p>
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h6 class="precio">Precio ${{comida.precio}}</h6>
+                      </div>
+                      <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
+                          data-bs-target="#agregarComida" v-on:click="alertAgregar(comida)">Agregar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
 
         </main>
 
