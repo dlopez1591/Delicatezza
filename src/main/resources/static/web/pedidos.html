@@ -20,7 +20,7 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/styles/menu.css">
+    <link rel="stylesheet" href="./assets/styles/menu.css">
 </head>
 
 <body>
@@ -44,16 +44,16 @@
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                         <ul class="navbar-nav gap-3">
                             <li class="nav-item button" type="button">
-                                <a class="nav-link " href="/index.html"><i class="bi bi-house"></i> Inicio</a>
+                                <a class="nav-link " href="./index.html"><i class="bi bi-house"></i> Inicio</a>
                             </li>
                             <li class="nav-item button" type="button">
-                                <a class="nav-link" href="/menu.html"><i class="bi bi-egg-fried"></i>Menu</a>
+                                <a class="nav-link" href="./menu.html"><i class="bi bi-egg-fried"></i>Menu</a>
                             </li>
                             <li class="nav-item button" type="button">
-                                <a class="nav-link" href="#"><i class="bi bi-check2-circle"></i> Reserva</a>
+                                <a class="nav-link" href="./reserva.html"><i class="bi bi-check2-circle"></i> Reserva</a>
                             </li>
                             <li class="nav-item button" type="button">
-                                <a class="nav-link active active-1" href="#"><i class="bi bi-check2-circle"></i> Pedidos</a>
+                                <a class="nav-link active active-1" href="./pedidos.html"><i class="bi bi-check2-circle"></i> Pedidos</a>
                             </li>
                             <button type="button" class="nav-item button " data-bs-toggle="modal"
                                 data-bs-target="#staticBackdrop">
@@ -73,49 +73,51 @@
             <!-- Modal -->
             <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
                 Resumen</h2>
-            <table class="table"> <!-- PONER EL V-FOR EN LA TABLA PARA GENERAR TABLASXD POR CADA PEDIDO QUE HAYA -->
-                <thead>
-                    <tr>
-                        <th>Mi Pedido :</th>
-                        <td>Estado de Orden</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>Mis Reservas :</th>
-                        <td>Estado de Reserva</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
-                Mis Pedidos</h2>
-            <!-- principal -->
-            <table class="table"> <!-- PONER EL V-FOR EN LA TABLA PARA GENERAR TABLASXD POR CADA PEDIDO QUE HAYA -->
-                <thead>
-                    <tr>
+                <table class="table" v-for="pedido in usuarioAutenticado.pedidos">
+                    <thead>
+                      <tr>
+                        <th>Mi Pedido : {{pedido.id}}</th>
+                        <td>Estado de Orden: {{pedido.estado}}</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="reserva in pedido.reservas">
+                        <th>Mis Reservas: {{reserva.id}} </th>
+                        <td>Estado de Reserva: {{reserva.estado}} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                  <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
+                    Mis Pedidos
+                  </h2>
+                  
+                  <table class="table" v-for="pedido in usuarioAutenticado.pedidos">
+                    <thead>
+                      <tr>
                         <th>Fecha :</th>
-                        <td>30/03/2023</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
+                        <td>{{pedido.fecha}}</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
                         <th>Precio Total :</th>
-                        <td>15.000$</td>
-                    </tr>
-                    <tr>
+                        <td>{{pedido.precio}}</td>
+                      </tr>
+                      <tr>
                         <th>Tipo de Retiro :</th>
-                        <td>Dimicilio</td>
-                    </tr>
-                    <tr>
+                        <td>{{pedido.tipoRetiro}}</td>
+                      </tr>
+                      <tr>
                         <th>Direccion :</th>
-                        <td>Av. Siempre viva 123</td>
-                    </tr>
-                    <tr>
+                        <td>{{pedido.direccion}}</td>
+                      </tr>
+                      <tr>
                         <th>Estado :</th>
-                        <td>En Tramitexd</td>
-                    </tr>
-                </tbody>
-            </table>
+                        <td>{{pedido.estado}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
         </main>
         <footer class="d-flex align-items-center flex-wrap justify-content-around flex-column">
             <section>
@@ -220,7 +222,7 @@
     <!-- VUE  -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- script index -->
-    <script src="/asstets/scripts/menu.js"></script>
+    <script src="./assets/scripts/pedidos.js"></script>
     <!-- sweet alert  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- AOS -->

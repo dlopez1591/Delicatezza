@@ -9,7 +9,9 @@ createApp({
        bebidas: undefined,
        cantidadSolicitada: 1,
        comidaEnMesa: undefined,
-       listitaPedido: undefined,
+       listitaPedido: [],
+       listaComidasId: [],
+       listaBebidasId: [],
       }
     },
     created(){
@@ -42,22 +44,23 @@ createApp({
         console.log("comida en mesa: ",this.comidaEnMesa.nombre,
                     " | id de la comida",this.comidaEnMesa.id)
       },
-      añadirAlCarrito(idComida,cantidadSolicitada){
+      añadirAlCarrito(idComida, cantidadSolicitada){
         console.log("idComida: ",idComida," | cantidad Solicitada: ", cantidadSolicitada)
-        let miniPedido = [ idComida , cantidadSolicitada]
-        this.listitaPedido = this.listitaPedido + "," + miniPedido
+        let miniPedido = [idComida, cantidadSolicitada]
+        console.log(miniPedido)
+        this.listitaPedido.push(miniPedido)
+        console.log(this.listitaPedido)
+        return this.listitaPedido
+    },
+    agregarComidas(idComida, cantidadSolicitada){
 
-        if(this.listitaPedido.length==0){
-          this.listitaPedido = miniPedido
-        }else{
-          console.log(this.listitaPedido)
-        }
+    },
+    agregarBebidas(idComida, cantidadSolicitada){
 
-        /* agregar a lista this.equis ++ array con productos?? */
-        
-        /* sweet con temporisador */
-
-      }
+    },
+    pedido(listaBebidasId,listaComidasId,tipoRetiro, direccion){
+      // axios.post
+    }
 
     }
   }).mount('#app')
