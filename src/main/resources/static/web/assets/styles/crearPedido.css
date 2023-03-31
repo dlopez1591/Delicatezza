@@ -434,28 +434,11 @@ h5 {
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
 }
 
-.p-carrusel {
-    font-size: 1.2rem;
-    color: var(--bs-orange);
-    text-shadow: 2px 1px 6px black;
-    font-family: 'Allerta Stencil', sans-serif;
-}
 
 .p {
     flex-wrap: wrap;
 }
 
-.carousel {
-    margin-bottom: 15px;
-}
-
-.carousel-caption {
-    background: rgba(0, 0, 0, 0.728) !important;
-    border-bottom: 1px solid rgba(255, 0, 0, 0.500);
-    border-left: 1px solid rgba(255, 0, 0, 0.500);
-    border-right: 1px solid rgba(255, 0, 0, 0.500);
-    box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
-}
 
 .text-info {
     background: rgba(0, 0, 0, 0.728) !important;
@@ -739,11 +722,6 @@ nav .material-symbols-outlined{
 }
 
 /* FINAL FOOTER */
-.formula2{
-    max-width: 60%;
-}
-
-
 
 @media (max-width: 650px) {
     body {
@@ -789,9 +767,6 @@ nav .material-symbols-outlined{
     h5 {
         font-size: 25px;
     }
-    .formula2 {
-        width: 60%;
-    }
 }
 
 @media (max-width: 991px) {
@@ -817,14 +792,5 @@ nav .material-symbols-outlined{
         -webkit-background-clip: text;
         -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
         animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
-    }
-    .formula2 {
-        width: 40%;
-    }
-}
-
-@media (max-width: 450px) {
-    .formula2{
-        width: 80%;
     }
 }
