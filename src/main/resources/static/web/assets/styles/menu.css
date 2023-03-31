@@ -361,6 +361,7 @@ footer {
     flex-wrap: wrap;
 }
 
+
 .card {
     background: rgba(0, 0, 0, 0.728) !important;
     border: 1px solid rgba(255, 0, 0, 0.500);
@@ -370,6 +371,7 @@ footer {
     margin-bottom: 3rem;
     margin-top: 2rem;
     color: white;
+
 }
 
 .card-title {
@@ -384,12 +386,15 @@ footer {
 
 .precio {
     color: #F5C800;
+
     font-family: 'Allerta Stencil', sans-serif;
-    background: 50% 100%/50% 50% no-repeat radial-gradient(ellipse at bottom, var(--bs-orange), transparent, transparent);
+    /* background: 50% 100%/50% 50% no-repeat radial-gradient(ellipse at bottom, var(--bs-orange), transparent, transparent);
     -webkit-background-clip: text;
     -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
+ */
 }
+
 
 .btn-comida {
     font-family: 'Allerta Stencil', sans-serif;
@@ -397,7 +402,8 @@ footer {
 
 
 .img-comida {
-    border-right: 1px solid rgba(255, 0, 0, 0.500);
+    border-right: 1px solid rgba(255, 0, 0, 0.500);   
+
 }
 
 /* navbar */
@@ -514,7 +520,9 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
     /* width: 135px; */
+
     height: 65px;
     /* background: radial-gradient(circle at 100% -50%, #ffffff69 45%, #d4d4d44f 60%, #ffffff36 2%); */
     /* background-size: 200%; */
@@ -745,6 +753,10 @@ footer {
         width: 50% !important;
     }
 
+    .nav-item {
+        width: 50% !important;
+    }
+
     h2 {
         font-size: 40px;
     }
@@ -783,9 +795,11 @@ footer {
 }
 
 @media (max-width: 991px) {
+
     /* .logo_img{
         font-size: 80px;
     } */
+
     .navbar-nav {
         align-items: center;
     }
@@ -809,4 +823,12 @@ footer {
         -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
         animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
     }
+
 }
+
+
+    .linksitos{
+        font-size: 1.5rem !important;
+    }
+}
+
