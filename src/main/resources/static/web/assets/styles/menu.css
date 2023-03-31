@@ -5,8 +5,8 @@
 }
 
 body {
-    min-width: 90vw;
-    min-height: 90vh;
+/*     min-width: 90vw;
+    min-height: 90vh; */
     background-image: url(../imgs/3d-render-focos-pared-ladrillo-grunge.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,29 +14,11 @@ body {
     /* font-family: 'Arizonia', cursive; */
     cursor: url(../imgs/hotdog-icon.png), auto;
 }
-
-/* button:hover{
-    cursor: url(../imgs/hot-dog-icon\ \(2\).png), auto;
+main{
+    min-width: 90vw;
+    min-height: 70vh;
 }
-a:hover{
-    cursor: url(../imgs/hot-dog-icon\ \(2\).png), auto;
-}
-footer:hover{
-    cursor: url(../imgs/hot-dog-icon\ \(2\).png), auto;
-} */
-/* .url{cursor:url(../assets/imgs/hot-dog-icon.png), auto;} */
-
-/* .logo {
-    width: 8rem;
-    font-size: 25px;
-    text-shadow: 2px 4px 4px var(--bs-orange);
-    
-} */
-
 /* "LOGOXD" */
-.img {
-    width: 20rem;
-}
 
 .animated-shadow {
     /* color: #ffffff; */
@@ -295,11 +277,12 @@ h5 {
 
 footer {
     min-height: 15vh;
-    background-color: #000000a6;
+    background-color: #000000a9;
     text-shadow: 1px 1px 2px var(--bs-orange);
     color: white;
     padding-right: 1rem;
     margin-top: 10px;
+    border-top: 1px solid rgba(255, 0, 0, 0.500);
     box-shadow: rgb(233 12 12 / 30%) 0px 4px 29px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
@@ -354,10 +337,22 @@ footer {
 
 /* FINAL FOOTER */
 
-/* card Comida */
 
-.seccionComida {
-    padding: 1rem;
+.table{
+    color: #F5C800;
+    border: 1px solid rgba(255, 0, 0, 0.500);
+    box-shadow: rgb(233 12 12 / 15%) -1px -4px 30px;
+    background: rgba(0, 0, 0, 0.728) !important;
+    max-width: 65rem;
+    margin-top: 2rem;
+}
+.table th{
+    width: 45% !important;
+    font-size: 17px;
+    border-right: 1px solid rgba(255, 0, 0, 0.500) !important;
+}
+.table td{
+    font-size: 17px;
 }
 
 .cardComida {
@@ -374,6 +369,7 @@ footer {
     text-align: center;
     margin-bottom: 3rem;
     margin-top: 2rem;
+    color: white;
 }
 
 .card-title {
@@ -404,11 +400,6 @@ footer {
     border-right: 1px solid rgba(255, 0, 0, 0.500);
 }
 
-/* banner */
-.videito {
-    max-width: 100%;
-}
-
 /* navbar */
 .nav-link {
     color: white;
@@ -425,8 +416,11 @@ footer {
     -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
 }
-
-
+.active{
+    color: rgba(236, 217, 45, 0.861) !important;
+    box-shadow: rgba(236, 217, 45, 0.861) -1px -4px 43px;
+    border: 1px solid rgba(236, 217, 45, 0.861);
+}
 
 /*  filtros */
 
@@ -502,7 +496,7 @@ footer {
     padding: 0;
     width: 115px;
     /* height: 65px; */
-    background: transparent;
+    background: #000000a9;
     font-size: 17px;
     border: none;
     border-radius: 2px;
@@ -789,6 +783,9 @@ footer {
 }
 
 @media (max-width: 991px) {
+    /* .logo_img{
+        font-size: 80px;
+    } */
     .navbar-nav {
         align-items: center;
     }
