@@ -68,6 +68,10 @@ public class RestauranteFoodiePartyApplication {
 			Reserva reserva4 = new Reserva();
 			Reserva reserva5 = new Reserva();
 			Reserva reserva6 = new Reserva();
+
+			// nueva reserva
+			Reserva reserva7 = new Reserva(LocalDate.now(),(byte)5, false );
+
 			reserva1.setFecha(LocalDate.of(2023,03,29));
 			reserva2.setFecha(LocalDate.of(2023,03,29));
 			reserva3.setFecha(LocalDate.of(2023,03,30));
@@ -80,12 +84,21 @@ public class RestauranteFoodiePartyApplication {
 			reserva4.setCantidad_De_Personas((byte)2);
 			reserva5.setCantidad_De_Personas((byte)2);
 			reserva6.setCantidad_De_Personas((byte)2);
+
+			reserva1.setEstado(true);
+			reserva2.setEstado(true);
+			reserva3.setEstado(true);
+			reserva4.setEstado(true);
+			reserva5.setEstado(false);
+			reserva6.setEstado(true);
+
 			pepito.agregarReserva(reserva1);
 			pepito.agregarReserva(reserva2);
 			pepito.agregarReserva(reserva3);
 			pepito.agregarReserva(reserva4);
 			cosme.agregarReserva(reserva5);
 			cosme.agregarReserva(reserva6);
+			pepito.agregarReserva(reserva7);
 			capacidadRepositorio.save(capacidadRestoran);
 			reservaRepositorio.saveAll(List.of(reserva1,reserva2,reserva3,reserva4,reserva5,reserva6));
 

@@ -92,4 +92,23 @@ public class ReservaControlador {
         return new ResponseEntity<>("Reserva realizada con exito",HttpStatus.ACCEPTED);
 
     }
+
+    // ojo nuevo metodo añadido para editar estado de reserva verificar postman antes de subirlo puede ser true or false
+    @PutMapping("/reservas/{id}")
+
+    public ResponseEntity<String> actualizarEstadoReserva(@PathVariable Long id) {
+        Optional<Reserva> optionalReserva = reservaRepositorio.findById(id);
+
+        if (optionalReserva.isPresent()) {
+            Reserva reserva = optionalReserva.get();
+            reserva.setEstado(!reserva.getEstado());
+            reservaRepositorio.save(reserva);
+            return new ResponseEntity<>("Estado de reserva actualizado con éxito", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No se encontró la reserva con id " + id, HttpStatus.NOT_FOUND);
+        }
+    }
+
+
+
 }
