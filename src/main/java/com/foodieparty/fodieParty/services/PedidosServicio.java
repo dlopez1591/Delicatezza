@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PedidosServicio {
-    List<PedidoDTO> getPedido();
+    List<PedidoDTO> getPedidos();
     Optional<PedidoDTO> getPedidoPorId(Long id);
     List<PedidoDTO> getPedidosUsuario(Authentication authentication);
 }

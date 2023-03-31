@@ -8,6 +8,9 @@ import com.foodieparty.fodieParty.repositories.*;
 
 import com.foodieparty.fodieParty.services.PedidosServicio;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +18,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.List;
 
 
 import static java.util.stream.Collectors.toList;
@@ -40,10 +47,17 @@ public class PedidoControlador {
     private TicketPedidoRepositorio ticketPedidoRepositorio;
     @Autowired
     private PedidosServicio pedidosServicio;
+
+    //    @GetMapping("/pedidos")
+//    public List<PedidoDTO> getPedidos(){
+//        return pedidosServicio.getPedidos();
+//    }
+
     @GetMapping("/pedidos")
-    public List<PedidoDTO> getPedido(){
-        return pedidosServicio.getPedido();
+    public List<PedidoDTO> getPedidos(){
+        return pedidoRepositorio.findAll().stream().map(PedidoDTO::new).collect(toList());
     }
+
     @GetMapping("/pedido/{id}")
     public Optional<PedidoDTO> getPedidoPorId(@PathVariable Long id){
         return pedidosServicio.getPedidoPorId(id);
@@ -53,11 +67,10 @@ public class PedidoControlador {
          return pedidosServicio.getPedidosUsuario(authentication);
     }
 
-    @Transactional
     @PostMapping("/crear/pedido/usuario")
     public ResponseEntity<Object> crearPedido(
             @RequestBody DetallePedidoDTO detallePedidoDTO,
-            Authentication authentication){
+            Authentication authentication) throws IOException, DocumentException {
         Usuario usuario = usuarioRepositorio.findByEmail(authentication.getName());
         //detallePedidoDTO:
         //  listaComidasId ----> [0]=idComida, [1]=cantidadSolicitada.
@@ -68,7 +81,6 @@ public class PedidoControlador {
                 detallePedidoDTO.getTipoRetiro(),
                 detallePedidoDTO.getDireccion(),
                 usuario);
-        pedidoRepositorio.save(pedido);
         //Preparar variables para contabilizar el total y concatenar detalles del ticket.
         List<String> detalleTicket=new ArrayList<>();
         Double total = 0.0;
@@ -76,14 +88,11 @@ public class PedidoControlador {
         Comida comida;
         ComidaPedido comidaPedido;
         for(long[] idComidaYCantidad: detallePedidoDTO.getListaComidasId()){
-            comida = comidaRepositorio.findById(idComidaYCantidad[0]).orElse(null);
+            comida = comidaRepositorio.findById(idComidaYCantidad[0]).get();
             comidaPedido = new ComidaPedido((int)idComidaYCantidad[1],comida.getPrecio());
             comida.agregarComidaPedido(comidaPedido);
             pedido.agregarComidaPedido(comidaPedido);
             comidaPedidoRepositorio.save(comidaPedido);
-            comidaRepositorio.save(comida);
-            pedidoRepositorio.save(pedido);
-            pedido.getComidaPedidos().forEach(c-> System.out.println(c.getComida().getNombre()));
             total+=comidaPedido.getPrecioPorCantidad();
             detalleTicket.add(comida.getNombre()+" x "+idComidaYCantidad[1]+" = $"+comida.getPrecio()*idComidaYCantidad[1]);
         }
@@ -92,7 +101,7 @@ public class PedidoControlador {
         Bebida bebida;
         BebidaPedido bebidaPedido;
         for(long[] idBebidaYCantidad: detallePedidoDTO.getListaBebidasId()){
-            bebida = bebidaRepositorio.findById(idBebidaYCantidad[0]).orElse(null);
+            bebida = bebidaRepositorio.findById(idBebidaYCantidad[0]).get();
             bebidaPedido = new BebidaPedido((int)idBebidaYCantidad[1],bebida.getPrecio());
             //Si hay stock suficiente de bebida, reducir stock, sino error.
             if(bebida.tieneStock(idBebidaYCantidad[1])){
@@ -103,8 +112,6 @@ public class PedidoControlador {
             bebida.agregarBebidaPedido(bebidaPedido);
             pedido.agregarBebidaPedido(bebidaPedido);
             bebidaPedidoRepositorio.save(bebidaPedido);
-            bebidaRepositorio.save(bebida);
-            pedidoRepositorio.save(pedido);
             total+=bebidaPedido.getPrecioPorCantidad();
             detalleTicket.add(bebida.getNombre()+" x "+idBebidaYCantidad[1]+" = $"+bebida.getPrecio()*idBebidaYCantidad[1]);
         }
@@ -116,6 +123,18 @@ public class PedidoControlador {
         usuario.agregarPedido(pedido);
         ticketPedidoRepositorio.save(ticketPedido);
         pedidoRepositorio.save(pedido);
+        pedido.getComidaPedidos().forEach(c-> System.out.println(c.getComida().getNombre()));
+
+
+        Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream("Ticket_Pedido.pdf"));
+        document.open();
+        Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
+        for(String detalle: ticketPedido.getDetalle()){
+            Chunk chunk = new Chunk(detalle,font);
+            document.add(new Paragraph(chunk));
+        }
+        document.close();
 
         return new ResponseEntity<>("Pedido exitoso", HttpStatus.CREATED);
     }

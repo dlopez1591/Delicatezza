@@ -23,7 +23,8 @@ public class PedidoServicioImpl implements PedidosServicio {
 
 
     @Override
-    public List<PedidoDTO> getPedido() {
+    public List<PedidoDTO> getPedidos() {
+        String string;
         return pedidoRepositorio.findAll().stream().map(PedidoDTO::new).collect(toList());
     }
 
