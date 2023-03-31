@@ -1,5 +1,8 @@
 package com.foodieparty.fodieParty.controllers;
 
+import com.foodieparty.fodieParty.Utilidades.FilaTabla;
+import com.foodieparty.fodieParty.Utilidades.GenerardorPdf;
+import com.foodieparty.fodieParty.Utilidades.HeaderFooterPageEvent;
 import com.foodieparty.fodieParty.dtos.DetallePedidoDTO;
 import com.foodieparty.fodieParty.dtos.PedidoDTO;
 
@@ -9,6 +12,7 @@ import com.foodieparty.fodieParty.repositories.*;
 import com.foodieparty.fodieParty.services.PedidosServicio;
 
 import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +22,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.List;
@@ -82,6 +84,7 @@ public class PedidoControlador {
                 detallePedidoDTO.getDireccion(),
                 usuario);
         //Preparar variables para contabilizar el total y concatenar detalles del ticket.
+        List<FilaTabla> filaTablas = new ArrayList<>();
         List<String> detalleTicket=new ArrayList<>();
         Double total = 0.0;
         //Recorrer la lista idComidaYCantidad
@@ -95,6 +98,12 @@ public class PedidoControlador {
             comidaPedidoRepositorio.save(comidaPedido);
             total+=comidaPedido.getPrecioPorCantidad();
             detalleTicket.add(comida.getNombre()+" x "+idComidaYCantidad[1]+" = $"+comida.getPrecio()*idComidaYCantidad[1]);
+            FilaTabla fila = new FilaTabla(
+                    String.valueOf(idComidaYCantidad[1]),
+                    comida.getNombre(),
+                    String.valueOf(comida.getPrecio()),
+                    String.valueOf(comidaPedido.getPrecioPorCantidad()));
+            filaTablas.add(fila);
         }
 
         //Recorrer la lista idBebidaYCantidad
@@ -114,6 +123,12 @@ public class PedidoControlador {
             bebidaPedidoRepositorio.save(bebidaPedido);
             total+=bebidaPedido.getPrecioPorCantidad();
             detalleTicket.add(bebida.getNombre()+" x "+idBebidaYCantidad[1]+" = $"+bebida.getPrecio()*idBebidaYCantidad[1]);
+            FilaTabla fila = new FilaTabla(
+                    String.valueOf(idBebidaYCantidad[1]),
+                    bebida.getNombre(),
+                    String.valueOf(bebida.getPrecio()),
+                    String.valueOf(bebidaPedido.getPrecioPorCantidad()));
+            filaTablas.add(fila);
         }
 
         //Crear un ticket para el pedido
@@ -125,16 +140,23 @@ public class PedidoControlador {
         pedidoRepositorio.save(pedido);
         pedido.getComidaPedidos().forEach(c-> System.out.println(c.getComida().getNombre()));
 
+        //Crea el documento
+//        Document document = new Document(PageSize.A4, 36, 36, 90, 36);
+//        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("HeaderFooter.pdf"));
+//        HeaderFooterPageEvent event = new HeaderFooterPageEvent();
+//        writer.setPageEvent(event);
+//
+//        PdfWriter.getInstance(document, new FileOutputStream("Ticket_Pedido.pdf"));
+//        document.open();
+//        Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
+//        for(String detalle: ticketPedido.getDetalle()){
+//            Chunk chunk = new Chunk(detalle,font);
+//            document.add(new Paragraph(chunk));
+//        }
+//        document.close();
 
-        Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream("Ticket_Pedido.pdf"));
-        document.open();
-        Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
-        for(String detalle: ticketPedido.getDetalle()){
-            Chunk chunk = new Chunk(detalle,font);
-            document.add(new Paragraph(chunk));
-        }
-        document.close();
+        GenerardorPdf generardorPdf = new GenerardorPdf();
+        generardorPdf.generarPdf(filaTablas,String.valueOf(total));
 
         return new ResponseEntity<>("Pedido exitoso", HttpStatus.CREATED);
     }
