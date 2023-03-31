@@ -12,10 +12,11 @@ import com.foodieparty.fodieParty.repositories.TicketReservaRepositorio;
 import com.foodieparty.fodieParty.repositories.UsuarioRepositorio;
 
 import com.foodieparty.fodieParty.services.ReservaServicio;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,7 +45,7 @@ public class ReservaControlador {
     @Autowired
     private ReservaServicio reservaServicio;
 
-
+// verificar la respuesta de los controladores de reservas
     @GetMapping("/reserva")
     public List<ReservaDTO> getReserva(){
         return reservaServicio.getReserva();
@@ -56,7 +57,10 @@ public class ReservaControlador {
     @GetMapping("/usuario/autenticado/reserva")
     public List<ReservaDTO> getReservasUsuario(Authentication authentication){
 
-          return reservaServicio.getReservasUsuario(authentication);
+
+          Usuario usuario=usuarioRepositorio.findByEmail(authentication.getName());
+          return usuario.getReservas().stream().map(ReservaDTO::new).collect(toList());
+
     }
     @Transactional
     @PostMapping("/crear/reserva")
@@ -65,6 +69,53 @@ public class ReservaControlador {
             @RequestParam Integer cantidadPersonas,
             @RequestParam String fechaString
     ){
-        return reservaServicio.crearReserva(authentication,cantidadPersonas,fechaString);
+
+       /*
+        preguntar return reservaServicio.crearReserva(authentication,cantidadPersonas,fechaString);
+*/
+        Usuario usuario = usuarioRepositorio.findByEmail(authentication.getName());
+        LocalDate fecha = LocalDate.parse(fechaString);
+        Integer capacidadOcupada = 0;
+        Capacidad capacidad = capacidadRepositorio.findAll().get(0);
+        List<Reserva> reservaALaFecha = reservaRepositorio.findAll()
+                .stream()
+                .filter(r-> r.getFecha().getDayOfYear() == fecha.getDayOfYear())
+                .collect(toList());
+        for(Reserva reserva: reservaALaFecha){capacidadOcupada+=reserva.getCantidad_De_Personas();}
+        if(!capacidadRepositorio.findAll().get(0).tieneCapacidad(capacidadOcupada,cantidadPersonas)){
+            return new ResponseEntity<>("No hay capacidad disponible",HttpStatus.FORBIDDEN);
+        }
+
+        Reserva reserva = new Reserva(fecha,cantidadPersonas.byteValue(),true);
+        TicketReserva ticketReserva = new TicketReserva(
+          "fecha: "+fecha+", personas: "+cantidadPersonas, capacidad.getPrecioPorReserva()
+        );
+        reserva.agregarTicketReserva(ticketReserva);
+        usuario.agregarReserva(reserva);
+        ticketReservaRepositorio.save(ticketReserva);
+        reservaRepositorio.save(reserva);
+        usuarioRepositorio.save(usuario);
+        return new ResponseEntity<>("Reserva realizada con exito",HttpStatus.ACCEPTED);
+
+
     }
+
+    // ojo nuevo metodo añadido para editar estado de reserva verificar postman antes de subirlo puede ser true or false
+    @PutMapping("/reservas/{id}")
+
+    public ResponseEntity<String> actualizarEstadoReserva(@PathVariable Long id) {
+        Optional<Reserva> optionalReserva = reservaRepositorio.findById(id);
+
+        if (optionalReserva.isPresent()) {
+            Reserva reserva = optionalReserva.get();
+            reserva.setEstado(!reserva.getEstado());
+            reservaRepositorio.save(reserva);
+            return new ResponseEntity<>("Estado de reserva actualizado con éxito", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No se encontró la reserva con id " + id, HttpStatus.NOT_FOUND);
+        }
+    }
+
+
+
 }

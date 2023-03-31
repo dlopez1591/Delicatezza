@@ -164,7 +164,8 @@ footer{
 
 footer {
     min-height: 10vh;
-    background-color: #000000a6;
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.006) 0%, rgba(0, 0, 0, 0.99) 100%);
     text-shadow: 1px 1px 2px var(--bs-orange);
     color: white;
     padding-right: 1rem;

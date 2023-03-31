@@ -1,5 +1,6 @@
 package com.foodieparty.fodieParty.models;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -7,16 +8,16 @@ import javax.persistence.*;
 @Entity
 public class ComidaPedido {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private int cantidad;
     private Double precioPorCantidad;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "comida_id")
     private Comida comida;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
     public ComidaPedido(){ }
@@ -61,4 +62,6 @@ public class ComidaPedido {
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
+
+
 }

@@ -14,10 +14,10 @@ public class Usuario {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private String nombre, apellido, email, contraseña, telefono;
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Pedido> pedidos = new HashSet<>();
 
-    @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Reserva> reservas =new HashSet<>();
     private  Estado estado;
 

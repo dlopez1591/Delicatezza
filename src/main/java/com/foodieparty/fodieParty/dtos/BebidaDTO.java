@@ -11,7 +11,6 @@ public class BebidaDTO {
     private TipoBebida tipoBebida;
     private int disponibilidad;
     private Double precio;
-    private List<BebidaPedidoDTO> bebidaPedidos;
 
 
     public BebidaDTO(Bebida bebida){
@@ -22,7 +21,6 @@ public class BebidaDTO {
         this.tipoBebida=bebida.getTipoBebida();
         this.disponibilidad=bebida.getDisponibilidad();
         this.precio= bebida.getPrecio();
-        this.bebidaPedidos = bebida.getBebidaPedidos().stream().map(bp->new BebidaPedidoDTO(bp)).collect(Collectors.toList());
     }
 
     public long getId() {
@@ -53,7 +51,4 @@ public class BebidaDTO {
         return precio;
     }
 
-    public List<BebidaPedidoDTO> getBebidaPedidos() {
-        return bebidaPedidos;
-    }
 }

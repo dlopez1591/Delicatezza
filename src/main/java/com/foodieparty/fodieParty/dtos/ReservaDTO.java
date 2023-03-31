@@ -14,12 +14,8 @@ public class ReservaDTO {
     private LocalDate fecha;
     private byte cantidad_De_Personas;
     private Double precio;
-
     private Boolean estado;
-
-    private UsuarioDTO usuario;
-
-    private TicketReservaDTO ticketReserva;
+    private String emailUsuario;
 
     public ReservaDTO(Reserva reserva) {
         this.id = reserva.getId();
@@ -27,8 +23,7 @@ public class ReservaDTO {
         this.cantidad_De_Personas = reserva.getCantidad_De_Personas();
         this.precio = reserva.getPrecio();
         this.estado = reserva.getEstado();
-        this.usuario = new UsuarioDTO(reserva.getUsuario());
-        this.ticketReserva = new TicketReservaDTO(reserva.getTicketReserva());
+        this.emailUsuario = reserva.getUsuario().getEmail();
     }
 
     public long getId() {
@@ -51,7 +46,7 @@ public class ReservaDTO {
         return estado;
     }
 
-    public UsuarioDTO getUsuario() {
-        return usuario;
+    public String getEmailUsuario() {
+        return emailUsuario;
     }
 }

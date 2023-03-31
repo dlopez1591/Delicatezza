@@ -6,8 +6,9 @@ createApp({
             email: '',
             password: '',
             error: '',
-            firstName: '',
-            lastName: '',
+            nombre: '',
+            apellido: '',
+            telefono: '',
             cambio: 1,
         }
     },
@@ -24,15 +25,15 @@ createApp({
                         icon: 'success',
                         color: 'var(--bs-highlight-bg)',
                         background: '#000000c1',
-                        title: 'Your login have been successful',
+                        text: 'Your login have been successful',
                         showConfirmButton: false,
                         timer: 2000
                     })
                         .then(() => {
                             if (this.email == "admin@gmail.com") {
-                                window.location.href = '/manager.html';
+                                window.location.href = 'web/admin.html';
                             } else {
-                                window.location.href = '/web/accounts.html';
+                                window.location.href = '/web/pedidos.html';
                             }
                         })
                 })
@@ -42,8 +43,7 @@ createApp({
                         icon: 'error',
                         color: 'var(--bs-highlight-bg)',
                         background: '#000000c1',
-                        title: 'Oops... something wrongs',
-                        text: 'Show your dates!',
+                        text: 'Revisa tus datos!',
                     })
                 });
         },
@@ -54,20 +54,26 @@ createApp({
                 this.cambio = 0
         },
         register() {
-            if (/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$/.test(this.email)) {
-                axios.post('/api/clients', `first=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`, {
+                axios.post('/api/crear/usuario', `nombre=${this.nombre}&apellido=${this.apellido}&email=${this.email}&password=${this.password}&telefono=${this.telefono}`, {
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
                 })
                     .then(response => {
+                        Swal.fire({
+                            position: 'midle',
+                            icon: 'success',
+                            color: 'var(--bs-highlight-bg)',
+                            background: '#000000c1',
+                            text: 'User created successfully',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
                         this.login();
                     })
                     .catch(error => {
                         this.error = error.response.data.message;
                     });
-            }
-
         },
     }
 }).mount('#app')

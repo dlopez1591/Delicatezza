@@ -20,6 +20,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/styles/index.css">
+    <!-- favicon temporal para evitar error de server  -->
+    <link rel="icon" type="image/x-icon" href="./assets/imgs/favicon.png">
 </head>
 
 <body>
@@ -28,13 +30,6 @@
             <!-- imagen logo  -->
             <div class="logo_img bg-5">
                 <p class="logo_img animated-shadow">DELICATEZZA</p>
-            </div>
-            <!-- redes sociales y boton log in -->
-            <div class="logInRedesSociales">
-                <!-- boton log in -->
-                <div class="botonLogIn">
-
-                </div>
             </div>
         </header>
         <!-- NAV BAR, POR EL MOMENTO DE PRUEBA pendiente por arreglar -->
@@ -48,13 +43,13 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                         <ul class="navbar-nav gap-3">
-                            <li class="nav-item button">
-                                <a class="nav-link " href="#"><i class="bi bi-house"></i> Inicio</a>
+                            <li class="nav-item button" type="button">
+                                <a class="nav-link active" href="#"><i class="bi bi-house"></i> Inicio</a>
                             </li>
                             <li class="nav-item button" type="button">
                                 <a class="nav-link" href="./menu.html"><i class="bi bi-egg-fried"></i>Menu</a>
                             </li>
-                            <li class="nav-item button">
+                            <li class="nav-item button" type="button">
                                 <a class="nav-link" href="#"><i class="bi bi-check2-circle"></i> Reserva</a>
                             </li>
                             <button type="button" class="nav-item button " data-bs-toggle="modal"
@@ -105,12 +100,12 @@
             <div class="login-box" v-show="cambio == 0">
                 <form @submit.prevent>
                     <div class="user-box">
-                        <input v-model="firstName" required="" name="" type="text">
-                        <label>First Name</label>
+                        <input v-model="nombre" required="" name="" type="text">
+                        <label>Nombre: </label>
                     </div>
                     <div class="user-box">
-                        <input v-model="lastName" required="" name="" type="text">
-                        <label>Last Name</label>
+                        <input v-model="apellido" required="" name="" type="text">
+                        <label>Apellido:</label>
                     </div>
                     <div class="user-box">
                         <input v-model="email" required="" name="" type="email">
@@ -119,6 +114,10 @@
                     <div class="user-box">
                         <input v-model="password" required="" name="" type="password">
                         <label>Password</label>
+                    </div>
+                    <div class="user-box">
+                        <input v-model="telefono" required="" name="" type="text">
+                        <label>Telefono</label>
                     </div>
                     <a v-on:click="register" href="#">
                         <span></span>
@@ -154,8 +153,7 @@
             </p>
         </div>
         <article class="d-flex flex-column w-100">
-
-
+            
             <!-- aca se implementa carousel de bootstrap manejamos autoplaying e indicators por default tiene 3 imagenes -->
             <div id="carouselExampleIndicators" class="carousel slide d-flex justify-content-center align-items-center"
                 data-bs-ride="carousel">
@@ -394,7 +392,7 @@
     <!-- VUE  -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- script index -->
-    <script src="/assets/scripts/index.js"></script>
+    <script src="./assets/scripts/index.js"></script>
     <!-- sweet alert  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- AOS -->
