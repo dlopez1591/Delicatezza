@@ -14,11 +14,12 @@ public class Usuario {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private String nombre, apellido, email, contraseña, telefono;
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Pedido> pedidos = new HashSet<>();
 
-    @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Reserva> reservas =new HashSet<>();
+    private  Estado estado;
 
     public Usuario() {
     }
@@ -29,6 +30,7 @@ public class Usuario {
         this.email = email;
         this.contraseña = contraseña;
         this.telefono = telefono;
+        this.estado=Estado.ACTIVA;
     }
 
     public void setNombre(String nombre) {
@@ -89,6 +91,14 @@ public class Usuario {
 
     public void setReservas(Set<Reserva> reservas) {
         this.reservas = reservas;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public void agregarReserva(Reserva reserva){

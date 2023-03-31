@@ -10,7 +10,7 @@ import java.util.Set;
 @Entity
 public class Pedido {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private LocalDateTime fecha;
@@ -18,10 +18,10 @@ public class Pedido {
     private TipoRetiro tipoRetiro;
     private String direccion;
     private EstadoPedido estadoPedido;
-    @OneToMany(mappedBy = "comida",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "pedido",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ComidaPedido> comidaPedidos=new HashSet<>();
 
-    @OneToMany(mappedBy = "bebida",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "pedido",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<BebidaPedido> bebidaPedidos=new HashSet<>();
     @ManyToOne(fetch = FetchType.EAGER)
     private Usuario usuario;
@@ -31,7 +31,6 @@ public class Pedido {
 
     public Pedido(){
     }
-
     public Pedido(LocalDateTime fecha, double precioTotal, TipoRetiro tipoRetiro, String direccion, EstadoPedido estadoPedido) {
         this.fecha = fecha;
         this.precioTotal = precioTotal;

@@ -15,13 +15,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
+@EnableWebSecurity
 @Configuration
 public class Autorizacionesweb{
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-//        http.authorizeRequests().anyRequest().permitAll();
-                //.antMatchers(HttpMethod.POST, "/crear/usuario").hasAuthority("CLIENT");
+
+        http.authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/api/crear/usuario").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/crear/reserva").hasAnyRole("CLIENTE","ADMIN");
+
 
         http.formLogin()
                 .usernameParameter("email")
@@ -29,7 +33,6 @@ public class Autorizacionesweb{
                 .loginPage("/api/login");
 
         http.logout().logoutUrl("/api/logout").deleteCookies("JSESSIONID");
-
 
         // turn off checking for CSRF tokens
         http.csrf().disable();

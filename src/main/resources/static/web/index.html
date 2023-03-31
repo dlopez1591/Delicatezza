@@ -21,6 +21,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/styles/index.css">
+    <!-- favicon temporal para evitar error de server  -->
+    <link rel="icon" type="image/x-icon" href="./assets/imgs/favicon.png">
 </head>
 
 <body>
@@ -100,12 +102,14 @@
             <div class="login-box" v-show="cambio == 0">
                 <form @submit.prevent>
                     <div class="user-box">
+
                         <input v-model="firstName" required="" name="" type="text">
                         <label>Primer Nombre</label>
                     </div>
                     <div class="user-box">
                         <input v-model="lastName" required="" name="" type="text">
                         <label>Apellido</label>
+
                     </div>
                     <div class="user-box">
                         <input v-model="email" required="" name="" type="email">
@@ -114,6 +118,10 @@
                     <div class="user-box">
                         <input v-model="password" required="" name="" type="password">
                         <label>Contraseña</label>
+                    </div>
+                    <div class="user-box">
+                        <input v-model="telefono" required="" name="" type="text">
+                        <label>Telefono</label>
                     </div>
                     <a v-on:click="register" href="#">
                         <span></span>
@@ -428,7 +436,7 @@
     <!-- VUE  -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- script index -->
-    <script src="/assets/scripts/index.js"></script>
+    <script src="./assets/scripts/index.js"></script>
     <!-- sweet alert  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- AOS -->

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientes</title>
+    <title>Reservas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/styles/admUsuarios.css">
+    <link rel="stylesheet" href="./assets/styles/admReservas.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
@@ -19,14 +19,14 @@
         <header class="encabezado d-flex flex-row align-items-center justify-content-center">
             <img src="./assets/imgs/burguer.gif" alt="" class="imgHeader">
         </header>
-        <h1 class="neon">Clientes</h1>
+        <h1 class="neon">Reservas</h1>
         <main class="d-flex flex-column justify-content-center align-items-center">
             <div class="navButtons">
                 <div class="btnMenu">
                     <a href="./admin.html">Inicio</a>
                 </div>
                 <div class="btnMenu">
-                    <a href="./admReservas.html">Reservas</a>
+                    <a href="./admUsuario.html">Clientes</a>
                 </div>
                 <div class="btnMenu">
                     <a href="./admMenu.html">Menu</a>
@@ -43,22 +43,21 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Email</th>
-      <th>Teléfono</th>
-      <th class="actions">Acciones</th>
+      <th>Cliente</th>
+      <th>Fecha</th>
+      <th>Cantidad Personas</th>
+      <th>Estados</th>
+      <th class="actions">Detalles</th>
     </tr>
   </thead>
   <tbody>  
-    <tr v-for="usuario in usuarios">
-      <td>{{usuario.nombre}}</td>
-      <td>{{usuario.apellido}}</td>
-      <td>{{usuario.email}}</td>
-      <td>{{usuario.telefono}}</td>
+    <tr >
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td class="actions">
-        <button class="btn-edit" data-bs-toggle="modal" data-bs-target="#editarCliente" @click="pasarUsuarioModal(usuario)">Editar</button>
-        <button class="btn-delete" @click="borrarUsuario(usuario.email)">Eliminar</button>
+        <button class="btn-edit" data-bs-toggle="modal" data-bs-target="#editarCliente">Editar</button>
 
       </td>
     
@@ -117,52 +116,51 @@
             </div>
         </footer>
 
-<!-- modal para editar cliente         -->
+        <!-- modal para editar reserva  -->
 
-<div class="modal fade" id="editarCliente" tabindex="-1" aria-labelledby="editarCliente" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="neonEditar text-center" id="editarCliente">Editar Cliente</h1>
-        <div data-bs-theme="dark">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        
+<div class="modal fade" id="editarCliente" tabindex="-1" aria-labelledby="editarReserva" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="neonEditar text-center" id="editarReserva">Editar Reserva</h1>
+          <div data-bs-theme="dark">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
         </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="nombre" class="form-label letraFormulario">Cliente</label>
+              <input type="text" class="form-control inputFormulario" id="nombre" >
+            </div>
+            <div class="mb-3">
+              <label for="apellido" class="form-label letraFormulario">Fecha</label>
+              <input type="text" class="form-control inputFormulario" id="apellido">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label letraFormulario">Cantidad Personas</label>
+              <input type="email" class="form-control inputFormulario" id="email" >
+            </div>
+            <div class="mb-3">
+              <label for="telefono" class="form-label letraFormulario">Estado</label>
+              <input type="text" class="form-control inputFormulario" id="telefono">
+            </div>
+            <div class="d-flex flex-row">
+              <button type="button" class="btnCloseModal" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btnEditConfirm" >Editar</button>
+            </div>
+            
+          </form>
+        </div>
+        
       </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="nombre" class="form-label letraFormulario">Nombre</label>
-            <input type="text" class="form-control inputFormulario" id="nombre" v-model="usuarioSeleccionado.nombre">
-          </div>
-          <div class="mb-3">
-            <label for="apellido" class="form-label letraFormulario">Apellido</label>
-            <input type="text" class="form-control inputFormulario" id="apellido" v-model="usuarioSeleccionado.apellido">
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label letraFormulario">Email</label>
-            <input type="email" class="form-control inputFormulario" id="email" v-model="usuarioSeleccionado.email">
-          </div>
-          <div class="mb-3">
-            <label for="telefono" class="form-label letraFormulario">Teléfono</label>
-            <input type="text" class="form-control inputFormulario" id="telefono" v-model="usuarioSeleccionado.telefono">
-          </div>
-          <div class="d-flex flex-row">
-            <button type="button" class="btnCloseModal" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btnEditConfirm" @click="actualizarUsuario">Editar</button>
-          </div>
-          
-        </form>
-      </div>
-      
     </div>
   </div>
-</div>
-
-
-<!-- fin del modal para editar el cliente -->
-
+  
+  
     </div>
-    <!-- bootstrap -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
         crossorigin="anonymous"></script>
@@ -171,7 +169,7 @@
     <!-- VUE  -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- script index -->
-    <script src="./assets/scripts/admUsuario.js"></script>
+    <script src="./assets/scripts/admReservas.js"></script>
     <!-- sweet alert  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- AOS -->
@@ -180,6 +178,6 @@
     <script src="https://kit.fontawesome.com/4753464142.js" crossorigin="anonymous"></script>
     <script>
         AOS.init();
-    </script>
+    </script>    
 </body>
-</html>
+</html>l

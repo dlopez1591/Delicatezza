@@ -1,6 +1,8 @@
 package com.foodieparty.fodieParty.controllers;
 import com.foodieparty.fodieParty.dtos.BebidaDTO;
+import com.foodieparty.fodieParty.dtos.ListaBebidasDTO;
 import com.foodieparty.fodieParty.models.TipoBebida;
+import com.foodieparty.fodieParty.repositories.BebidaRepositorio;
 import com.foodieparty.fodieParty.services.BebidaServicio;
 import com.foodieparty.fodieParty.services.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ import java.util.stream.Collectors;
 public class BebidaControlador {
     @Autowired
     private BebidaServicio bebidaServicio;
+
+    @Autowired
+    private BebidaRepositorio bebidaRepositorio;
 
 
     @GetMapping("/bebidas")
@@ -40,5 +45,11 @@ public class BebidaControlador {
             @RequestParam("precio") Double precio
             ){return bebidaServicio.crearBebida(nombre,descripcion,imagen,tipoBebida,disponibilidad,precio);
     }
-
+    @GetMapping("/bebida/stock")
+    public Boolean stockListaBebidas(
+            @RequestParam long id,
+            @RequestParam long cant
+            ){
+            return bebidaRepositorio.findById(id).get().tieneStock(cant);
+    }
 }

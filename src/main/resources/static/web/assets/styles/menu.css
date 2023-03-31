@@ -5,8 +5,8 @@
 }
 
 body {
-/*     min-width: 90vw;
-    min-height: 90vh; */
+    min-width: 90vw;
+    min-height: 90vh;
     background-image: url(../imgs/3d-render-focos-pared-ladrillo-grunge.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,10 +14,11 @@ body {
     /* font-family: 'Arizonia', cursive; */
     cursor: url(../imgs/hotdog-icon.png), auto;
 }
-main{
-    min-width: 90vw;
-    min-height: 70vh;
+
+/* button:hover{
+    cursor: url(../imgs/hot-dog-icon\ \(2\).png), auto;
 }
+
 header{
     background-image: url(/assets/imgs/bebida-sin-alcoho.jpg);
     background-repeat: no-repeat;
@@ -30,7 +31,11 @@ header{
 .main-basura{
     max-width: 90vw;
 }
+
 /* "LOGOXD" */
+.img {
+    width: 20rem;
+}
 
 .animated-shadow {
     /* color: #ffffff; */
@@ -113,7 +118,7 @@ header{
 /* "LOGOXD" */
 
 /* CARRUSEL */
-.carousel-inner {
+/* .carousel-inner {
     width: 1200px;
     box-shadow: 13px 13px 25px black;
     border: 1px white;
@@ -122,7 +127,7 @@ header{
     background-position: center;
     border-radius: 7px 7px 7px 7px;
 }
-
+ */
 
 /* CARRUSEL */
 
@@ -207,18 +212,18 @@ h5 {
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
 }
 
-.p-carrusel {
+/* .p-carrusel {
     font-size: 1.2rem;
     color: var(--bs-orange);
     text-shadow: 2px 1px 6px #F5C800;
     font-family: 'Allerta Stencil', sans-serif;
-}
+} */
 
 .p {
     flex-wrap: wrap;
 }
 
-.carousel {
+/* .carousel {
     margin-bottom: 15px;
 }
 
@@ -228,7 +233,7 @@ h5 {
     border-left: 1px solid rgba(255, 0, 0, 0.500);
     border-right: 1px solid rgba(255, 0, 0, 0.500);
     box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
-}
+} */
 
 /* H2 Y P DEL CARRUSEL */
 
@@ -287,12 +292,11 @@ h5 {
 
 /* footer {
     min-height: 15vh;
-    background-color: #000000a9;
+    background-color: #000000a6;
     text-shadow: 1px 1px 2px var(--bs-orange);
     color: white;
     padding-right: 1rem;
     margin-top: 10px;
-    border-top: 1px solid rgba(255, 0, 0, 0.500);
     box-shadow: rgb(233 12 12 / 30%) 0px 4px 29px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
@@ -379,6 +383,8 @@ footer{
 
 /* FINAL FOOTER */
 
+/* card Comida */
+
 
 .table{
     color: #F5C800;
@@ -395,6 +401,7 @@ footer{
 }
 .table td{
     font-size: 20px;
+
 }
 
 .cardComida {
@@ -411,7 +418,7 @@ footer{
     text-align: center;
     margin-bottom: 3rem;
     margin-top: 2rem;
-    color: white;
+    width: 80%; 
 }
 
 .card-title {
@@ -442,6 +449,11 @@ footer{
     border-right: 1px solid rgba(255, 0, 0, 0.500);
 }
 
+/* banner */
+.videito {
+    max-width: 100%;
+}
+
 /* navbar */
 .nav-link {
     
@@ -461,6 +473,7 @@ footer{
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
 }
 
+
 .bi{
     padding-right: 4px !important;
 }
@@ -472,6 +485,7 @@ footer{
 .material-symbols-outlined{
     font-size: 30px !important;
 }
+
 /*  filtros */
 
 .navbarcito {
@@ -516,6 +530,9 @@ footer{
 .material-symbols-outlined {
     font-size: 19px;
 }
+nav .material-symbols-outlined{
+    font-size: 2rem;
+}
 
 .buscador {
     font-size: 1rem;
@@ -555,7 +572,7 @@ footer{
     padding: 0;
     width: 115px;
     /* height: 65px; */
-    background: #000000a9;
+    background: transparent;
     font-size: 17px;
     border: none;
     border-radius: 2px;
@@ -767,6 +784,12 @@ footer{
     border-color: #F5C800;
     box-shadow: -1px -4px 43px rgba(253, 13, 53, 0.466);
     background-color: #0000008c;
+    justify-content: center;
+    display: flex;
+    position: sticky;
+     top: 90vh;
+      width: 3rem; 
+      left:87%;
 }
 
 .btn-carrito:hover {
@@ -776,7 +799,7 @@ footer{
 }
 
 .btn-carrito .material-symbols-outlined {
-    font-size: 23px;
+    font-size: 2rem;
     color: #F5C800;
 }
 
@@ -795,6 +818,22 @@ footer{
     border-radius: 0.5rem !important;
 }
 
+/* AGREGAR CANTIDAD */
+.cantidadDeComida input{
+    background-color: rgba(0, 0, 0, 0.74);
+    color: #F5C800;
+}
+
+.noStock{
+    display: flex;
+    justify-content: center;
+    color: rgb(12, 10, 10);
+    text-shadow: rgba(248, 38, 38, 0.959) -1px -4px 42px;
+    
+}
+.main-basura{
+    max-width: 90vw;
+}
 @media (max-width: 650px) {
     body {
         background-image: url(../imgs/fondo-pared-ladrillo-grunge.jpg);
@@ -839,9 +878,11 @@ footer{
     h5 {
         font-size: 25px;
     }
+  
 }
 
 @media (max-width: 991px) {
+
     .table th{
         width: 45% !important;
         font-size: 17px;
@@ -850,6 +891,7 @@ footer{
     .table td{
         font-size: 17px;
     }
+
     .navbar-nav {
         align-items: center;
     }

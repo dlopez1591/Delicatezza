@@ -10,15 +10,15 @@ public class BebidaPedidoDTO {
     private long id;
     private int cantidad;
     private Double precioPorCantidad;
-    private Bebida bebida;
-    private Pedido pedido;
+    private String bebida;
+    private long pedido_id;
 
     public BebidaPedidoDTO(BebidaPedido bebidaPedido){
         this.id = bebidaPedido.getId();
         this.cantidad= bebidaPedido.getCantidad();
         this.precioPorCantidad= bebidaPedido.getPrecioPorCantidad();
-        this.bebida=bebidaPedido.getBebida();
-        this.pedido= bebidaPedido.getPedido();
+        this.bebida=bebidaPedido.getBebida().getNombre();
+        this.pedido_id= bebidaPedido.getPedido().getId();
     }
 
     public long getId() {
@@ -33,11 +33,11 @@ public class BebidaPedidoDTO {
         return precioPorCantidad;
     }
 
-    public Bebida getBebida() {
+    public String getBebida() {
         return bebida;
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    public long getPedido_id() {
+        return pedido_id;
     }
 }
