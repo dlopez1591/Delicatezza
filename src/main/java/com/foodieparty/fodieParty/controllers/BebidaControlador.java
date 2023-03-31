@@ -50,6 +50,6 @@ public class BebidaControlador {
             @RequestParam long id,
             @RequestParam long cant
             ){
-            return bebidaRepositorio.findById(id).get().tieneStock(cant);
+            return bebidaServicio.stockListaBebidas(id,cant);
     }
 }

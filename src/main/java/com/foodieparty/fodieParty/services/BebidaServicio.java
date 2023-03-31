@@ -23,4 +23,8 @@ public interface BebidaServicio {
              Double precio
     );
     void save(Bebida bebida);
+    Boolean stockListaBebidas(
+             long id,
+             long cant
+    );
 }

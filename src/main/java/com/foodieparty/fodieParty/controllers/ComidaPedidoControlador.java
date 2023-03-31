@@ -26,6 +26,5 @@ public class ComidaPedidoControlador {
     @GetMapping("/comidaPedidos/{id}")
     public Optional<ComidaPedidoDTO> getComidaPedidoPorId(@PathVariable Long id){
         return comidaPedidoServicio.getComidaPedidoPorId(id);
-
     }
 }

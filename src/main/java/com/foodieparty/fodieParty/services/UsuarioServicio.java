@@ -5,6 +5,7 @@ import com.foodieparty.fodieParty.models.Usuario;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -19,5 +20,6 @@ public interface UsuarioServicio {
     void save(Usuario usuario);
     ResponseEntity<Object> borrarUsuario(long id);
     UsuarioDTO getUsuarioAutenticado(Authentication authentication);
+    ResponseEntity<Object> actualizarUsuario(@RequestBody Usuario usuario);
 
 }

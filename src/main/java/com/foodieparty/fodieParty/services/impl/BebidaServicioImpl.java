@@ -73,4 +73,9 @@ public class BebidaServicioImpl implements BebidaServicio {
     public void save(Bebida bebida) {
         bebidaRepositorio.save(bebida);
     }
+
+    @Override
+    public Boolean stockListaBebidas(long id, long cant) {
+        return bebidaRepositorio.findById(id).get().tieneStock(cant);
+    }
 }

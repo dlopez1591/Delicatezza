@@ -51,6 +51,22 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     }
 
     @Override
+    public ResponseEntity<Object> actualizarUsuario(Usuario usuario) {
+        Optional<Usuario> usuarioExistente = usuarioRepositorio.findById(usuario.getId());
+        if(usuarioExistente.isPresent()) {
+            Usuario usuarioActualizado = usuarioExistente.get();
+            usuarioActualizado.setNombre(usuario.getNombre());
+            usuarioActualizado.setApellido(usuario.getApellido());
+            usuarioActualizado.setEmail(usuario.getEmail());
+            usuarioActualizado.setTelefono(usuario.getTelefono());
+            usuarioRepositorio.save(usuarioActualizado);
+            return new ResponseEntity<>("Usuario actualizado", HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
+
+    }
+
+    @Override
     public Optional<UsuarioDTO> getUsuarioPorId(Long id) {
         return usuarioRepositorio.findById(id).map(UsuarioDTO::new);
     }

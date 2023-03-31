@@ -62,51 +62,16 @@ public class UsuarioControlador {
     }
 
 
- //   @PostMapping("/borrar/usuario")
-   // public ResponseEntity<Object> borrarUsuario(@RequestParam long id){
-     //   usuarioServicio.borrarUsuario(id);
-
-
-    // revisar este metodo aparentemente no esta guardando en la base de datos!
-
-
-    //metodo para editar un usuario OJO REVISAR Y VERIFICAR SERVICIOS E IMPLEMENTACION:
+    @PatchMapping("/borrar/usuario")
+    public ResponseEntity<Object> borrarUsuario(@RequestParam long id) {
+        usuarioServicio.borrarUsuario(id);
+        return new ResponseEntity<>("Usuario borrado", HttpStatus.ACCEPTED);
+    }
 
     @PutMapping("/actualizar/usuario")
     public ResponseEntity<Object> actualizarUsuario(@RequestBody Usuario usuario) {
-        Optional<Usuario> usuarioExistente = usuarioRepositorio.findById(usuario.getId());
-        if(usuarioExistente.isPresent()) {
-            Usuario usuarioActualizado = usuarioExistente.get();
-            usuarioActualizado.setNombre(usuario.getNombre());
-            usuarioActualizado.setApellido(usuario.getApellido());
-            usuarioActualizado.setEmail(usuario.getEmail());
-            usuarioActualizado.setTelefono(usuario.getTelefono());
-            usuarioRepositorio.save(usuarioActualizado);
-            return new ResponseEntity<>("Usuario actualizado", HttpStatus.ACCEPTED);
-        }
-        return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
+        return usuarioServicio.actualizarUsuario(usuario);
     }
 
-   /* @Transactional
-    @DeleteMapping("/borrar/usuario")
-    public ResponseEntity<Object> borrarUsuario(@RequestParam long id){
-        Usuario usuario=usuarioRepositorio.findById(id).orElse(null);
-        List<Pedido> pedidos=usuario.getPedidos().stream().collect(toList());
-        List<Reserva> reservas=usuario.getReservas().stream().collect(toList());
-        if (pedidos!=null){
-            for (Pedido pedido:pedidos){
-                pedidoRepositorio.deleteById(pedido.getId());
-            }
-        }
-        if (reservas!=null){
-            for (Reserva reserva:reservas){
-                reservaRepositorio.deleteById(reserva.getId());
-            }
-        }
-        usuarioRepositorio.deleteById(id);
-
-        return new ResponseEntity<>("Usuario borrado", HttpStatus.ACCEPTED);
-    }
-    */
 
 }
