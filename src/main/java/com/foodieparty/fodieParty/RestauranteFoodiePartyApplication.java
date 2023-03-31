@@ -16,6 +16,8 @@ import java.util.List;
 
 @SpringBootApplication
 public class RestauranteFoodiePartyApplication {
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -35,9 +37,11 @@ public class RestauranteFoodiePartyApplication {
 	) {
 		return (args) -> {
 //			public Usuario(String nombre, String apellido, String email, String contraseña, String telefono)
+
 			Usuario cosme = new Usuario("cosme","fulanito","cosme@fulanito.com", passwordEncoder.encode("cosme") ,"221314242");
 			usuarioRepositorio.save(cosme);
 			Usuario pepito = new Usuario("pepito","pepe","pepe@pepe.com",passwordEncoder.encode("pepe"),"1111");
+
 			usuarioRepositorio.save(pepito);
 			Usuario juan = new Usuario("juan", "cardenas", "juancardenas123@hotmail.com", passwordEncoder.encode("juan123"), "123456");
 			usuarioRepositorio.save(juan);

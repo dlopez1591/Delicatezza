@@ -1,12 +1,14 @@
 package com.foodieparty.fodieParty.services.impl;
 
 import com.foodieparty.fodieParty.dtos.UsuarioDTO;
+import com.foodieparty.fodieParty.models.Estado;
 import com.foodieparty.fodieParty.models.Usuario;
 import com.foodieparty.fodieParty.repositories.UsuarioRepositorio;
 import com.foodieparty.fodieParty.services.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,6 +28,26 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     @Override
     public Usuario findByEmail(String email) {
         return usuarioRepositorio.findByEmail(email);
+    }
+
+    @Override
+    public void save(Usuario usuario) {
+        usuarioRepositorio.save(usuario);
+    }
+
+    @Override
+    public ResponseEntity<Object> borrarUsuario(long id) {
+        Usuario usuario=usuarioRepositorio.findById(id).orElse(null);
+        usuario.setEstado(Estado.DESACTIVADA);
+        usuarioRepositorio.save(usuario);
+        return new ResponseEntity<>("Usuario borrado", HttpStatus.ACCEPTED);
+
+    }
+
+    @Override
+    public UsuarioDTO getUsuarioAutenticado(Authentication authentication) {
+        Usuario usuario=usuarioRepositorio.findByEmail(authentication.getName());
+        return new  UsuarioDTO(usuario);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.foodieparty.fodieParty.services.impl;
 
 import com.foodieparty.fodieParty.dtos.ComidaPedidoDTO;
+import com.foodieparty.fodieParty.models.ComidaPedido;
 import com.foodieparty.fodieParty.repositories.ComidaPedidoRepositorio;
 import com.foodieparty.fodieParty.services.ComidaPedidoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,10 @@ public class ComidaPedidoServicioImpl implements ComidaPedidoServicio {
     @Override
     public Optional<ComidaPedidoDTO> getComidaPedidoPorId(Long id) {
         return comidaPedidoRepositorio.findById(id).map(ComidaPedidoDTO::new);
+    }
+
+    @Override
+    public void save(ComidaPedido comidaPedido) {
+        comidaPedidoRepositorio.save(comidaPedido);
     }
 }

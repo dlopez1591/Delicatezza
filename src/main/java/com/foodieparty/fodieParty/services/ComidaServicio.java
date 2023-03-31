@@ -1,6 +1,8 @@
 package com.foodieparty.fodieParty.services;
 
 import com.foodieparty.fodieParty.dtos.ComidaDTO;
+import com.foodieparty.fodieParty.models.Comida;
+import com.foodieparty.fodieParty.models.ComidaPedido;
 import com.foodieparty.fodieParty.models.TipoComida;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,4 +23,5 @@ public interface ComidaServicio {
             Boolean disponibilidad,
             Double precio
     );
+    void save(Comida comida);
 }
