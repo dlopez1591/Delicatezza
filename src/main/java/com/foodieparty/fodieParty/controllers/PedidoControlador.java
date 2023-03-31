@@ -50,15 +50,15 @@ public class PedidoControlador {
     @Autowired
     private PedidosServicio pedidosServicio;
 
-    //    @GetMapping("/pedidos")
-//    public List<PedidoDTO> getPedidos(){
-//        return pedidosServicio.getPedidos();
-//    }
-
-    @GetMapping("/pedidos")
+        @GetMapping("/pedidos")
     public List<PedidoDTO> getPedidos(){
-        return pedidoRepositorio.findAll().stream().map(PedidoDTO::new).collect(toList());
+        return pedidosServicio.getPedidos();
     }
+
+//    @GetMapping("/pedidos")
+//    public List<PedidoDTO> getPedidos(){
+//        return pedidoRepositorio.findAll().stream().map(PedidoDTO::new).collect(toList());
+//    }
 
     @GetMapping("/pedido/{id}")
     public Optional<PedidoDTO> getPedidoPorId(@PathVariable Long id){
@@ -73,72 +73,73 @@ public class PedidoControlador {
     public ResponseEntity<Object> crearPedido(
             @RequestBody DetallePedidoDTO detallePedidoDTO,
             Authentication authentication) throws IOException, DocumentException {
-        Usuario usuario = usuarioRepositorio.findByEmail(authentication.getName());
+            return pedidosServicio.crearPedido(detallePedidoDTO,authentication);
+       // Usuario usuario = usuarioRepositorio.findByEmail(authentication.getName());
         //detallePedidoDTO:
         //  listaComidasId ----> [0]=idComida, [1]=cantidadSolicitada.
         //  listaBebidasId ----> [0]=idBebida, [1]=cantidadSolicitada.
 
         //Crear un nuevo pedido.
-        Pedido pedido = new Pedido(
-                detallePedidoDTO.getTipoRetiro(),
-                detallePedidoDTO.getDireccion(),
-                usuario);
+       // Pedido pedido = new Pedido(
+           //     detallePedidoDTO.getTipoRetiro(),
+          //      detallePedidoDTO.getDireccion(),
+         //       usuario);
         //Preparar variables para contabilizar el total y concatenar detalles del ticket.
-        List<FilaTabla> filaTablas = new ArrayList<>();
-        List<String> detalleTicket=new ArrayList<>();
-        Double total = 0.0;
+        //List<FilaTabla> filaTablas = new ArrayList<>();
+        //List<String> detalleTicket=new ArrayList<>();
+        //Double total = 0.0;
         //Recorrer la lista idComidaYCantidad
-        Comida comida;
-        ComidaPedido comidaPedido;
-        for(long[] idComidaYCantidad: detallePedidoDTO.getListaComidasId()){
-            comida = comidaRepositorio.findById(idComidaYCantidad[0]).get();
-            comidaPedido = new ComidaPedido((int)idComidaYCantidad[1],comida.getPrecio());
-            comida.agregarComidaPedido(comidaPedido);
-            pedido.agregarComidaPedido(comidaPedido);
-            comidaPedidoRepositorio.save(comidaPedido);
-            total+=comidaPedido.getPrecioPorCantidad();
-            detalleTicket.add(comida.getNombre()+" x "+idComidaYCantidad[1]+" = $"+comida.getPrecio()*idComidaYCantidad[1]);
-            FilaTabla fila = new FilaTabla(
-                    String.valueOf(idComidaYCantidad[1]),
-                    comida.getNombre(),
-                    String.valueOf(comida.getPrecio()),
-                    String.valueOf(comidaPedido.getPrecioPorCantidad()));
-            filaTablas.add(fila);
-        }
+        //Comida comida;
+        //ComidaPedido comidaPedido;
+        //for(long[] idComidaYCantidad: detallePedidoDTO.getListaComidasId()){
+            //comida = comidaRepositorio.findById(idComidaYCantidad[0]).get();
+            //comidaPedido = new ComidaPedido((int)idComidaYCantidad[1],comida.getPrecio());
+            //comida.agregarComidaPedido(comidaPedido);
+           // pedido.agregarComidaPedido(comidaPedido);
+            //comidaPedidoRepositorio.save(comidaPedido);
+            //total+=comidaPedido.getPrecioPorCantidad();
+           // detalleTicket.add(comida.getNombre()+" x "+idComidaYCantidad[1]+" = $"+comida.getPrecio()*idComidaYCantidad[1]);
+           // FilaTabla fila = new FilaTabla(
+             //       String.valueOf(idComidaYCantidad[1]),
+            //        comida.getNombre(),
+            //        String.valueOf(comida.getPrecio()),
+           //         String.valueOf(comidaPedido.getPrecioPorCantidad()));
+          //  filaTablas.add(fila);
+        //}
 
         //Recorrer la lista idBebidaYCantidad
-        Bebida bebida;
-        BebidaPedido bebidaPedido;
-        for(long[] idBebidaYCantidad: detallePedidoDTO.getListaBebidasId()){
-            bebida = bebidaRepositorio.findById(idBebidaYCantidad[0]).get();
-            bebidaPedido = new BebidaPedido((int)idBebidaYCantidad[1],bebida.getPrecio());
+        //Bebida bebida;
+        //BebidaPedido bebidaPedido;
+        //for(long[] idBebidaYCantidad: detallePedidoDTO.getListaBebidasId()){
+            //bebida = bebidaRepositorio.findById(idBebidaYCantidad[0]).get();
+            //bebidaPedido = new BebidaPedido((int)idBebidaYCantidad[1],bebida.getPrecio());
             //Si hay stock suficiente de bebida, reducir stock, sino error.
-            if(bebida.tieneStock(idBebidaYCantidad[1])){
-                bebida.reducirStock(idBebidaYCantidad[1]);
-            }else{
-                return new ResponseEntity<>("Stock insuficiente de "+bebida.getNombre(),HttpStatus.FORBIDDEN);
-            }
-            bebida.agregarBebidaPedido(bebidaPedido);
-            pedido.agregarBebidaPedido(bebidaPedido);
-            bebidaPedidoRepositorio.save(bebidaPedido);
-            total+=bebidaPedido.getPrecioPorCantidad();
-            detalleTicket.add(bebida.getNombre()+" x "+idBebidaYCantidad[1]+" = $"+bebida.getPrecio()*idBebidaYCantidad[1]);
-            FilaTabla fila = new FilaTabla(
-                    String.valueOf(idBebidaYCantidad[1]),
-                    bebida.getNombre(),
-                    String.valueOf(bebida.getPrecio()),
-                    String.valueOf(bebidaPedido.getPrecioPorCantidad()));
-            filaTablas.add(fila);
-        }
+            //if(bebida.tieneStock(idBebidaYCantidad[1])){
+             //   bebida.reducirStock(idBebidaYCantidad[1]);
+            //}else{
+             //   return new ResponseEntity<>("Stock insuficiente de "+bebida.getNombre(),HttpStatus.FORBIDDEN);
+           // }
+            //bebida.agregarBebidaPedido(bebidaPedido);
+           // pedido.agregarBebidaPedido(bebidaPedido);
+           // bebidaPedidoRepositorio.save(bebidaPedido);
+          //  total+=bebidaPedido.getPrecioPorCantidad();
+            //detalleTicket.add(bebida.getNombre()+" x "+idBebidaYCantidad[1]+" = $"+bebida.getPrecio()*idBebidaYCantidad[1]);
+           // FilaTabla fila = new FilaTabla(
+                  //  String.valueOf(idBebidaYCantidad[1]),
+                //    bebida.getNombre(),
+              //      String.valueOf(bebida.getPrecio()),
+            //        String.valueOf(bebidaPedido.getPrecioPorCantidad()));
+          //  filaTablas.add(fila);
+        //}
 
         //Crear un ticket para el pedido
-        TicketPedido ticketPedido = new TicketPedido(detalleTicket,total);
-        pedido.agregarTicketPedido(ticketPedido);
-        pedido.setPrecioTotal(total);
-        usuario.agregarPedido(pedido);
-        ticketPedidoRepositorio.save(ticketPedido);
-        pedidoRepositorio.save(pedido);
-        pedido.getComidaPedidos().forEach(c-> System.out.println(c.getComida().getNombre()));
+        //TicketPedido ticketPedido = new TicketPedido(detalleTicket,total);
+        //pedido.agregarTicketPedido(ticketPedido);
+        //pedido.setPrecioTotal(total);
+        //usuario.agregarPedido(pedido);
+        //ticketPedidoRepositorio.save(ticketPedido);
+        //pedidoRepositorio.save(pedido);
+        //pedido.getComidaPedidos().forEach(c-> System.out.println(c.getComida().getNombre()));
 
         //Crea el documento
 //        Document document = new Document(PageSize.A4, 36, 36, 90, 36);
@@ -155,10 +156,10 @@ public class PedidoControlador {
 //        }
 //        document.close();
 
-        GenerardorPdf generardorPdf = new GenerardorPdf();
-        generardorPdf.generarPdf(filaTablas,String.valueOf(total));
+        //GenerardorPdf generardorPdf = new GenerardorPdf();
+      //  generardorPdf.generarPdf(filaTablas,String.valueOf(total));
 
-        return new ResponseEntity<>("Pedido exitoso", HttpStatus.CREATED);
+    //    return new ResponseEntity<>("Pedido exitoso", HttpStatus.CREATED);
     }
 
     @PostMapping("/pedido/editarEstado")
@@ -166,14 +167,15 @@ public class PedidoControlador {
             @RequestParam long id,
             @RequestParam EstadoPedido nuevoEstado
     ){
-        Pedido pedido = pedidoRepositorio.findById(id).orElse(null);
-        if(pedido==null){
-            return new ResponseEntity<>("El pedido no existe",HttpStatus.FORBIDDEN);
-        }
-        EstadoPedido anteriorEstado = pedido.getEstadoPedido();
-        pedido.setEstadoPedido(nuevoEstado);
-        pedidoRepositorio.save(pedido);
-        return new ResponseEntity<>("Estado editado: de "+anteriorEstado+" a "+nuevoEstado,HttpStatus.ACCEPTED);
+            return pedidosServicio.editarEstado(id,nuevoEstado);
+//        Pedido pedido = pedidoRepositorio.findById(id).orElse(null);
+//        if(pedido==null){
+//            return new ResponseEntity<>("El pedido no existe",HttpStatus.FORBIDDEN);
+//        }
+//        EstadoPedido anteriorEstado = pedido.getEstadoPedido();
+//        pedido.setEstadoPedido(nuevoEstado);
+//        pedidoRepositorio.save(pedido);
+//        return new ResponseEntity<>("Estado editado: de "+anteriorEstado+" a "+nuevoEstado,HttpStatus.ACCEPTED);
     }
 
 

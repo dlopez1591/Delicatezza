@@ -56,11 +56,9 @@ public class ReservaControlador {
     }
     @GetMapping("/usuario/autenticado/reserva")
     public List<ReservaDTO> getReservasUsuario(Authentication authentication){
-
-
-          Usuario usuario=usuarioRepositorio.findByEmail(authentication.getName());
-          return usuario.getReservas().stream().map(ReservaDTO::new).collect(toList());
-
+//          Usuario usuario=usuarioRepositorio.findByEmail(authentication.getName());
+//          return usuario.getReservas().stream().map(ReservaDTO::new).collect(toList());
+            return reservaServicio.getReservasUsuario(authentication);
     }
     @Transactional
     @PostMapping("/crear/reserva")
@@ -73,30 +71,30 @@ public class ReservaControlador {
        /*
         preguntar return reservaServicio.crearReserva(authentication,cantidadPersonas,fechaString);
 */
-        Usuario usuario = usuarioRepositorio.findByEmail(authentication.getName());
-        LocalDate fecha = LocalDate.parse(fechaString);
-        Integer capacidadOcupada = 0;
-        Capacidad capacidad = capacidadRepositorio.findAll().get(0);
-        List<Reserva> reservaALaFecha = reservaRepositorio.findAll()
-                .stream()
-                .filter(r-> r.getFecha().getDayOfYear() == fecha.getDayOfYear())
-                .collect(toList());
-        for(Reserva reserva: reservaALaFecha){capacidadOcupada+=reserva.getCantidad_De_Personas();}
-        if(!capacidadRepositorio.findAll().get(0).tieneCapacidad(capacidadOcupada,cantidadPersonas)){
-            return new ResponseEntity<>("No hay capacidad disponible",HttpStatus.FORBIDDEN);
-        }
-
-        Reserva reserva = new Reserva(fecha,cantidadPersonas.byteValue(),true);
-        TicketReserva ticketReserva = new TicketReserva(
-          "fecha: "+fecha+", personas: "+cantidadPersonas, capacidad.getPrecioPorReserva()
-        );
-        reserva.agregarTicketReserva(ticketReserva);
-        usuario.agregarReserva(reserva);
-        ticketReservaRepositorio.save(ticketReserva);
-        reservaRepositorio.save(reserva);
-        usuarioRepositorio.save(usuario);
-        return new ResponseEntity<>("Reserva realizada con exito",HttpStatus.ACCEPTED);
-
+//        Usuario usuario = usuarioRepositorio.findByEmail(authentication.getName());
+//        LocalDate fecha = LocalDate.parse(fechaString);
+//        Integer capacidadOcupada = 0;
+//        Capacidad capacidad = capacidadRepositorio.findAll().get(0);
+//        List<Reserva> reservaALaFecha = reservaRepositorio.findAll()
+//                .stream()
+//                .filter(r-> r.getFecha().getDayOfYear() == fecha.getDayOfYear())
+//                .collect(toList());
+//        for(Reserva reserva: reservaALaFecha){capacidadOcupada+=reserva.getCantidad_De_Personas();}
+//        if(!capacidadRepositorio.findAll().get(0).tieneCapacidad(capacidadOcupada,cantidadPersonas)){
+//            return new ResponseEntity<>("No hay capacidad disponible",HttpStatus.FORBIDDEN);
+//        }
+//
+//        Reserva reserva = new Reserva(fecha,cantidadPersonas.byteValue(),true);
+//        TicketReserva ticketReserva = new TicketReserva(
+//          "fecha: "+fecha+", personas: "+cantidadPersonas, capacidad.getPrecioPorReserva()
+//        );
+//        reserva.agregarTicketReserva(ticketReserva);
+//        usuario.agregarReserva(reserva);
+//        ticketReservaRepositorio.save(ticketReserva);
+//        reservaRepositorio.save(reserva);
+//        usuarioRepositorio.save(usuario);
+//        return new ResponseEntity<>("Reserva realizada con exito",HttpStatus.ACCEPTED);
+    return reservaServicio.crearReserva(authentication,cantidadPersonas,fechaString);
 
     }
 
@@ -104,16 +102,7 @@ public class ReservaControlador {
     @PutMapping("/reservas/{id}")
 
     public ResponseEntity<String> actualizarEstadoReserva(@PathVariable Long id) {
-        Optional<Reserva> optionalReserva = reservaRepositorio.findById(id);
-
-        if (optionalReserva.isPresent()) {
-            Reserva reserva = optionalReserva.get();
-            reserva.setEstado(!reserva.getEstado());
-            reservaRepositorio.save(reserva);
-            return new ResponseEntity<>("Estado de reserva actualizado con éxito", HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("No se encontró la reserva con id " + id, HttpStatus.NOT_FOUND);
-        }
+        return reservaServicio.actualizarEstadoReserva(id);
     }
 
 

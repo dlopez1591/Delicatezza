@@ -15,7 +15,7 @@ public class GenerardorPdf {
             Document document = new Document();
             document.setMargins(20,20,40,40);
             //Create OutputStream instance.
-            OutputStream outputStream = new FileOutputStream(new File("TestTableFile.pdf"));
+            OutputStream outputStream = new FileOutputStream(new File("TicketPedido.pdf"));
             //Create PDFWriter instance.
             PdfWriter.getInstance(document, outputStream);
             //Open the document.

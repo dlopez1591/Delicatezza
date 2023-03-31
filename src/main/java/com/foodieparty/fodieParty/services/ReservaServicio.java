@@ -25,4 +25,5 @@ public interface ReservaServicio {
              String fechaString
     );
     void save(Reserva reserva);
+    ResponseEntity<String> actualizarEstadoReserva(Long id);
 }

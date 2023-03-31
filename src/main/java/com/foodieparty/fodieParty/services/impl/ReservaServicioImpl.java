@@ -28,7 +28,7 @@ import java.util.Optional;
 import static java.util.stream.Collectors.toList;
 
 @Service
-public class ReservaServicioImpl implements ReservaServicio {
+ public class ReservaServicioImpl implements ReservaServicio {
     @Autowired
     private ReservaRepositorio reservaRepositorio;
     @Autowired
@@ -84,5 +84,19 @@ public class ReservaServicioImpl implements ReservaServicio {
     @Override
     public void save(Reserva reserva) {
         reservaRepositorio.save(reserva);
+    }
+
+    @Override
+    public ResponseEntity<String> actualizarEstadoReserva(Long id) {
+        Optional<Reserva> optionalReserva = reservaRepositorio.findById(id);
+
+        if (optionalReserva.isPresent()) {
+            Reserva reserva = optionalReserva.get();
+            reserva.setEstado(!reserva.getEstado());
+            reservaRepositorio.save(reserva);
+            return new ResponseEntity<>("Estado de reserva actualizado con éxito", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No se encontró la reserva con id " + id, HttpStatus.NOT_FOUND);
+        }
     }
 }
