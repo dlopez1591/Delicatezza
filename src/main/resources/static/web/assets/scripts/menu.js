@@ -8,7 +8,8 @@ createApp({
        postre: undefined,
        bebidas: undefined,
        cantidadSolicitada: 1,
-       comidaEnMesa: undefined
+       comidaEnMesa: undefined,
+       listitaPedido: undefined,
       }
     },
     created(){
@@ -38,11 +39,24 @@ createApp({
       alertAgregar(comida){
         this.comidaEnMesa = "",
         this.comidaEnMesa = comida
-        console.log("comida en mesa: ",this.comidaEnMesa,
+        console.log("comida en mesa: ",this.comidaEnMesa.nombre,
                     " | id de la comida",this.comidaEnMesa.id)
       },
       añadirAlCarrito(idComida,cantidadSolicitada){
-        console.log("idComida: ",idComida,"cantidad Solicitada", cantidadSolicitada)
+        console.log("idComida: ",idComida," | cantidad Solicitada: ", cantidadSolicitada)
+        let miniPedido = [ idComida , cantidadSolicitada]
+        this.listitaPedido = this.listitaPedido + "," + miniPedido
+
+        if(this.listitaPedido.length==0){
+          this.listitaPedido = miniPedido
+        }else{
+          console.log(this.listitaPedido)
+        }
+
+        /* agregar a lista this.equis ++ array con productos?? */
+        
+        /* sweet con temporisador */
+
       }
 
     }
