@@ -31,7 +31,6 @@ public class Pedido {
 
     public Pedido(){
     }
-
     public Pedido(LocalDateTime fecha, double precioTotal, TipoRetiro tipoRetiro, String direccion, EstadoPedido estadoPedido) {
         this.fecha = fecha;
         this.precioTotal = precioTotal;

@@ -3,7 +3,9 @@ package com.foodieparty.fodieParty.dtos;
 import com.foodieparty.fodieParty.models.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toSet;
 
@@ -17,7 +19,8 @@ public class PedidoDTO {
     private Set<ComidaPedidoDTO> comidaPedidos;
     private Set<BebidaPedidoDTO> bebidaPedidos;
 
-    private TicketPedidoDTO ticketPedido;
+    private List<String> nombreComidas;
+    private long ticketPedido_id;
     public PedidoDTO(Pedido pedido){
         this.id= pedido.getId();
         this.localDateTime=pedido.getFecha();
@@ -25,9 +28,11 @@ public class PedidoDTO {
         this.tipoRetiro=pedido.getTipoRetiro();
         this.direccion= pedido.getDireccion();
         this.estadoPedido=pedido.getEstadoPedido();
-        this.comidaPedidos=pedido.getComidaPedidos().stream().map(ComidaPedidoDTO::new).collect(toSet());
-        this.bebidaPedidos=pedido.getBebidaPedidos().stream().map(BebidaPedidoDTO::new).collect(toSet());
-        this.ticketPedido=new TicketPedidoDTO(pedido.getTicketPedido());
+        this.comidaPedidos=pedido.getComidaPedidos().stream().map(ComidaPedidoDTO::new).collect(Collectors.toSet());
+        this.bebidaPedidos=pedido.getBebidaPedidos().stream().map(BebidaPedidoDTO::new).collect(Collectors.toSet());
+        this.ticketPedido_id=pedido.getTicketPedido().getId();
+        this.nombreComidas=pedido.getComidaPedidos().stream().map(c->c.getComida().getNombre()).collect(Collectors.toList());
+
     }
 
     public long getId() {
@@ -60,5 +65,13 @@ public class PedidoDTO {
 
     public Set<BebidaPedidoDTO> getBebidaPedidos() {
         return bebidaPedidos;
+    }
+
+    public long getTicketPedido_id() {
+        return ticketPedido_id;
+    }
+
+    public List<String> getNombreComidas() {
+        return nombreComidas;
     }
 }

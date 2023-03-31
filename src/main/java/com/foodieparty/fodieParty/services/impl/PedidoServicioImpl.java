@@ -5,8 +5,9 @@ import com.foodieparty.fodieParty.models.Usuario;
 import com.foodieparty.fodieParty.repositories.PedidoRepositorio;
 import com.foodieparty.fodieParty.repositories.UsuarioRepositorio;
 import com.foodieparty.fodieParty.services.PedidosServicio;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class PedidoServicioImpl implements PedidosServicio {
 
     @Override
     public List<PedidoDTO> getPedidosUsuario(Authentication authentication) {
-        Usuario usuario=usuarioRepositorio.findByEmail(authentication.name());
+        Usuario usuario=usuarioRepositorio.findByEmail(authentication.getName());
         return usuario.getPedidos().stream().map(PedidoDTO::new).collect(toList());
     }
 }

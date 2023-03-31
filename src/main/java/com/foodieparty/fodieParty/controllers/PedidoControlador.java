@@ -7,10 +7,11 @@ import com.foodieparty.fodieParty.models.*;
 import com.foodieparty.fodieParty.repositories.*;
 
 import com.foodieparty.fodieParty.services.PedidosServicio;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,7 +58,7 @@ public class PedidoControlador {
     public ResponseEntity<Object> crearPedido(
             @RequestBody DetallePedidoDTO detallePedidoDTO,
             Authentication authentication){
-        Usuario usuario = usuarioRepositorio.findByEmail("pepe@pepe.com");
+        Usuario usuario = usuarioRepositorio.findByEmail(authentication.getName());
         //detallePedidoDTO:
         //  listaComidasId ----> [0]=idComida, [1]=cantidadSolicitada.
         //  listaBebidasId ----> [0]=idBebida, [1]=cantidadSolicitada.
@@ -67,24 +68,32 @@ public class PedidoControlador {
                 detallePedidoDTO.getTipoRetiro(),
                 detallePedidoDTO.getDireccion(),
                 usuario);
-
+        pedidoRepositorio.save(pedido);
         //Preparar variables para contabilizar el total y concatenar detalles del ticket.
         List<String> detalleTicket=new ArrayList<>();
         Double total = 0.0;
         //Recorrer la lista idComidaYCantidad
+        Comida comida;
+        ComidaPedido comidaPedido;
         for(long[] idComidaYCantidad: detallePedidoDTO.getListaComidasId()){
-            Comida comida = comidaRepositorio.findById(idComidaYCantidad[0]).orElse(null);
-            ComidaPedido comidaPedido = new ComidaPedido((int)idComidaYCantidad[1],comida.getPrecio());
+            comida = comidaRepositorio.findById(idComidaYCantidad[0]).orElse(null);
+            comidaPedido = new ComidaPedido((int)idComidaYCantidad[1],comida.getPrecio());
             comida.agregarComidaPedido(comidaPedido);
             pedido.agregarComidaPedido(comidaPedido);
             comidaPedidoRepositorio.save(comidaPedido);
+            comidaRepositorio.save(comida);
+            pedidoRepositorio.save(pedido);
+            pedido.getComidaPedidos().forEach(c-> System.out.println(c.getComida().getNombre()));
             total+=comidaPedido.getPrecioPorCantidad();
             detalleTicket.add(comida.getNombre()+" x "+idComidaYCantidad[1]+" = $"+comida.getPrecio()*idComidaYCantidad[1]);
         }
+
         //Recorrer la lista idBebidaYCantidad
+        Bebida bebida;
+        BebidaPedido bebidaPedido;
         for(long[] idBebidaYCantidad: detallePedidoDTO.getListaBebidasId()){
-            Bebida bebida = bebidaRepositorio.findById(idBebidaYCantidad[0]).orElse(null);
-            BebidaPedido bebidaPedido = new BebidaPedido((int)idBebidaYCantidad[1],bebida.getPrecio());
+            bebida = bebidaRepositorio.findById(idBebidaYCantidad[0]).orElse(null);
+            bebidaPedido = new BebidaPedido((int)idBebidaYCantidad[1],bebida.getPrecio());
             //Si hay stock suficiente de bebida, reducir stock, sino error.
             if(bebida.tieneStock(idBebidaYCantidad[1])){
                 bebida.reducirStock(idBebidaYCantidad[1]);
@@ -94,18 +103,20 @@ public class PedidoControlador {
             bebida.agregarBebidaPedido(bebidaPedido);
             pedido.agregarBebidaPedido(bebidaPedido);
             bebidaPedidoRepositorio.save(bebidaPedido);
+            bebidaRepositorio.save(bebida);
+            pedidoRepositorio.save(pedido);
             total+=bebidaPedido.getPrecioPorCantidad();
             detalleTicket.add(bebida.getNombre()+" x "+idBebidaYCantidad[1]+" = $"+bebida.getPrecio()*idBebidaYCantidad[1]);
         }
 
         //Crear un ticket para el pedido
         TicketPedido ticketPedido = new TicketPedido(detalleTicket,total);
-
         pedido.agregarTicketPedido(ticketPedido);
         pedido.setPrecioTotal(total);
         usuario.agregarPedido(pedido);
         ticketPedidoRepositorio.save(ticketPedido);
         pedidoRepositorio.save(pedido);
+
         return new ResponseEntity<>("Pedido exitoso", HttpStatus.CREATED);
     }
 
@@ -123,5 +134,8 @@ public class PedidoControlador {
         pedidoRepositorio.save(pedido);
         return new ResponseEntity<>("Estado editado: de "+anteriorEstado+" a "+nuevoEstado,HttpStatus.ACCEPTED);
     }
+
+
+
 
 }
