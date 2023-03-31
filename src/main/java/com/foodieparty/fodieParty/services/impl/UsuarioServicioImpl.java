@@ -8,6 +8,7 @@ import com.foodieparty.fodieParty.services.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,6 +42,12 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         usuarioRepositorio.save(usuario);
         return new ResponseEntity<>("Usuario borrado", HttpStatus.ACCEPTED);
 
+    }
+
+    @Override
+    public UsuarioDTO getUsuarioAutenticado(Authentication authentication) {
+        Usuario usuario=usuarioRepositorio.findByEmail(authentication.getName());
+        return new  UsuarioDTO(usuario);
     }
 
     @Override

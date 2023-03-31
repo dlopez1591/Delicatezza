@@ -3,6 +3,7 @@ package com.foodieparty.fodieParty.services;
 import com.foodieparty.fodieParty.dtos.UsuarioDTO;
 import com.foodieparty.fodieParty.models.Usuario;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,5 +18,6 @@ public interface UsuarioServicio {
     Usuario findByEmail(String email);
     void save(Usuario usuario);
     ResponseEntity<Object> borrarUsuario(long id);
+    UsuarioDTO getUsuarioAutenticado(Authentication authentication);
 
 }

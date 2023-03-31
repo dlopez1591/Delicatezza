@@ -13,6 +13,7 @@ import com.foodieparty.fodieParty.services.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -43,11 +44,10 @@ public class UsuarioControlador {
     public Optional<UsuarioDTO> getUsuarioPorId(@PathVariable Long id){
         return usuarioServicio.getUsuarioPorId(id);
     }
-    //@GetMapping("/usuario/autenticado/pedido")
-    //public List<UsuarioDTO> getUsuarioAutenticado(Authentication authentication){
-    //     Usuario usuario=reservaRepositorio.findByEmail(authentication.getName());
-    //      return usuario;
-    //}
+    @GetMapping("/usuario/autenticado/pedido")
+    public UsuarioDTO getUsuarioAutenticado(Authentication authentication){
+         return usuarioServicio.getUsuarioAutenticado(authentication);
+    }
     @PostMapping("/crear/usuario")
     public ResponseEntity<Object> registrarUsuario(@RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String email, @RequestParam String password,@RequestParam String telefono) {
