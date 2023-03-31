@@ -7,6 +7,7 @@
 body {
     min-width: 90vw;
     min-height: 90vh;
+    /* background: black; */
     background-image: url(../imgs/3d-render-focos-pared-ladrillo-grunge.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,14 +16,45 @@ body {
     cursor: url(../imgs/hotdog-icon.png), auto;
 }
 
-/* .navbar{
-    background-color: transparent !important;
-    
+header{
+    background-image: url(/assets/imgs/cervezahe.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    min-height: 30vh;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.500);;
+}
+/* .background-carrusel-1{
+    background-image: url(/assets/imgs/pexels-jonathan-borba-2983101.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+.background-carrusel-2{
+    background-image: url(/assets/imgs/cerveza3.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+.background-carrusel-3{
+    background-image: url(/assets/imgs/postres.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 } */
+.a2{
+    text-decoration: none !important;
+}
 .nav-link {
-    color: white;
+    display: flex;
+    justify-content: center;
     font-family: 'Allerta Stencil', sans-serif;
-    font-size: 15px;
+    background: rgba(0, 0, 0, 0.700) !important;
+    font-size: 17px;
     text-align: center;
     border: 1px solid rgba(255, 0, 0, 0.500);
     box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
@@ -33,12 +65,17 @@ body {
     -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
 }
-.active{
+.bi{
+    padding-right: 4px !important;
+}
+.active-1{
     color: rgba(236, 217, 45, 0.861) !important;
     box-shadow: rgba(236, 217, 45, 0.861) -1px -4px 43px;
     border: 1px solid rgba(236, 217, 45, 0.861);
 }
-
+.material-symbols-outlined{
+    font-size: 30px !important;
+}
 .img-ham {
     width: 6rem;
 }
@@ -251,8 +288,41 @@ body {
 }
 
 /* BUTTON */
-
-
+.modal-content {
+    background-color: #120f01e8;
+    border: 1px solid rgba(255, 0, 0, 0.500);
+    box-shadow: rgb(233 12 12 / 30%) 0px 4px 29px;
+    text-shadow: 1px 1px 2px var(--bs-orange);
+}
+.modal {
+    text-shadow: none;
+    color: white;
+}
+.modal-header{
+    border-bottom: none;
+}
+.modal-content {
+    display: flex;
+    align-items: center;
+    background-color: #120f01f9;
+    border: 1px solid rgba(255, 0, 0, 0.500);
+    box-shadow: rgb(233 12 12 / 30%) 0px 4px 29px;
+    text-shadow: 1px 1px 2px var(--bs-orange);
+}
+.modal-body{
+    border-top: 1px solid rgba(255, 0, 0, 0.500);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.500);
+    text-decoration: none;
+}
+.modal-body p{
+    margin-left: 16px;
+}
+.modal-body a{
+    margin-left: 16px;
+}
+.modal-footer{
+    border-top: none !important;
+}
 /* "LOGOXD" */
 .img {
     width: 20rem;
@@ -347,7 +417,6 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    border-radius: 7px 7px 7px 7px;
 }
 
 
@@ -599,20 +668,18 @@ h5 {
 
 .media-icon .media-li .media-a {
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     display: inline-block;
-    border-radius: 10px;
+    border-radius: 1px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
     color: #fff;
     font-size: 2em;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+    /* border: 1px solid rgba(255, 0, 0, 0.500); */
+    box-shadow: rgba(236, 217, 45, 0.200) -1px -4px 20px;
     backdrop-filter: blur(2px);
     transition: 0.5s;
     overflow: hidden;
@@ -638,7 +705,7 @@ h5 {
     transform: skewX(45deg) translateX(-150px);
 }
 
-footer {
+/* footer {
     min-height: 15vh;
     background-color: #000000a6;
     text-shadow: 1px 1px 2px var(--bs-orange);
@@ -649,6 +716,17 @@ footer {
     box-shadow: rgb(233 12 12 / 30%) 0px 4px 29px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
+} */
+footer{
+    background-image: url(/assets/imgs/cervezahe.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    min-height: 30vh;
+    border-top: 1px solid rgba(255, 0, 0, 0.500);;
+    font-size: 20px;
+    text-shadow: 1px 1px 2px var(--bs-orange);
 }
 
 .imgs {
@@ -664,10 +742,6 @@ footer {
 .modal {
     text-shadow: none;
     color: white;
-}
-
-.modal-content {
-    background-color: #0000003b;
 }
 
 .p {
@@ -701,10 +775,6 @@ footer {
 /* FINAL FOOTER */
 
 @media (max-width: 650px) {
-    body {
-        background-image: url(../imgs/fondo-pared-ladrillo-grunge.jpg);
-    }
-
     .nav-item {
         width: 50% !important;
     }

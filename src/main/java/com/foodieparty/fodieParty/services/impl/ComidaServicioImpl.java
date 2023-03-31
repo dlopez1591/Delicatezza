@@ -2,6 +2,7 @@ package com.foodieparty.fodieParty.services.impl;
 
 import com.foodieparty.fodieParty.dtos.ComidaDTO;
 import com.foodieparty.fodieParty.models.Comida;
+import com.foodieparty.fodieParty.models.ComidaPedido;
 import com.foodieparty.fodieParty.models.TipoComida;
 import com.foodieparty.fodieParty.repositories.ComidaRepositorio;
 import com.foodieparty.fodieParty.services.ComidaServicio;
@@ -62,5 +63,10 @@ public class ComidaServicioImpl implements ComidaServicio {
         } catch (Exception e) {
             return new ResponseEntity<>("Error al cargar la imagen",HttpStatus.FORBIDDEN);
         }
+    }
+
+    @Override
+    public void save(Comida comida) {
+        comidaRepositorio.save(comida);
     }
 }

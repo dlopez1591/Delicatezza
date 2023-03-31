@@ -18,20 +18,19 @@ body {
 /* button:hover{
     cursor: url(../imgs/hot-dog-icon\ \(2\).png), auto;
 }
-a:hover{
-    cursor: url(../imgs/hot-dog-icon\ \(2\).png), auto;
-}
-footer:hover{
-    cursor: url(../imgs/hot-dog-icon\ \(2\).png), auto;
-} */
-/* .url{cursor:url(../assets/imgs/hot-dog-icon.png), auto;} */
 
-/* .logo {
-    width: 8rem;
-    font-size: 25px;
-    text-shadow: 2px 4px 4px var(--bs-orange);
-    
-} */
+header{
+    background-image: url(/assets/imgs/bebida-sin-alcoho.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    min-height: 30vh;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.500);;
+}
+.main-basura{
+    max-width: 90vw;
+}
 
 /* "LOGOXD" */
 .img {
@@ -254,20 +253,18 @@ h5 {
 
 .media-icon .media-li .media-a {
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     display: inline-block;
-    border-radius: 10px;
+    border-radius: 1px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
     color: #fff;
     font-size: 2em;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+    /* border: 1px solid rgba(255, 0, 0, 0.500); */
+    /* box-shadow: rgba(236, 217, 45, 0.200) -1px -4px 20px; */
     backdrop-filter: blur(2px);
     transition: 0.5s;
     overflow: hidden;
@@ -293,7 +290,7 @@ h5 {
     transform: skewX(45deg) translateX(-150px);
 }
 
-footer {
+/* footer {
     min-height: 15vh;
     background-color: #000000a6;
     text-shadow: 1px 1px 2px var(--bs-orange);
@@ -303,6 +300,17 @@ footer {
     box-shadow: rgb(233 12 12 / 30%) 0px 4px 29px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
+} */
+footer{
+    background-image: url(/assets/imgs/bebida-sin-alcoho.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    min-height: 30vh;
+    border-top: 1px solid rgba(255, 0, 0, 0.500);;
+    font-size: 20px;
+    text-shadow: 1px 1px 2px var(--bs-orange);
 }
 
 .imgs {
@@ -319,9 +327,30 @@ footer {
     text-shadow: none;
     color: white;
 }
-
+.modal-header{
+    border-bottom: none;
+}
 .modal-content {
-    background-color: #0000003b;
+    display: flex;
+    align-items: center;
+    background-color: #120f01f9;
+    border: 1px solid rgba(255, 0, 0, 0.500);
+    box-shadow: rgb(233 12 12 / 30%) 0px 4px 29px;
+    text-shadow: 1px 1px 2px var(--bs-orange);
+}
+.modal-body{
+    border-top: 1px solid rgba(255, 0, 0, 0.500);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.500);
+    text-decoration: none;
+}
+.modal-body p{
+    margin-left: 16px;
+}
+.modal-body a{
+    margin-left: 16px;
+}
+.modal-footer{
+    border-top: none !important;
 }
 
 .p {
@@ -356,8 +385,23 @@ footer {
 
 /* card Comida */
 
-.seccionComida {
-    /* padding: 1rem; */
+
+.table{
+    color: #F5C800;
+    border: 1px solid rgba(255, 0, 0, 0.500);
+    box-shadow: rgb(233 12 12 / 15%) -1px -4px 30px;
+    background: rgba(0, 0, 0, 0.728) !important;
+    max-width: 65rem;
+    margin-top: 2rem;
+}
+.table th{
+    width: 45% !important;
+    font-size: 22px;
+    border-right: 1px solid rgba(255, 0, 0, 0.500) !important;
+}
+.table td{
+    font-size: 20px;
+
 }
 
 .cardComida {
@@ -412,14 +456,16 @@ footer {
 
 /* navbar */
 .nav-link {
-    color: white;
+    
+    display: flex;
+    justify-content: center;
     font-family: 'Allerta Stencil', sans-serif;
-    font-size: 15px;
+    font-size: 18px;
+    padding-left: 2px;
     text-align: center;
     border: 1px solid rgba(255, 0, 0, 0.500);
     box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
     color: var(--bs-orange);
-    /* text-shadow: 2px 4px 4px  #F5C800; */
     font-family: 'Allerta Stencil', sans-serif;
     background: 50% 100%/50% 50% no-repeat radial-gradient(ellipse at bottom, #F5C800, transparent, transparent);
     -webkit-background-clip: text;
@@ -428,15 +474,35 @@ footer {
 }
 
 
+.bi{
+    padding-right: 4px !important;
+}
+.active{
+    color: rgba(236, 217, 45, 0.861) !important;
+    box-shadow: rgba(236, 217, 45, 0.861) -1px -4px 43px;
+    border: 1px solid rgba(236, 217, 45, 0.861);
+}
+.material-symbols-outlined{
+    font-size: 30px !important;
+}
 
 /*  filtros */
 
 .navbarcito {
-    margin: 1;
+    /* margin: 1;
     padding: 1rem;
     border: 1px solid rgba(255, 0, 0, 0.500);
     background: rgba(0, 0, 0, 0.5) !important;
+    margin-top: 2rem; */
+    
     margin-top: 2rem;
+    /* margin: 1rem; */
+    padding: 1rem;
+    background-image: url(/assets/imgs/bebida-sin-alcoho.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 
 .list-style {
@@ -816,6 +882,16 @@ nav .material-symbols-outlined{
 }
 
 @media (max-width: 991px) {
+
+    .table th{
+        width: 45% !important;
+        font-size: 17px;
+        border-right: 1px solid rgba(255, 0, 0, 0.500) !important;
+    }
+    .table td{
+        font-size: 17px;
+    }
+
     .navbar-nav {
         align-items: center;
     }

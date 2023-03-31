@@ -57,8 +57,10 @@ public class ReservaControlador {
     @GetMapping("/usuario/autenticado/reserva")
     public List<ReservaDTO> getReservasUsuario(Authentication authentication){
 
+
           Usuario usuario=usuarioRepositorio.findByEmail(authentication.getName());
           return usuario.getReservas().stream().map(ReservaDTO::new).collect(toList());
+
     }
     @Transactional
     @PostMapping("/crear/reserva")
@@ -67,6 +69,10 @@ public class ReservaControlador {
             @RequestParam Integer cantidadPersonas,
             @RequestParam String fechaString
     ){
+
+       /*
+        preguntar return reservaServicio.crearReserva(authentication,cantidadPersonas,fechaString);
+*/
         Usuario usuario = usuarioRepositorio.findByEmail(authentication.getName());
         LocalDate fecha = LocalDate.parse(fechaString);
         Integer capacidadOcupada = 0;
@@ -90,6 +96,7 @@ public class ReservaControlador {
         reservaRepositorio.save(reserva);
         usuarioRepositorio.save(usuario);
         return new ResponseEntity<>("Reserva realizada con exito",HttpStatus.ACCEPTED);
+
 
     }
 

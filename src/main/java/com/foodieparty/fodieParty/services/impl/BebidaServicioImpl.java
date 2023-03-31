@@ -68,4 +68,9 @@ public class BebidaServicioImpl implements BebidaServicio {
             return new ResponseEntity<>("Error al cargar la imagen",HttpStatus.FORBIDDEN);
         }
     }
+
+    @Override
+    public void save(Bebida bebida) {
+        bebidaRepositorio.save(bebida);
+    }
 }
