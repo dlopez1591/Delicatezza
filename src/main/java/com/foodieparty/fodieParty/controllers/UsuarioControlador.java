@@ -3,10 +3,6 @@ package com.foodieparty.fodieParty.controllers;
 
 import com.foodieparty.fodieParty.dtos.UsuarioDTO;
 
-import com.foodieparty.fodieParty.models.Estado;
-
-import com.foodieparty.fodieParty.models.Pedido;
-import com.foodieparty.fodieParty.models.Reserva;
 import com.foodieparty.fodieParty.models.Usuario;
 import com.foodieparty.fodieParty.repositories.PedidoRepositorio;
 import com.foodieparty.fodieParty.repositories.ReservaRepositorio;
@@ -16,21 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+
 import org.springframework.security.core.Authentication;
-
-
-import java.util.ArrayList;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
-
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-
-import static java.util.stream.Collectors.*;
 
 @RestController
 @RequestMapping("/api")
@@ -46,24 +34,26 @@ public class UsuarioControlador {
     private PedidoRepositorio pedidoRepositorio;
 
     @Autowired
-    private PedidoRepositorio pedidoRepositorio;
-    @Autowired
-    private ReservaRepositorio reservaRepositorio;
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/usuario")
     public List<UsuarioDTO> getUsuario(){
         return usuarioServicio.getUsuario();
     }
+
+
     @GetMapping("/usuario/{id}")
     public Optional<UsuarioDTO> getUsuarioPorId(@PathVariable Long id){
         return usuarioServicio.getUsuarioPorId(id);
     }
-    @GetMapping("/usuario/autenticado/pedido")
+
+
+    @GetMapping("/usuario/autenticado")
     public UsuarioDTO getUsuarioAutenticado(Authentication authentication){
-         return usuarioServicio.getUsuarioAutenticado(authentication);
+         return new UsuarioDTO(usuarioRepositorio.findByEmail(authentication.getName()));
     }
+
+
     @PostMapping("/crear/usuario")
     public ResponseEntity<Object> registrarUsuario(@RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String email, @RequestParam String password,@RequestParam String telefono) {
@@ -97,7 +87,7 @@ public class UsuarioControlador {
         return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
     }
 
-    @Transactional
+   /* @Transactional
     @DeleteMapping("/borrar/usuario")
     public ResponseEntity<Object> borrarUsuario(@RequestParam long id){
         Usuario usuario=usuarioRepositorio.findById(id).orElse(null);
@@ -117,5 +107,6 @@ public class UsuarioControlador {
 
         return new ResponseEntity<>("Usuario borrado", HttpStatus.ACCEPTED);
     }
+    */
 
 }
