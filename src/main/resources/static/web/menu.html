@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,10 +21,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/styles/menu.css">
-
   <!-- favicon temporal para evitar error de server  -->
   <link rel="icon" type="image/x-icon" href="./assets/imgs/favicon.png">
 </head>
+
+
+<body>
+  <div id="app" class="d-flex flex-column  w-100">
+    <!-- Button trigger modal -->
 
 
 <body>
@@ -77,7 +80,6 @@
     <main class="d-flex flex-column w-100 justify-content-center align-items-center main-basura">
       <!-- carrito -->
 
-
       <!-- Modal -->
       <div class="modal fade modal-carrito" id="carrito" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -87,6 +89,36 @@
               <h1 class="modal-title fs-5" id="exampleModalLabel">Carrito de Compras</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
+              <div class="modal-body">
+                pum babe
+                <ul>
+                  <li class="item-carrito d-flex justify-content-between">
+                    <div>blablabla</div>
+                    <div>$ 3333</div>
+                  </li>
+                  <li class="item-carrito d-flex justify-content-between">
+                    <div>blablabla</div>
+                    <div>$ 3333</div>
+                  </li>
+                  <li class="item-carrito d-flex justify-content-between">
+                    <div>blablabla</div>
+                    <div>$ 3333</div>
+                  </li>
+                </ul>
+              </div>
+              <div class="total-carrito d-flex justify-content-end me-2 mb-3">
+                El total de tu compra es: $ 33333
+              </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-warning btn-comida" data-bs-dismiss="modal">Seguir comprando</button>
+              <button type="button" class="btn btn-outline-warning btn-comida">Abonar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
             <div class="modal-body">
               pum babe
@@ -144,6 +176,33 @@
 
       <!-- principal -->
 
+      <article id="principal" class="seccionComida d-flex justify-content-center flex-column align-items-center">
+        <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right"> Platos
+          fuertes</h2>
+        <div class="card mb-3"  v-for="comida of principal" >
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img :src="comida.imagen" class="img-comida img-fluid rounded-start" :alt="comida.nombre">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{comida.nombre}}</h5>
+                <p class="card-text">{{comida.description}}</p>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <h6 class="precio">Precio ${{comida.precio}}</h6>
+                  </div>
+                  <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
+                    data-bs-target="#agregar" v-on:click="alertAgregar(comida)">Agregar</button>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+
       <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right"> Platos
         fuertes</h2>
       <div class="card mb-3" data-aos="flip-up">
@@ -167,8 +226,8 @@
             </div>
           </div>
         </div>
+      </article>
 
-      </div>
 
       <!-- bebidas -->
       <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
@@ -227,8 +286,7 @@
           </div>
         </div>
 
-      </div>
-
+      </article>
 
     </main>
   </div>
