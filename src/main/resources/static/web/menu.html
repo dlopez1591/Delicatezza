@@ -80,6 +80,9 @@
         </header>
         <!-- NAV BAR, POR EL MOMENTO DE PRUEBA pendiente por arreglar -->
 
+
+       
+
         <!-- aca viene el multilenguaje, su implementacion sera de ultimas -->
         <main class="d-flex flex-column w-100 justify-content-center align-items-center main-basura">
 
@@ -134,15 +137,15 @@
                 </div>
                 <div class="modal-body">
                   pum babe
-                  <ul>
-                    <li v-for="item of listitaPedido" class="item-carrito d-flex justify-content-between">
-                      <div>{{item.nombre}}</div>
-                      <div>$ {{item.precio}} c/u</div>
+                  <ul class="w-100">
+                    <li v-for="item of listaCarrito" class="item-carrito d-flex justify-content-between gap-2">
+                      <div>{{item.producto}} x {{item.cantidad}}</div>
+                      <div>{{formatCurrency(item.subtotal)}}</div>
                     </li>
                   </ul>
                 </div>
                 <div class="total-carrito d-flex justify-content-end me-2 mb-3">
-                  El total de tu compra es: $ {{total}}
+                  El total de tu compra es: {{formatCurrency(total)}}
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-warning btn-comida" data-bs-dismiss="modal">Seguir
@@ -157,6 +160,8 @@
           <button type="button" style="position: sticky; top: 90vh; width: 3rem; left:95%;" class="btn  btn-carrito "
             data-bs-toggle="modal" data-bs-target="#carrito">
             <span class="material-symbols-outlined">shopping_cart_checkout</span>
+            <span v-if="cantidadEnCarrito>0"
+              class="badge rounded-pill bg-danger">{{cantidadEnCarrito}}</span>
           </button>
 
           <!-- cantidad comida modal -->
@@ -326,12 +331,12 @@
                   <img :src="comida.imagen" class="img-comida img-fluid rounded-start" :alt="comida.nombre">
                 </div>
                 <div class="col-md-8">
-                  <div class="card-body">
+                  <div class="card-body d-flex flex-column justify-content-between h-100">
                     <h5 class="card-title">{{comida.nombre}}</h5>
                     <p class="card-text">{{comida.description}}</p>
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-4">
                       <div>
-                        <h6 class="precio">Precio ${{comida.precio}}</h6>
+                        <h6 class="precio m-0">Precio:<span class="h4 ms-2">{{formatCurrency(comida.precio)}}</span></h6>
                       </div>
                       <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
                           data-bs-target="#agregarComida" v-on:click="alertAgregar(comida)">Agregar</button>
@@ -343,7 +348,34 @@
             </div>
           </article>
 
+          
+          <!-- guarnicion -->
 
+          <article id="guarnicion" class="seccionComida d-flex justify-content-center flex-column align-items-center">
+            <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
+              Guarniciones</h2>
+            <div class="card mb-3" v-for="comida of guarnicion">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img :src="comida.imagen" class="img-comida img-fluid rounded-start" :alt="comida.nombre">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body d-flex flex-column justify-content-between h-100">
+                    <h5 class="card-title">{{comida.nombre}}</h5>
+                    <p class="card-text">{{comida.description}}</p>
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-4">
+                      <div>
+                        <h6 class="precio m-0">Precio:<span class="h4 ms-2">{{formatCurrency(comida.precio)}}</span></h6>
+                      </div>
+                      <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
+                          data-bs-target="#agregarComida" v-on:click="alertAgregar(comida)">Agregar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
 
           <!-- bebidas -->
 
@@ -356,15 +388,15 @@
                   <img :src="bebida.imagen" class="img-comida img-fluid rounded-start" :alt="bebida.nombre">
                 </div>
                 <div class="col-md-8">
-                  <div class="card-body">
+                  <div class="card-body d-flex flex-column justify-content-between h-100">
                     <h5 class="card-title">{{bebida.nombre}}</h5>
                     <p class="card-text">{{bebida.descripcion}}</p>
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-4">
                       <div>
-                        <h6 class="precio">Precio ${{bebida.precio}}</h6>
+                        <h6 class="precio m-0">Precio:<span class="h4 ms-2">{{formatCurrency(bebida.precio)}}</span></h6>
                       </div>
                       <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
-                          data-bs-target="#agregarBebida" v-on:click="alertAgregar(bebida)">Agregar</button>
+                          data-bs-target="#agregarComida" v-on:click="alertAgregar(comida)">Agregar</button>
                       </div>
                     </div>
                   </div>
@@ -384,12 +416,12 @@
                   <img :src="comida.imagen" class="img-comida img-fluid rounded-start" :alt="comida.nombre">
                 </div>
                 <div class="col-md-8">
-                  <div class="card-body">
+                  <div class="card-body d-flex flex-column justify-content-between h-100">
                     <h5 class="card-title">{{comida.nombre}}</h5>
                     <p class="card-text">{{comida.description}}</p>
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-4">
                       <div>
-                        <h6 class="precio">Precio ${{comida.precio}}</h6>
+                        <h6 class="precio m-0">Precio:<span class="h4 ms-2">{{formatCurrency(comida.precio)}}</span></h6>
                       </div>
                       <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
                           data-bs-target="#agregarComida" v-on:click="alertAgregar(comida)">Agregar</button>
@@ -400,35 +432,6 @@
               </div>
             </div>
           </article>
-
-          <!-- guarnicion -->
-
-          <article id="guarnicion" class="seccionComida d-flex justify-content-center flex-column align-items-center">
-            <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
-              Guarniciones</h2>
-            <div class="card mb-3" v-for="comida of guarnicion">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img :src="comida.imagen" class="img-comida img-fluid rounded-start" :alt="comida.nombre">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">{{comida.nombre}}</h5>
-                    <p class="card-text">{{comida.description}}</p>
-                    <div class="d-flex justify-content-between">
-                      <div>
-                        <h6 class="precio">Precio ${{comida.precio}}</h6>
-                      </div>
-                      <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
-                          data-bs-target="#agregarComida" v-on:click="alertAgregar(comida)">Agregar</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
         </main>
 
         <footer class="d-flex align-items-center flex-wrap justify-content-around flex-column">
