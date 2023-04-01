@@ -308,7 +308,6 @@ footer{
     background-size: cover;
     min-height: 30vh;
     border-top: 1px solid rgba(255, 0, 0, 0.500);
-    ;
     font-size: 20px;
     text-shadow: 1px 1px 2px var(--bs-orange);
 }
@@ -460,7 +459,7 @@ footer{
 
 .img-comida {
     -webkit-mask-image: linear-gradient(to right , transparent 0%, black 10%, black 50%,transparent 100%);
-
+}
 .card-body{
 
 }
@@ -483,10 +482,7 @@ footer{
 
 /* navbar */
 .nav-link {
-
     text-transform: uppercase;
-
-
     display: flex;
     justify-content: center;
     font-family: 'Allerta Stencil', sans-serif;
@@ -918,7 +914,7 @@ nav .material-symbols-outlined {
         font-size: 25px;
     }
 
-
+}
 @media (max-width: 991px) {
 
     .table th {
