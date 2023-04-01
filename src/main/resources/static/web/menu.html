@@ -70,7 +70,7 @@
                     </li>
                     <button type="button" class="nav-item button " data-bs-toggle="modal"
                       data-bs-target="#staticBackdrop">
-                      <a class="nav-link"><i class="bi bi-person-fill"></i>Logout</a>
+                      <a class="nav-link" @click="logOut"><i class="bi bi-person-fill"></i>Logout</a>
                     </button>
                   </ul>
                 </div>
@@ -136,6 +136,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+
                   pum babe
                   <ul class="w-100">
                     <li v-for="item of listaCarrito" class="item-carrito d-flex justify-content-between gap-2">
@@ -305,10 +306,6 @@
                 Principal</a>
             </li>
             <li class="list-style" type="button">
-              <a class="linksitos" href="#guarnicion">
-                Guarnicion</a>
-            </li>
-            <li class="list-style" type="button">
               <a class="linksitos" href="#postres">
                 Postres</a>
             </li>
@@ -323,8 +320,7 @@
 
           <article id="principal" class="seccionComida d-flex justify-content-center flex-column align-items-center">
             <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
-              Platos
-              fuertes</h2>
+              Principal</h2>
             <div class="card mb-3" v-for="comida of principal">
               <div class="row g-0">
                 <div class="col-md-4">
@@ -351,6 +347,7 @@
               </div>
             </div>
           </article>
+
 
           
           <!-- guarnicion -->
@@ -411,9 +408,11 @@
               </div>
             </div>
           </article>
+
           <!-- postre -->
 
           <article id="postres" class="seccionComida d-flex justify-content-center flex-column align-items-center">
+
             <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
               Postres</h2>
             <div class="card mb-3" v-for="comida of postre">
@@ -439,105 +438,104 @@
                 </div>
               </div>
             </div>
+
           </article>
+
         </main>
+      </div>
+      <footer class="d-flex align-items-center flex-wrap justify-content-around flex-column">
+        <section><!-- links footer -->
+          <div class="media-icon flex-wrap">
+            <li class="media-li"><a href="https://www.facebook.com" target="_blank" class="media-a"><i
+                  class="fa fa-facebook" aria-hidden="true"></i></a>
+            </li>
+            <li class="media-li"><a href="https://twitter.com" target="_blank" class="media-a"><i class="fa fa-twitter"
+                  aria-hidden="true"></i></a>
+            </li>
+            <li class="media-li"><a href="https://www.instagram.com" target="_blank" class="media-a"><i
+                  class="fa fa-instagram" aria-hidden="true"></i></a>
+            </li>
+            <li class="media-li"><a href="https://www.linkedin.com" target="_blank" class="media-a"><i
+                  class="fa fa-linkedin" aria-hidden="true"></i></a>
+            </li>
+            <li class="media-li"><a href="https://web.whatsapp.com" target="_blank" class="media-a"><i
+                  class="fa fa-whatsapp" aria-hidden="true"></i></a>
+            </li>
+          </div>
+        </section>
 
-        <footer class="d-flex align-items-center flex-wrap justify-content-around flex-column">
-          <section><!-- links footer -->
-            <div class="media-icon flex-wrap">
-              <li class="media-li"><a href="https://www.facebook.com" target="_blank" class="media-a"><i
-                    class="fa fa-facebook" aria-hidden="true"></i></a>
-              </li>
-              <li class="media-li"><a href="https://twitter.com" target="_blank" class="media-a"><i
-                    class="fa fa-twitter" aria-hidden="true"></i></a>
-              </li>
-              <li class="media-li"><a href="https://www.instagram.com" target="_blank" class="media-a"><i
-                    class="fa fa-instagram" aria-hidden="true"></i></a>
-              </li>
-              <li class="media-li"><a href="https://www.linkedin.com" target="_blank" class="media-a"><i
-                    class="fa fa-linkedin" aria-hidden="true"></i></a>
-              </li>
-              <li class="media-li"><a href="https://web.whatsapp.com" target="_blank" class="media-a"><i
-                    class="fa fa-whatsapp" aria-hidden="true"></i></a>
-              </li>
-            </div>
-          </section>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+          Conocenos!
+        </button>
 
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop1">
-            Conocenos!
-          </button>
-
-          <!-- Modal -->
-          <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Equipo de Desarrollo</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <a href="https://github.com/dlopez1591/Delicatezza" target="_blank"><img
-                      src="./assets/imgs/github.png" alt=""></a>
-                  <p> | Cohort FS041 Full Stack JAVA </p>
-                  <div class="d-flex ">
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Equipo de Desarrollo</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <a href="https://github.com/dlopez1591/Delicatezza" target="_blank"><img
+                        src="./assets/imgs/github.png" alt=""></a> | Cohort FS041 Full Stack JAVA </p>
+                <div class="d-flex ">
                     <a href="https://fdmarzialetti@gmail.com" target="_blank"><img src="./assets/imgs/gmail.png"
-                        alt=""></a> <a href="https://github.com/fdmarzialetti" target="_blank"><img
-                        src="./assets/imgs/github.png" alt=""></a> <a
-                      href="https://www.linkedin.com/in/fernando-daniel-marzialetti-b46b73201/" target="_blank"><img
-                        src="./assets/imgs/linkedin.png" alt=""></a>
+                            alt=""></a> <a href="https://github.com/fdmarzialetti" target="_blank"><img
+                            src="./assets/imgs/github.png" alt=""></a> <a
+                        href="https://www.linkedin.com/in/fernando-daniel-marzialetti-b46b73201/"
+                        target="_blank"><img src="./assets/imgs/linkedin.png" alt=""></a>
                     <p>| Fernando Marzialetti</p>
-                  </div>
-
-                  <div class="d-flex ">
+                </div>
+                <div class="d-flex ">
                     <a href="https://matiasloiza10@gmail.com"><img src="./assets/imgs/gmail.png" alt=""
-                        target="_blank"></a> <a href="https://github.com/matias9809" target="_blank"><img
-                        src="./assets/imgs/github.png" alt=""></a> <a
-                      href="https://www.linkedin.com/in/matias-loiza-79a313178/" target="_blank"><img
-                        src="./assets/imgs/linkedin.png" alt=""></a>
+                            target="_blank"></a> <a href="https://github.com/matias9809" target="_blank"><img
+                            src="./assets/imgs/github.png" alt=""></a> <a
+                        href="https://www.linkedin.com/in/matias-loiza-79a313178/" target="_blank"><img
+                            src="./assets/imgs/linkedin.png" alt=""></a>
                     <p>| Matias Loiza</p>
-
-                  </div>
-                  <div class="d-flex ">
-                    <a href="https://joaquinfleitas71@gmail.com" target="_blank"><img src="./assets/imgs/gmail.png"
-                        alt=""></a> <a href="https://github.com/joaquinfleitas" target="_blank"><img
-                        src="./assets/imgs/github.png" alt="" target="_blank"></a> <a
-                      href="https://www.linkedin.com/in/joaquin-fleitas-7b0222174/" target="_blank"><img
-                        src="./assets/imgs/linkedin.png" alt=""></a>
+                </div>
+                <div class="d-flex ">
+                    <a href="https://joaquinfleitas71@gmail.com" target="_blank"><img
+                            src="./assets/imgs/gmail.png" alt=""></a> <a href="https://github.com/joaquinfleitas"
+                        target="_blank"><img src="./assets/imgs/github.png" alt="" target="_blank"></a> <a
+                        href="https://www.linkedin.com/in/joaquin-fleitas-7b0222174/" target="_blank"><img
+                            src="./assets/imgs/linkedin.png" alt=""></a>
                     <p>| Joaquin Alain Fleitas</p>
-                  </div>
-                  <div class="d-flex ">
+                </div>
+                <div class="d-flex ">
                     <a href="dlopez1591@gmail.com" target="_blank"><img src="./assets/imgs/gmail.png" alt=""
-                        target="_blank"></a> <a href="https://github.com/dlopez1591" target="_blank"><img
-                        src="./assets/imgs/github.png" alt=""></a> <a
-                      href="https://www.linkedin.com/in/daniel-lopezayala/" target="_blank"><img
-                        src="./assets/imgs/linkedin.png" alt=""></a>
+                            target="_blank"></a> <a href="https://github.com/dlopez1591" target="_blank"><img
+                            src="./assets/imgs/github.png" alt=""></a> <a
+                        href="https://www.linkedin.com/in/daniel-lopezayala/" target="_blank"><img
+                            src="./assets/imgs/linkedin.png" alt=""></a>
                     <p>| Daniel Lopez</p>
-                  </div>
-                  <div class="d-flex ">
+
+                </div>
+                <div class="d-flex ">
                     <a href="https://yasminledesma9@gmail.com" target="_blank"><img src="./assets/imgs/gmail.png"
-                        alt=""></a> <a href="https://github.com/YasminLedesma" target="_blank"><img
-                        src="./assets/imgs/github.png" alt=""></a> <a
-                      href="https://www.linkedin.com/in/yasm%C3%ADn-ledesma-b3b5a7238/" target="_blank"><img
-                        src="./assets/imgs/linkedin.png" alt=""></a>
+                            alt=""></a> <a href="https://github.com/YasminLedesma" target="_blank"><img
+                            src="./assets/imgs/github.png" alt=""></a> <a
+                        href="https://www.linkedin.com/in/yasm%C3%ADn-ledesma-b3b5a7238/" target="_blank"><img
+                            src="./assets/imgs/linkedin.png" alt=""></a>
                     <p>| Yasmin Ledesma</p>
-                  </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+            </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               </div>
             </div>
+          </div>
 
-          </div>
-          <div class="p d-flex gap-3" style="margin: 10px;">
-            <p>| &#169 Todos los derechos reservados hacia el Team de Desarrollo 'Delicatezza'</p>
-            <p>| Cohort FS041 Full Stack JAVA</p>
-          </div>
-        </footer>
-      </div>
+        </div>
+        <div class="p d-flex gap-3" style="margin: 10px;">
+          <p>| &#169 Todos los derechos reservados hacia el Team de Desarrollo 'Delicatezza'</p>
+          <p>| Cohort FS041 Full Stack JAVA</p>
+        </div>
+      </footer>
+
 
       <!-- bootstrap -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
