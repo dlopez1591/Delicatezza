@@ -23,8 +23,8 @@ public class Autorizacionesweb{
 
 
         http.authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/api/crear/usuario").permitAll()
-                .antMatchers(HttpMethod.POST,"/api/crear/reserva").hasAnyRole("CLIENTE","ADMIN");
+                .antMatchers(HttpMethod.POST, "/api/crear/usuario").permitAll();
+                //.antMatchers(HttpMethod.POST,"/api/crear/reserva").hasAnyRole("CLIENTE","ADMIN");
 
 
         http.formLogin()

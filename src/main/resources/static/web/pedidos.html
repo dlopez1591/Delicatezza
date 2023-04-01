@@ -25,6 +25,47 @@
 
 <body>
     <div id="app" class="d-flex flex-column  w-100">
+
+         <!-- hacer Reserva -->
+          <!-- Modal -->
+          <div class="modal fade" id="hacerReserva" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Crear Reservacion</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="formu">
+                    <form @submit.prevent>
+                      <p>
+                        Seleccione la cantidad de personas:
+                      </p>
+                      <p><input v-model="cantidadPersonas" id="numero" type="number" min="1" pattern="^[0-9]+"
+                          placeholder="cantidad de personas" class="inputs"></p>
+                      <p>
+                        Seleccione la fecha:
+                      </p>
+                      <p> <input v-model="fechaString" type="date" id="start" name="trip-start" value="2018-07-22"
+                          min="2023-01-04" max="2029-12-31"></p>
+
+
+                    </form>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-outline-warning " v-on:click="hacerReserva">Enviar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         <!-- Button trigger modal -->
         <header class=" flex-row w-100 justify-content-center">
             <!-- imagen logo  -->
@@ -49,11 +90,13 @@
                             <li class="nav-item button" type="button">
                                 <a class="nav-link" href="./menu.html"><i class="bi bi-egg-fried"></i>Menu</a>
                             </li>
+                            <button type="button" class="nav-item button " data-bs-toggle="modal"
+                                data-bs-target="#hacerReserva">
+                                <a class="nav-link"><i class="bi bi-check2-circle"></i> Reserva</a>
+                            </button>
                             <li class="nav-item button" type="button">
-                                <a class="nav-link" href="./reserva.html"><i class="bi bi-check2-circle"></i> Reserva</a>
-                            </li>
-                            <li class="nav-item button" type="button">
-                                <a class="nav-link active active-1" href="./pedidos.html"><i class="bi bi-check2-circle"></i> Pedidos</a>
+                                <a class="nav-link active active-1" href="./pedidos.html"><i
+                                        class="bi bi-check2-circle"></i> Pedidos</a>
                             </li>
                             <button type="button" class="nav-item button " data-bs-toggle="modal"
                                 data-bs-target="#staticBackdrop">
@@ -69,59 +112,59 @@
 
         <!-- aca viene el multilenguaje, su implementacion sera de ultimas -->
         <main class="d-flex flex-column w-100 justify-content-center align-items-center">
-            <!-- carrito -->
-            <!-- Modal -->
+           
+
             <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
                 Resumen</h2>
-                <table class="table" v-for="pedido in usuarioAutenticado.pedidos">
-                    <thead>
-                      <tr>
+            <table class="table" v-for="pedido in usuarioAutenticado.pedidos">
+                <thead>
+                    <tr>
                         <th>Mi Pedido : {{pedido.id}}</th>
                         <td>Estado de Orden: {{pedido.estadoPedido}}</td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr v-for="reserva in pedido.reservas">
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="reserva in pedido.reservas">
                         <th>Mis Reservas: {{reserva.id}} </th>
                         <td>Estado de Reserva: {{reserva.estado}} </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  
-                  <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
-                    Mis Pedidos
-                  </h2>
-                  
-                  <table class="table" v-for="pedido in usuarioAutenticado.pedidos">
-                    <thead>
-                      <tr>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
+                Mis Pedidos
+            </h2>
+
+            <table class="table" v-for="pedido in usuarioAutenticado.pedidos">
+                <thead>
+                    <tr>
                         <th>Fecha :</th>
                         <td>{{pedido.localDateTime.split('T')[0]}}</td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>Hora</th>
-                            <td>{{pedido.localDateTime.split('T')[1].substring(0, 8)}}</td>
-                        </tr>
-                      <tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Hora</th>
+                        <td>{{pedido.localDateTime.split('T')[1].substring(0, 8)}}</td>
+                    </tr>
+                    <tr>
                         <th>Precio Total :</th>
                         <td>${{pedido.precioTotal}}</td>
-                      </tr>
-                      <tr>
+                    </tr>
+                    <tr>
                         <th>Tipo de Retiro :</th>
                         <td>{{pedido.tipoRetiro}}</td>
-                      </tr>
-                      <tr>
+                    </tr>
+                    <tr>
                         <th>Direccion :</th>
                         <td>{{pedido.direccion}}</td>
-                      </tr>
-                      <tr>
+                    </tr>
+                    <tr>
                         <th>Estado :</th>
                         <td>{{pedido.estadoPedido}}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                    </tr>
+                </tbody>
+            </table>
         </main>
         <footer class="d-flex align-items-center flex-wrap justify-content-around flex-column">
             <section>
@@ -160,48 +203,48 @@
                         </div>
                         <div class="modal-body">
                             <a href="https://github.com/dlopez1591/Delicatezza" target="_blank"><img
-                                    src="/assets/imgs/github.png" alt=""></a> | Cohort FS041 Full Stack JAVA </p>
+                                    src="./assets/imgs/github.png" alt=""></a><p> | Cohort FS041 Full Stack JAVA </p>
                             <div class="d-flex ">
                                 <a href="https://fdmarzialetti@gmail.com" target="_blank"><img
-                                        src="/assets/imgs/gmail.png" alt=""></a> <a
+                                        src="./assets/imgs/gmail.png" alt=""></a> <a
                                     href="https://github.com/fdmarzialetti" target="_blank"><img
-                                        src="/assets/imgs/github.png" alt=""></a> <a
+                                        src="./assets/imgs/github.png" alt=""></a> <a
                                     href="https://www.linkedin.com/in/fernando-daniel-marzialetti-b46b73201/"
-                                    target="_blank"><img src="/assets/imgs/linkedin.png" alt=""></a>
+                                    target="_blank"><img src="./assets/imgs/linkedin.png" alt=""></a>
                                 <p>| Fernando Marzialetti</p>
                             </div>
                             <div class="d-flex ">
-                                <a href="https://matiasloiza10@gmail.com"><img src="/assets/imgs/gmail.png" alt=""
+                                <a href="https://matiasloiza10@gmail.com"><img src="./assets/imgs/gmail.png" alt=""
                                         target="_blank"></a> <a href="https://github.com/matias9809"
-                                    target="_blank"><img src="/assets/imgs/github.png" alt=""></a> <a
+                                    target="_blank"><img src="./assets/imgs/github.png" alt=""></a> <a
                                     href="https://www.linkedin.com/in/matias-loiza-79a313178/" target="_blank"><img
-                                        src="/assets/imgs/linkedin.png" alt=""></a>
+                                        src="./assets/imgs/linkedin.png" alt=""></a>
                                 <p>| Matias Loiza</p>
                             </div>
                             <div class="d-flex ">
                                 <a href="https://joaquinfleitas71@gmail.com" target="_blank"><img
-                                        src="/assets/imgs/gmail.png" alt=""></a> <a
+                                        src="./assets/imgs/gmail.png" alt=""></a> <a
                                     href="https://github.com/joaquinfleitas" target="_blank"><img
-                                        src="/assets/imgs/github.png" alt="" target="_blank"></a> <a
+                                        src="./assets/imgs/github.png" alt="" target="_blank"></a> <a
                                     href="https://www.linkedin.com/in/joaquin-fleitas-7b0222174/" target="_blank"><img
-                                        src="/assets/imgs/linkedin.png" alt=""></a>
+                                        src="./assets/imgs/linkedin.png" alt=""></a>
                                 <p>| Joaquin Alain Fleitas</p>
                             </div>
                             <div class="d-flex ">
-                                <a href="dlopez1591@gmail.com" target="_blank"><img src="/assets/imgs/gmail.png" alt=""
+                                <a href="dlopez1591@gmail.com" target="_blank"><img src="./assets/imgs/gmail.png" alt=""
                                         target="_blank"></a> <a href="https://github.com/dlopez1591"
-                                    target="_blank"><img src="/assets/imgs/github.png" alt=""></a> <a
+                                    target="_blank"><img src="./assets/imgs/github.png" alt=""></a> <a
                                     href="https://www.linkedin.com/in/daniel-lopezayala/" target="_blank"><img
-                                        src="/assets/imgs/linkedin.png" alt=""></a>
+                                        src="./assets/imgs/linkedin.png" alt=""></a>
                                 <p>| Daniel Lopez</p>
                             </div>
                             <div class="d-flex ">
                                 <a href="https://yasminledesma9@gmail.com" target="_blank"><img
-                                        src="/assets/imgs/gmail.png" alt=""></a> <a
+                                        src="./assets/imgs/gmail.png" alt=""></a> <a
                                     href="https://github.com/YasminLedesma" target="_blank"><img
-                                        src="/assets/imgs/github.png" alt=""></a> <a
+                                        src="./assets/imgs/github.png" alt=""></a> <a
                                     href="https://www.linkedin.com/in/yasm%C3%ADn-ledesma-b3b5a7238/"
-                                    target="_blank"><img src="/assets/imgs/linkedin.png" alt=""></a>
+                                    target="_blank"><img src="./assets/imgs/linkedin.png" alt=""></a>
                                 <p>| Yasmin Ledesma</p>
                             </div>
                         </div>

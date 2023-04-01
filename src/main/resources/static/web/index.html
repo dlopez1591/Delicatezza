@@ -24,20 +24,20 @@
     <!-- favicon temporal para evitar error de server  -->
     <link rel="icon" type="image/x-icon" href="./assets/imgs/favicon.png">
     <!-- fechas -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="jquery.ui.datepicker-es.js"></script>
     <script>
         $(function () {
             $("#datepicker").datepicker({
-                regional: "Es",
+/*                 regional: "Es", */
                 changeMonth: true,
                 changeYear: true
             })
 
         });
-    </script>
+    </script> -->
 </head>
 
 <body>
@@ -176,8 +176,10 @@
                             <p>
                                 Seleccione la fecha:
                             </p>
-                            <p><input v-model="fechaString" type="text" id="datepicker" placeholder="seleccionar fecha"
-                                    class="inputs"></p>
+                            <p> <input v-model="fechaString"
+                                 type="date" id="start" name="trip-start"
+                                       value="2018-07-22"
+                                       min="2023-01-04" max="2029-12-31"></p>
                                 
                            
                         </form>

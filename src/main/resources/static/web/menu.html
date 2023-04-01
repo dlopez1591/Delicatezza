@@ -61,9 +61,10 @@
                     <li class="nav-item button" type="button">
                       <a class="nav-link active active-1" href="#"><i class="bi bi-egg-fried"></i>Menu</a>
                     </li>
-                    <li class="nav-item button" type="button">
-                      <a class="nav-link" href="./reserva.html"><i class="bi bi-check2-circle"></i> Reserva</a>
-                    </li>
+                    <button type="button" class="nav-item button " data-bs-toggle="modal"
+                      data-bs-target="#hacerReserva">
+                      <a class="nav-link"><i class="bi bi-check2-circle"></i> Reserva</a>
+                    </button>
                     <li class="nav-item button" type="button">
                       <a class="nav-link" href="./pedidos.html"><i class="bi bi-check2-circle"></i> Pedidos</a>
                     </li>
@@ -81,6 +82,46 @@
 
         <!-- aca viene el multilenguaje, su implementacion sera de ultimas -->
         <main class="d-flex flex-column w-100 justify-content-center align-items-center main-basura">
+
+          <!-- hacer Reserva -->
+          <!-- Modal -->
+          <div class="modal fade" id="hacerReserva" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Crear Reservacion</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="formu">
+                    <form @submit.prevent>
+                      <p>
+                        Seleccione la cantidad de personas:
+                      </p>
+                      <p><input v-model="cantidadPersonas" id="numero" type="number" min="1" pattern="^[0-9]+"
+                          placeholder="cantidad de personas" class="inputs"></p>
+                      <p>
+                        Seleccione la fecha:
+                      </p>
+                      <p> <input v-model="fechaString" type="date" id="start" name="trip-start" value="2018-07-22"
+                          min="2023-01-04" max="2029-12-31"></p>
+
+
+                    </form>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-outline-warning " v-on:click="hacerReserva">Enviar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- Modal carrito-->
           <div class="modal fade modal-carrito" id="carrito" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -138,8 +179,8 @@
                     <h5>Resumen del producto por Unidad:</h5>
                     <p> Nombre: {{comidaEnMesa.nombre}}</p>
                     <p> Descripcion: {{comidaEnMesa.description}}</p>
-                     <p> Precio: {{comidaEnMesa.precio}}</p>
-                    </div>
+                    <p> Precio: {{comidaEnMesa.precio}}</p>
+                  </div>
 
                 </div>
                 <div class="modal-footer">
@@ -170,7 +211,7 @@
                     <h5>Resumen del producto por Unidad:</h5>
                     <p> Nombre: {{comidaEnMesa.nombre}}</p>
                     <p v-if="comidaEnMesa.tipoComida"> Descripcion: {{comidaEnMesa.description}}</p>
-                    <p v-if="comidaEnMesa.tipoBebida"> Descripcion: {{comidaEnMesa.descripcion}}</p> 
+                    <p v-if="comidaEnMesa.tipoBebida"> Descripcion: {{comidaEnMesa.descripcion}}</p>
                     <p> Precio: {{comidaEnMesa.precio}}</p>
                   </div>
 
@@ -228,12 +269,12 @@
 
                     <div class="mb-2 space2">
                       Numero de tarjeta:
-                       <input type="text" v-model="number">
+                      <input type="text" v-model="number">
                     </div>
-                    
-                    <div class="mb-2 space2" >
+
+                    <div class="mb-2 space2">
                       Numero de cvv:
-                       <input type="text" v-model="cvv" >
+                      <input type="text" v-model="cvv">
                     </div>
 
                   </form>
@@ -302,7 +343,7 @@
             </div>
           </article>
 
-         
+
 
           <!-- bebidas -->
 
@@ -360,9 +401,9 @@
             </div>
           </article>
 
-           <!-- guarnicion -->
+          <!-- guarnicion -->
 
-           <article id="guarnicion" class="seccionComida d-flex justify-content-center flex-column align-items-center">
+          <article id="guarnicion" class="seccionComida d-flex justify-content-center flex-column align-items-center">
             <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
               Guarniciones</h2>
             <div class="card mb-3" v-for="comida of guarnicion">
@@ -427,8 +468,8 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <a href="https://github.com/dlopez1591/Delicatezza" target="_blank"><img src="./assets/imgs/github.png"
-                      alt=""></a>
+                  <a href="https://github.com/dlopez1591/Delicatezza" target="_blank"><img
+                      src="./assets/imgs/github.png" alt=""></a>
                   <p> | Cohort FS041 Full Stack JAVA </p>
                   <div class="d-flex ">
                     <a href="https://fdmarzialetti@gmail.com" target="_blank"><img src="./assets/imgs/gmail.png"
