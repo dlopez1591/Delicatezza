@@ -60,6 +60,11 @@ public class RestauranteFoodiePartyApplication {
 
 			comidaRepositorio.save(postre1);
 			comidaRepositorio.save(postre2);
+			Comida guarnicion1 = new Comida("Papas fritas","Preparadas con las mejores papas seleccionadas y cortadas en tiras uniformes para lograr la textura y sabor perfecto. Disfrutalas acompañadas de alguna de nuestras salsas especiales como kétchup, mayonesa, salsa BBQ, entre otras!",TipoComida.GUARNICION,120.0,"https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/3d32de75-2c02-4fcf-ae76-258074e7a137.jpeg?alt=media",true);
+			Comida guarnicion2 = new Comida("Aros de cebolla","Acompañados de salsa de aioli o una salsa picante para darle ese toque extra de sabor. Son perfectos para compartir con amigos y familiares mientras esperas la comida principal o simplemente para disfrutar como un aperitivo delicioso.",TipoComida.GUARNICION,180.0,"https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/389d1b37-db77-40c5-8b49-4d4c5009455e.jpg?alt=media",true);
+
+			comidaRepositorio.save(guarnicion1);
+			comidaRepositorio.save(guarnicion2);
 
 			//HARDCODE RESERVAS Y CAPACIDAD
 			Capacidad capacidadRestoran = new Capacidad((byte)10,1500.0);
