@@ -335,6 +335,7 @@ footer{
     display: flex;
     align-items: center;
     background-color: #120f01f9;
+    font-size: 20px;
     border: 1px solid rgba(255, 0, 0, 0.500);
     box-shadow: rgb(233 12 12 / 30%) 0px 4px 29px;
     text-shadow: 1px 1px 2px var(--bs-orange);
@@ -357,6 +358,7 @@ footer{
 .modal-footer {
     border-top: none !important;
 }
+
 
 .p {
     position: relative;
@@ -412,6 +414,9 @@ footer{
 .table td {
     font-size: 20px;
 }
+.seccionComida{
+    max-width: 80rem;
+}
 
 .cardComida {
     background-color: darkslategrey;
@@ -421,14 +426,15 @@ footer{
 
 .card {
     background: rgba(0, 0, 0, 0.728) !important;
-    /* border: 1px solid rgba(255, 0, 0, 0.500); */
+    border: 1px solid rgba(255, 0, 0, 0.500);
     box-shadow: rgb(233 12 12 / 15%) -1px -4px 30px;
-    width: 75rem;
+    /* max-width: 75rem; */
     text-align: center;
     margin-bottom: 3rem;
     margin-top: 2rem;
     color: white;
-
+    border: 2px solid rgb(253, 196, 201)!important;
+    box-shadow: 0 0 15px rgb(255, 0, 43)!important;
 }
 
 
@@ -437,9 +443,9 @@ footer{
 }
 
 .card p {
-    color: rgb(196, 196, 197);
+    color: rgb(245, 200, 0);
     text-shadow: 1px 1px 2px black;
-    font-size: 1.1rem;
+    font-size: 21px;
 }
 
 .precio {
@@ -457,18 +463,14 @@ footer{
 }
 
 
-.img-comida {
-    -webkit-mask-image: linear-gradient(to right , transparent 0%, black 10%, black 50%,transparent 100%);
-}
-.card-body{
 
-}
 
 .img-comida {
+
     width: 100%;
     height: 100%;
     border-radius: 0;
-    -webkit-mask-image: linear-gradient(to left, transparent 0%, black 10%, black 50%,transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, transparent 0%, black 14%, black 100%,transparent 100%);
 }
 
 .badge{
@@ -518,14 +520,7 @@ footer{
 /*  filtros */
 
 .navbarcito {
-    /* margin: 1;
-    padding: 1rem;
-    border: 1px solid rgba(255, 0, 0, 0.500);
-    background: rgba(0, 0, 0, 0.5) !important;
-    margin-top: 2rem; */
     margin-top: 2rem;
-    /* margin: 1rem; */
-
     padding: 1rem;
     background-image: url(../imgs/bebida-sin-alcoho.jpg);
     background-repeat: no-repeat;
@@ -602,13 +597,10 @@ nav .material-symbols-outlined {
 .button {
     position: relative;
     padding: 0;
-    /* width: 115px; */
-    /* height: 65px; */
     background: #000000a9;
     font-size: 17px;
     border: none;
     border-radius: 2px;
-    /* box-shadow: inset 0 0 10px #ffffff1c; */
 }
 
 .p1 {
@@ -622,10 +614,7 @@ nav .material-symbols-outlined {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* width: 135px; */
     height: 65px;
-    /* background: radial-gradient(circle at 100% -50%, #ffffff69 45%, #d4d4d44f 60%, #ffffff36 2%); */
-    /* background-size: 200%; */
     background-repeat: no-repeat;
     filter: opacity(.3) blur(.3em);
 }
@@ -646,8 +635,6 @@ nav .material-symbols-outlined {
 
 .button .p1 {
     display: inline-block;
-    /* width: 135px;
-    line-height: 65px; */
     font-size: 17px;
     font-weight: 900;
     color: white;
@@ -870,23 +857,19 @@ nav .material-symbols-outlined {
 
 
 @media (max-width: 650px) {
-/*     body {
-        background-image: url(../imgs/fondo-pared-ladrillo-grunge.jpg);
-    } */
-
     .nav-item {
         width: 50% !important;
     }
 
     h2 {
-        font-size: 40px;
+        font-size: 35px;
     }
 
     h2::after,
     h2::before {
         content: '';
         position: relative;
-        width: 60px;
+        width: 14px;
         height: 2px;
         background-color: #ffbc00db;
         align-items: center;
