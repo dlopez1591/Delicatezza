@@ -46,26 +46,31 @@ public class RestauranteFoodiePartyApplication {
 			usuarioRepositorio.save(daniel);
 			Bebida bebida1 = new Bebida("Jugo","Exprimido, fresco y natural, lleno de vitaminas y para mantenerte saludable. Disfruta de su equilibrado sabor dulce y ácido como una opción refrescante para complementar tu comida o empezar tu día!","https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/42bb3965-1df3-47cf-a0d4-cb436a9601a2.jpg?alt=media", TipoBebida.AGUA,40,100.0);
 			Bebida bebida2 = new Bebida("Birra","¿Estás buscando una cerveza suave y refrescante para acompañar tu comida? Nuestra pilsner fría y fresca que complementará perfectamente tu comida. ¿Queres probar algo un poco más audaz? Nuestra IPA con lúpulo amargo será una opción ideal.","https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/5d6a3d6d-fdaf-45ff-81cc-389f6a816971.jpg?alt=media", TipoBebida.ALCOHOLICA,40,350.0);
+			Bebida bebida3 = new Bebida ("Gaseosa", "Bebida burbujeante está hecha con los mejores ingredientes para ofrecerte un sabor inigualable. Disfruta de su textura suave y refrescante que te hará sentir revitalizado en cualquier momento del día.","https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/e39f9c84-1c88-4cb7-bbe7-1d8e0aa920ed.jpg?alt=media",TipoBebida.GASEOSA,40,150.0);
 			bebidaRepositorio.save(bebida1);
 			bebidaRepositorio.save(bebida2);
+			bebidaRepositorio.save(bebida3);
 			Comida comida1 = new Comida("Panchito","Un clasico preparado con salchicha de carne en un pan suave y con una variedad de aderezos, como ketchup, mostaza, cebolla picada y queso fundido. ¡Ven y disfruta de esta opción rápida y deliciosa en cualquier momento del día!", TipoComida.PRINCIPAL,250.0,"https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/dead24cf-2065-4e92-9ba4-27ed2b9c42e7.jpg?alt=media",true);
 			Comida comida2 = new Comida("Burguer","Deliciosa opción para los amantes del queso. Hecha con carne de res fresca, se coloca en un pan suave y se acompaña con doble porción de queso derretido, lechuga, tomate, cebolla y pepinillos. ¡Ven a probarla en nuestro restaurante hoy mismo!", TipoComida.PRINCIPAL,450.0,"https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/0e97cb9c-4252-4875-9143-658e39d91ff3.jpg?alt=media",true);
+			Comida comida3 = new Comida("Lomito","Este plato tradicional argentino te sorprenderá con su combinación de carne de lomo cocida a la parrilla, cebolla salteada, tomate fresco, lechuga crujiente y nuestras salsas caseras. Te aseguramos que te encantará!",TipoComida.PRINCIPAL,500.0,"https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/761ab0fe-5f3e-4946-ae15-587c8de44d4b.jpg?alt=media",true);
 			comidaRepositorio.save(comida1);
 			comidaRepositorio.save(comida2);
-
+			comidaRepositorio.save(comida3);
 			Comida postre1 = new Comida ("Helado","Disfruta de nuestro cremoso helado en taza o cono, con una gran variedad de sabores, servido sobre un esponjoso brownie de chocolate. ¡No lo dudes, date el gusto!",TipoComida.POSTRE,500.0,
 					"https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/6f171418-8f6d-46e5-b15a-d677df87f102.jpg?alt=media",true);
 			Comida postre2 = new Comida ("Flan","Elavorado con ingredientes frescos y de alta calidad para garantizar que nuestro flan sea delicioso y satisfactorio. Decorar con un toque de crema batida y dulce de leche!",TipoComida.POSTRE,800.0,
 					"https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/caa98a39-ea5a-4173-b514-c3c1b66fb500.jpg?alt=media",true);
-
+			Comida postre3 = new Comida("Tiramisu","Capas suaves de bizcocho esponjoso empapado en café, cremoso queso mascarpone y una pizca de cacao en polvo. Disfruta de esta deliciosa delicia italiana en la comodidad de tu hogar! ",TipoComida.POSTRE,550.0,"https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/d8bc04ff-fef9-4b94-8205-158b83970968.jpg?alt=media",true);
 			comidaRepositorio.save(postre1);
 			comidaRepositorio.save(postre2);
+			comidaRepositorio.save(postre3);
+
 			Comida guarnicion1 = new Comida("Papas fritas","Preparadas con las mejores papas seleccionadas y cortadas en tiras uniformes para lograr la textura y sabor perfecto. Disfrutalas acompañadas de alguna de nuestras salsas especiales como kétchup, mayonesa, salsa BBQ, entre otras!",TipoComida.GUARNICION,120.0,"https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/3d32de75-2c02-4fcf-ae76-258074e7a137.jpeg?alt=media",true);
 			Comida guarnicion2 = new Comida("Aros de cebolla","Acompañados de salsa de aioli o una salsa picante para darle ese toque extra de sabor. Son perfectos para compartir con amigos y familiares mientras esperas la comida principal o simplemente para disfrutar como un aperitivo delicioso.",TipoComida.GUARNICION,180.0,"https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/389d1b37-db77-40c5-8b49-4d4c5009455e.jpg?alt=media",true);
-
+			Comida guarnicion3 = new Comida("Ensalada de atun","Perfecta para aquellos que buscan una comida ligera y saludable pero sin sacrificar el sabor. El atún fresco es la estrella de esta ensalada, que se combina con una mezcla de verduras frescas y crujientes!",TipoComida.GUARNICION,150.0,"https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/41477b1b-3b40-4ccf-9ccd-e401765c19f2.jpg?alt=media",true);
 			comidaRepositorio.save(guarnicion1);
 			comidaRepositorio.save(guarnicion2);
-
+			comidaRepositorio.save(guarnicion3);
 			//HARDCODE RESERVAS Y CAPACIDAD
 			Capacidad capacidadRestoran = new Capacidad((byte)10,1500.0);
 			Reserva reserva1 = new Reserva();
