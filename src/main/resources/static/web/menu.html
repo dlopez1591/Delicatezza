@@ -79,19 +79,14 @@
           </div>
         </header>
         <!-- NAV BAR, POR EL MOMENTO DE PRUEBA pendiente por arreglar -->
-
-
-       
-
         <!-- aca viene el multilenguaje, su implementacion sera de ultimas -->
         <main class="d-flex flex-column w-100 justify-content-center align-items-center main-basura">
-
           <!-- hacer Reserva -->
           <!-- Modal -->
           <div class="modal fade" id="hacerReserva" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
-              <div class="modal-content">
+              <div class="modal-content ">
                 <div class="modal-header">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">
                     Crear Reservacion</h1>
@@ -104,21 +99,20 @@
                         Seleccione la cantidad de personas:
                       </p>
                       <p><input v-model="cantidadPersonas" id="numero" type="number" min="1" pattern="^[0-9]+"
-                          placeholder="cantidad de personas" class="inputs"></p>
+                          class="inputs"></p>
                       <p>
                         Seleccione la fecha:
                       </p>
                       <p> <input v-model="fechaString" type="date" id="start" name="trip-start" value="2018-07-22"
                           min="2023-01-04" max="2029-12-31"></p>
-
-
                     </form>
                   </div>
-
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <div class="d-flex justify-content-center">
+                  <div>
+                    <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal">Cancelar</button>
+                  </div>
+                  <div>
                     <button type="button" class="btn btn-outline-warning " v-on:click="hacerReserva">Enviar</button>
                   </div>
                 </div>
@@ -136,8 +130,6 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
-                  pum babe
                   <ul class="w-100">
                     <li v-for="item of listaCarrito" class="item-carrito d-flex justify-content-between gap-2">
                       <div>{{item.producto}} x {{item.cantidad}}</div>
