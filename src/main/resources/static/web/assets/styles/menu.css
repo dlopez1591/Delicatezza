@@ -466,9 +466,9 @@ footer{
 
 
 .img-comida {
-
     width: 100%;
     height: 100%;
+    height: 18em!important;
     border-radius: 0;
     -webkit-mask-image: linear-gradient(to left, transparent 0%, black 14%, black 100%,transparent 100%);
 }
