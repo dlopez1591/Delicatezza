@@ -22,9 +22,11 @@ public class Autorizacionesweb{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 
+
 //        http.authorizeRequests()
 //                .antMatchers(HttpMethod.POST, "/api/crear/usuario").permitAll()
 //                .antMatchers(HttpMethod.POST,"/api/crear/reserva").hasAnyRole("CLIENTE","ADMIN");
+
 
 
         http.formLogin()
