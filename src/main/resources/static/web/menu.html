@@ -85,7 +85,7 @@
           <!-- Modal -->
           <div class="modal fade" id="hacerReserva" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content ">
                 <div class="modal-header">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">
@@ -298,12 +298,16 @@
                 Principal</a>
             </li>
             <li class="list-style" type="button">
-              <a class="linksitos" href="#postres">
-                Postres</a>
+              <a class="linksitos" href="#guarnicion">
+                Guarniciones</a>
             </li>
             <li class="list-style" type="button">
               <a class="linksitos" href="#bebidas">
                 Bebidas</a>
+            </li>
+            <li class="list-style" type="button">
+              <a class="linksitos" href="#postres">
+                Postres</a>
             </li>
           </div>
 
@@ -326,7 +330,7 @@
                     </div>
                     <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-4">
                       <div>
-                        <h6 class="precio m-0">Precio:<span class="h4 ms-2">{{formatCurrency(comida.precio)}}</span></h6>
+                        <h6 class="precio m-0">Precio:<span class="h3 ms-2">{{formatCurrency(comida.precio)}}</span></h6>
                       </div>
                       <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
                           data-bs-target="#agregarComida" v-on:click="alertAgregar(comida)">Agregar</button>
@@ -358,7 +362,7 @@
                     </div>
                     <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-4">
                       <div>
-                        <h6 class="precio m-0">Precio:<span class="h4 ms-2">{{formatCurrency(comida.precio)}}</span></h6>
+                        <h6 class="precio m-0">Precio:<span class="h3 ms-2">{{formatCurrency(comida.precio)}}</span></h6>
                       </div>
                       <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
                           data-bs-target="#agregarComida" v-on:click="alertAgregar(comida)">Agregar</button>
@@ -388,7 +392,7 @@
                     </div>
                     <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-4">
                       <div>
-                        <h6 class="precio m-0">Precio:<span class="h4 ms-2">{{formatCurrency(bebida.precio)}}</span></h6>
+                        <h6 class="precio m-0">Precio:<span class="h3 ms-2">{{formatCurrency(bebida.precio)}}</span></h6>
                       </div>
                       <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
                           data-bs-target="#agregarComida" v-on:click="alertAgregar(comida)">Agregar</button>
@@ -420,7 +424,7 @@
                     </div>
                     <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-4">
                       <div>
-                        <h6 class="precio m-0">Precio:<span class="h4 ms-2">{{formatCurrency(comida.precio)}}</span></h6>
+                        <h6 class="precio m-0">Precio:<span class="h3 ms-2">{{formatCurrency(comida.precio)}}</span></h6>
                       </div>
                       <div><button type="button" class="btn btn-outline-warning btn-comida" data-bs-toggle="modal"
                           data-bs-target="#agregarComida" v-on:click="alertAgregar(comida)">Agregar</button>

@@ -177,7 +177,7 @@ h2::after,
 h2::before {
     content: '';
     position: relative;
-    width: 40px;
+    width: 30px;
     height: 2px;
     background-color: #F5C800;
     box-shadow: 1px 2px 5px var(--bs-orange);
@@ -443,7 +443,7 @@ footer{
 }
 
 .card p {
-    color: rgb(245, 200, 0);
+    color: rgb(255, 247, 209);
     text-shadow: 1px 1px 2px black;
     font-size: 21px;
 }

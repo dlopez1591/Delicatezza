@@ -509,7 +509,8 @@ h5 {
 
 .p-carrusel {
     font-size: 1.2rem;
-    color: var(--bs-orange);
+    padding: 10px;
+    color: rgb(255, 247, 209);
     text-shadow: 2px 1px 6px black;
     font-family: 'Allerta Stencil', sans-serif;
 }
@@ -532,9 +533,7 @@ h5 {
 
 .text-info {
     background: rgba(0, 0, 0, 0.728) !important;
-    border-bottom: 1px solid rgba(255, 0, 0, 0.500);
-    border-left: 1px solid rgba(255, 0, 0, 0.500);
-    border-right: 1px solid rgba(255, 0, 0, 0.500);
+    border: 1px solid rgba(255, 0, 0, 0.500);
     box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
     max-width: 75rem;
     text-align: center;
