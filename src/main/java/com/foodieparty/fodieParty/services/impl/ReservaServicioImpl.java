@@ -55,7 +55,7 @@ import static java.util.stream.Collectors.toList;
 
     @Override
     public ResponseEntity<Object> crearReserva(Authentication authentication, Integer cantidadPersonas, String fechaString) {
-        Usuario usuario = usuarioRepositorio.findByEmail("pepe@pepe.com");
+        Usuario usuario = usuarioRepositorio.findByEmail(authentication.getName());
         LocalDate fecha = LocalDate.parse(fechaString);
         Integer capacidadOcupada = 0;
         Capacidad capacidad = capacidadRepositorio.findAll().get(0);
