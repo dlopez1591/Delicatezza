@@ -301,14 +301,15 @@ h5 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
 } */
-footer{
+footer {
     background-image: url(/assets/imgs/bebida-sin-alcoho.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
     min-height: 30vh;
-    border-top: 1px solid rgba(255, 0, 0, 0.500);;
+    border-top: 1px solid rgba(255, 0, 0, 0.500);
+    ;
     font-size: 20px;
     text-shadow: 1px 1px 2px var(--bs-orange);
 }
@@ -327,9 +328,11 @@ footer{
     text-shadow: none;
     color: white;
 }
-.modal-header{
+
+.modal-header {
     border-bottom: none;
 }
+
 .modal-content {
     display: flex;
     align-items: center;
@@ -338,18 +341,22 @@ footer{
     box-shadow: rgb(233 12 12 / 30%) 0px 4px 29px;
     text-shadow: 1px 1px 2px var(--bs-orange);
 }
-.modal-body{
+
+.modal-body {
     border-top: 1px solid rgba(255, 0, 0, 0.500);
     border-bottom: 1px solid rgba(255, 0, 0, 0.500);
     text-decoration: none;
 }
-.modal-body p{
+
+.modal-body p {
     margin-left: 16px;
 }
-.modal-body a{
+
+.modal-body a {
     margin-left: 16px;
 }
-.modal-footer{
+
+.modal-footer {
     border-top: none !important;
 }
 
@@ -386,7 +393,7 @@ footer{
 /* card Comida */
 
 
-.table{
+.table {
     color: #F5C800;
     border: 1px solid rgba(255, 0, 0, 0.500);
     box-shadow: rgb(233 12 12 / 15%) -1px -4px 30px;
@@ -394,12 +401,14 @@ footer{
     max-width: 65rem;
     margin-top: 2rem;
 }
-.table th{
+
+.table th {
     width: 45% !important;
     font-size: 22px;
     border-right: 1px solid rgba(255, 0, 0, 0.500) !important;
 }
-.table td{
+
+.table td {
     font-size: 20px;
 
 }
@@ -412,14 +421,17 @@ footer{
 
 .card {
     background: rgba(0, 0, 0, 0.728) !important;
-    border: 1px solid rgba(255, 0, 0, 0.500);
+    /* border: 1px solid rgba(255, 0, 0, 0.500); */
     box-shadow: rgb(233 12 12 / 15%) -1px -4px 30px;
-    max-width: 75rem;
+    width: 75rem;
     text-align: center;
     margin-bottom: 3rem;
     margin-top: 2rem;
-    width: 80%; 
+    width: 80%;
+    border: 2px solid rgb(253, 196, 201)!important;
+    box-shadow: 0 0 15px rgb(255, 0, 43)!important;
 }
+
 
 .card-title {
     color: rgb(245, 200, 0);
@@ -438,15 +450,28 @@ footer{
     -webkit-background-clip: text;
     -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
+    font-size: larger;
 }
 
 .btn-comida {
     font-family: 'Allerta Stencil', sans-serif;
 }
 
+.card-body{
+
+}
 
 .img-comida {
-    border-right: 1px solid rgba(255, 0, 0, 0.500);
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    -webkit-mask-image: linear-gradient(to left, transparent 0%, black 10%, black 50%,transparent 100%);
+}
+
+.badge{
+    position: absolute !important;
+    left:50% !important;
+    top: -6px !important;
 }
 
 /* banner */
@@ -456,7 +481,7 @@ footer{
 
 /* navbar */
 .nav-link {
-    
+
     display: flex;
     justify-content: center;
     font-family: 'Allerta Stencil', sans-serif;
@@ -474,15 +499,17 @@ footer{
 }
 
 
-.bi{
+.bi {
     padding-right: 4px !important;
 }
-.active{
+
+.active {
     color: rgba(236, 217, 45, 0.861) !important;
     box-shadow: rgba(236, 217, 45, 0.861) -1px -4px 43px;
     border: 1px solid rgba(236, 217, 45, 0.861);
 }
-.material-symbols-outlined{
+
+.material-symbols-outlined {
     font-size: 30px !important;
 }
 
@@ -494,7 +521,7 @@ footer{
     border: 1px solid rgba(255, 0, 0, 0.500);
     background: rgba(0, 0, 0, 0.5) !important;
     margin-top: 2rem; */
-    
+
     margin-top: 2rem;
     /* margin: 1rem; */
     padding: 1rem;
@@ -530,7 +557,8 @@ footer{
 .material-symbols-outlined {
     font-size: 19px;
 }
-nav .material-symbols-outlined{
+
+nav .material-symbols-outlined {
     font-size: 2rem;
 }
 
@@ -787,9 +815,9 @@ nav .material-symbols-outlined{
     justify-content: center;
     display: flex;
     position: sticky;
-     top: 90vh;
-      width: 3rem; 
-      left:87%;
+    top: 90vh;
+    width: 3rem;
+    left: 87%;
 }
 
 .btn-carrito:hover {
@@ -819,21 +847,23 @@ nav .material-symbols-outlined{
 }
 
 /* AGREGAR CANTIDAD */
-.cantidadDeComida input{
+.cantidadDeComida input {
     background-color: rgba(0, 0, 0, 0.74);
     color: #F5C800;
 }
 
-.noStock{
+.noStock {
     display: flex;
     justify-content: center;
     color: rgb(12, 10, 10);
     text-shadow: rgba(248, 38, 38, 0.959) -1px -4px 42px;
-    
+
 }
-.main-basura{
+
+.main-basura {
     max-width: 90vw;
 }
+
 @media (max-width: 650px) {
     body {
         background-image: url(../imgs/fondo-pared-ladrillo-grunge.jpg);
@@ -878,17 +908,18 @@ nav .material-symbols-outlined{
     h5 {
         font-size: 25px;
     }
-  
+
 }
 
 @media (max-width: 991px) {
 
-    .table th{
+    .table th {
         width: 45% !important;
         font-size: 17px;
         border-right: 1px solid rgba(255, 0, 0, 0.500) !important;
     }
-    .table td{
+
+    .table td {
         font-size: 17px;
     }
 

@@ -23,7 +23,9 @@ createApp({
         direccion: undefined,
         total: 0,
         number: undefined,
-        cvv: undefined
+        cvv: undefined,
+        cantidadEnCarrito:0,
+        listaCarrito:[]
       }
     },
     created(){
@@ -64,7 +66,9 @@ createApp({
         this.listaComidasId.push(miniPedido)
         //console.log(this.listitaPedido)
         this.total += this.comidaEnMesa.precio * cantidadSolicitada
+        this.cantidadEnCarrito+=cantidadSolicitada
         this.listitaPedido.push(this.comidaEnMesa)
+        this.listaCarrito.push({"producto":this.comidaEnMesa.nombre,"cantidad":cantidadSolicitada,"subtotal":this.comidaEnMesa.precio*cantidadSolicitada,"precio":this.comidaEnMesa.precio})
         return this.listaComidasId
       },
 
@@ -75,7 +79,10 @@ createApp({
         this.listaBebidasId.push(miniPedido)
         //console.log(this.listaBebidasId)
         this.total += this.comidaEnMesa.precio * cantidadSolicitada
+        this.cantidadEnCarrito+=cantidadSolicitada
         this.listitaPedido.push(this.comidaEnMesa)
+        this.listaCarrito.push({"producto":this.comidaEnMesa.nombre,"cantidad":cantidadSolicitada,"subtotal":this.comidaEnMesa.precio*cantidadSolicitada,"precio":this.comidaEnMesa.precio})
+
         return this.listaBebidasId
       },
 
@@ -118,6 +125,11 @@ createApp({
               })
         });
       },
+      formatCurrency: function (amount) {
+        let options = { style: 'currency', currency: 'USD' };
+        let numberFormat = new Intl.NumberFormat('en-US', options);
+        return numberFormat.format(amount);
+    },
     }
   }).mount('#app')
 
