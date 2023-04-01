@@ -44,22 +44,6 @@ const app = Vue.createApp({
                   })
             });
       },
-      logOut(){
-        axios.post("/api/logout")
-        .then(response =>{
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'cierre de sesion exitosa',
-            confirmButtonText: 'ok',
-            showConfirmButton: true,
-          }).then((result) =>{
-            if (result.isConfirmed){
-              window.location.href = '/web/index.html';
-            }
-          })
-        })
-      }
     }
   });
   
