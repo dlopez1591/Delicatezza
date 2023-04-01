@@ -23,7 +23,9 @@ createApp({
         direccion: undefined,
         total: 0,
         number: undefined,
-        cvv: undefined
+        cvv: undefined,
+        cantidadPersonas: undefined,
+        fechaString: undefined,
       }
     },
     created(){
@@ -117,6 +119,33 @@ createApp({
                 
               })
         });
+      },
+      hacerReserva() {
+        console.log(this.cantidadPersonas, this.fechaString)
+        axios.post(`/api/crear/reserva`, `cantidadPersonas=${this.cantidadPersonas}&fechaString=${this.fechaString}`)
+            .then(response => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Su reserva fue exitosa',
+                    confirmButtonText: 'ir a mis pedidos',
+                    showConfirmButton: true,
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '/web/pedidos.html';
+                    }
+            })})
+            .catch(error => {
+                console.log(error)
+                this.error = error.response.data.message; 
+                console.log(error.response.data)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.response.data
+                    
+                  })
+            });
       },
     }
   }).mount('#app')
