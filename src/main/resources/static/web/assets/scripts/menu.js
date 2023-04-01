@@ -23,7 +23,11 @@ createApp({
         direccion: undefined,
         total: 0,
         number: undefined,
-        cvv: undefined
+        cvv: undefined,
+        cantidadEnCarrito:0,
+        listaCarrito:[],
+        cantidadPersonas: undefined,
+        fechaString: undefined,
       }
     },
     created(){
@@ -64,7 +68,9 @@ createApp({
         this.listaComidasId.push(miniPedido)
         //console.log(this.listitaPedido)
         this.total += this.comidaEnMesa.precio * cantidadSolicitada
+        this.cantidadEnCarrito+=cantidadSolicitada
         this.listitaPedido.push(this.comidaEnMesa)
+        this.listaCarrito.push({"producto":this.comidaEnMesa.nombre,"cantidad":cantidadSolicitada,"subtotal":this.comidaEnMesa.precio*cantidadSolicitada,"precio":this.comidaEnMesa.precio})
         return this.listaComidasId
       },
 
@@ -75,7 +81,10 @@ createApp({
         this.listaBebidasId.push(miniPedido)
         //console.log(this.listaBebidasId)
         this.total += this.comidaEnMesa.precio * cantidadSolicitada
+        this.cantidadEnCarrito+=cantidadSolicitada
         this.listitaPedido.push(this.comidaEnMesa)
+        this.listaCarrito.push({"producto":this.comidaEnMesa.nombre,"cantidad":cantidadSolicitada,"subtotal":this.comidaEnMesa.precio*cantidadSolicitada,"precio":this.comidaEnMesa.precio})
+
         return this.listaBebidasId
       },
 
@@ -118,6 +127,54 @@ createApp({
               })
         });
       },
+
+      formatCurrency: function (amount) {
+        let options = { style: 'currency', currency: 'USD' };
+        let numberFormat = new Intl.NumberFormat('en-US', options);
+        return numberFormat.format(amount);
+    },
+      hacerReserva() {
+        console.log(this.cantidadPersonas, this.fechaString)
+        axios.post(`/api/crear/reserva`, `cantidadPersonas=${this.cantidadPersonas}&fechaString=${this.fechaString}`)
+            .then(response => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Su reserva fue exitosa',
+                    confirmButtonText: 'ir a mis pedidos',
+                    showConfirmButton: true,
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '/web/pedidos.html';
+                    }
+            })})
+            .catch(error => {
+                console.log(error) 
+                console.log(error.response.data)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.response.data
+                    
+                  })
+            });
+      },
+      logOut(){
+        axios.post("/api/logout")
+        .then(response =>{
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'cierre de sesion exitosa',
+            confirmButtonText: 'ok',
+            showConfirmButton: true,
+          }).then((result) =>{
+            if (result.isConfirmed){
+              window.location.href = '/web/index.html';
+            }
+          })
+        })
+      }
     }
   }).mount('#app')
 

@@ -23,6 +23,21 @@
     <link rel="stylesheet" href="./assets/styles/index.css">
     <!-- favicon temporal para evitar error de server  -->
     <link rel="icon" type="image/x-icon" href="./assets/imgs/favicon.png">
+    <!-- fechas -->
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="jquery.ui.datepicker-es.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({
+/*                 regional: "Es", */
+                changeMonth: true,
+                changeYear: true
+            })
+
+        });
+    </script> -->
 </head>
 
 <body>
@@ -48,9 +63,10 @@
                                 <li class="nav-item button" type="button">
                                     <a class="nav-link" href="./menu.html"><i class="bi bi-egg-fried"></i>Menu</a>
                                 </li>
-                                <li class="nav-item button" type="button">
-                                    <a class="nav-link" href="./reserva.html"><i class="bi bi-check2-circle"></i> Reserva</a>
-                                </li>
+                                <button type="button" class="nav-item button " data-bs-toggle="modal"
+                                    data-bs-target="#hacerReserva" >
+                                    <a class="nav-link"><i class="bi bi-check2-circle"></i> Reserva</a>
+                                </button>
                                 <button type="button" class="nav-item button " data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">
                                     <a class="nav-link"><i class="bi bi-person-fill"></i>Login</a>
@@ -137,6 +153,49 @@
                 <p> Ya tienes una cuenta? <a href="#" class="a2" @click="cambiar">Click Acá!</a></p>
             </div>
         </div>
+
+        <!-- hacer Reserva -->
+          <!-- Modal -->
+          <div class="modal fade" id="hacerReserva" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Crear Reservacion</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="formu">
+                        <form @submit.prevent>
+                            <p>
+                                Seleccione la cantidad de personas:
+                            </p>
+                            <p><input v-model="cantidadPersonas" id="numero" type="number" min="1" pattern="^[0-9]+"
+                                    placeholder="cantidad de personas" class="inputs"></p>
+                            <p>
+                                Seleccione la fecha:
+                            </p>
+                            <p> <input v-model="fechaString"
+                                 type="date" id="start" name="trip-start"
+                                       value="2018-07-22"
+                                       min="2023-01-04" max="2029-12-31"></p>
+                                
+                           
+                        </form>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-outline-warning " v-on:click="hacerReserva">Enviar</button>         
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
     </div>
     <!-- aca viene el multilenguaje, su implementacion sera de ultimas -->
     <!-- main, contendra todos los carrousel menos el footer  -->
