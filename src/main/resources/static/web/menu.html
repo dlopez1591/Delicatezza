@@ -85,8 +85,8 @@
           <!-- Modal -->
           <div class="modal fade" id="hacerReserva" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content ">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
                 <div class="modal-header">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">
                     Crear Reservacion</h1>
@@ -314,7 +314,7 @@
             <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
               Principal</h2>
             <div class="card mb-3" v-for="comida of principal">
-              <div class="row g-0">
+              <div class="row g-0 img-cards">
                 <div class="col-md-4">
                   <img :src="comida.imagen" class="img-comida img-fluid rounded-start" :alt="comida.nombre">
                 </div>
@@ -344,7 +344,7 @@
             <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
               Guarniciones</h2>
             <div class="card mb-3" v-for="comida of guarnicion">
-              <div class="row g-0">
+              <div class="row g-0 img-cards">
                 <div class="col-md-4">
                   <img :src="comida.imagen" class="img-comida img-fluid rounded-start" :alt="comida.nombre">
                 </div>
@@ -372,7 +372,7 @@
             <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
               Bebidas</h2>
             <div class="card mb-3" v-for="bebida of bebidas">
-              <div class="row g-0">
+              <div class="row g-0 img-cards">
                 <div class="col-md-4">
                   <img :src="bebida.imagen" class="img-comida img-fluid rounded-start" :alt="bebida.nombre">
                 </div>
@@ -402,7 +402,7 @@
             <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
               Postres</h2>
             <div class="card mb-3" v-for="comida of postre">
-              <div class="row g-0">
+              <div class="row g-0 img-cards">
                 <div class="col-md-4">
                   <img :src="comida.imagen" class="img-comida img-fluid rounded-start" :alt="comida.nombre">
                 </div>
@@ -456,7 +456,7 @@
         <!-- Modal -->
         <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
           aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Equipo de Desarrollo</h1>
