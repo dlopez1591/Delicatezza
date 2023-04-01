@@ -96,13 +96,17 @@
                     <thead>
                       <tr>
                         <th>Fecha :</th>
-                        <td>{{pedido.localDateTime}}</td>
+                        <td>{{pedido.localDateTime.split('T')[0]}}</td>
                       </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <th>Hora</th>
+                            <td>{{pedido.localDateTime.split('T')[1].substring(0, 8)}}</td>
+                        </tr>
                       <tr>
                         <th>Precio Total :</th>
-                        <td>{{pedido.precioTotal}}</td>
+                        <td>${{pedido.precioTotal}}</td>
                       </tr>
                       <tr>
                         <th>Tipo de Retiro :</th>
