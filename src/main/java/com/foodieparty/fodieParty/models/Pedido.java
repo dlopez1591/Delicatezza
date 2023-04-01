@@ -44,7 +44,7 @@ public class Pedido {
         this.tipoRetiro = tipoRetiro;
         this.direccion = direccion;
         this.usuario = usuario;
-        this.estadoPedido=EstadoPedido.EN_PROGRESO;
+        this.estadoPedido=EstadoPedido.PREPARANDO;
     }
 
     public long getId() {

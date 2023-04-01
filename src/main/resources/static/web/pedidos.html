@@ -77,7 +77,7 @@
                     <thead>
                       <tr>
                         <th>Mi Pedido : {{pedido.id}}</th>
-                        <td>Estado de Orden: {{pedido.estado}}</td>
+                        <td>Estado de Orden: {{pedido.estadoPedido}}</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -96,13 +96,17 @@
                     <thead>
                       <tr>
                         <th>Fecha :</th>
-                        <td>{{pedido.fecha}}</td>
+                        <td>{{pedido.localDateTime.split('T')[0]}}</td>
                       </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <th>Hora</th>
+                            <td>{{pedido.localDateTime.split('T')[1].substring(0, 8)}}</td>
+                        </tr>
                       <tr>
                         <th>Precio Total :</th>
-                        <td>{{pedido.precio}}</td>
+                        <td>${{pedido.precioTotal}}</td>
                       </tr>
                       <tr>
                         <th>Tipo de Retiro :</th>
@@ -114,7 +118,7 @@
                       </tr>
                       <tr>
                         <th>Estado :</th>
-                        <td>{{pedido.estado}}</td>
+                        <td>{{pedido.estadoPedido}}</td>
                       </tr>
                     </tbody>
                   </table>
