@@ -116,55 +116,59 @@
 
             <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
                 Resumen</h2>
-            <table class="table" v-for="pedido in usuarioAutenticado.pedidos">
-                <thead>
-                    <tr>
+                <table class="table" v-for="pedido in usuarioAutenticado.pedidos">
+                    <thead>
+                      <tr>
                         <th>Mi Pedido : {{pedido.id}}</th>
                         <td>Estado de Orden: {{pedido.estadoPedido}}</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="reserva in pedido.reservas">
-                        <th>Mis Reservas: {{reserva.id}} </th>
-                        <td>Estado de Reserva: {{reserva.estado}} </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
-                Mis Pedidos
-            </h2>
-
-            <table class="table" v-for="pedido in usuarioAutenticado.pedidos">
-                <thead>
-                    <tr>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="reserva in usuarioAutenticado.reservas">
+                            <th>Mis Reserva: {{reserva.id}} </th>
+                            <td>Estado de Reserva: 
+                              <span v-if="reserva.estado">{{'Activa'}}</span>
+                              <span v-else>{{reserva.estado}}</span>
+                            </td>
+                          </tr>
+                          
+                    </tbody>
+                  </table>
+                  
+                  <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
+                    Mis Pedidos
+                  </h2>
+                  
+                  <table class="table" v-for="pedido in usuarioAutenticado.pedidos">
+                    <thead>
+                      <tr>
                         <th>Fecha :</th>
                         <td>{{pedido.localDateTime.split('T')[0]}}</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>Hora</th>
-                        <td>{{pedido.localDateTime.split('T')[1].substring(0, 8)}}</td>
-                    </tr>
-                    <tr>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Hora</th>
+                            <td>{{pedido.localDateTime.split('T')[1].substring(0, 8)}}</td>
+                        </tr>
+                      <tr>
                         <th>Precio Total :</th>
                         <td>${{pedido.precioTotal}}</td>
-                    </tr>
-                    <tr>
+                      </tr>
+                      <tr>
                         <th>Tipo de Retiro :</th>
                         <td>{{pedido.tipoRetiro}}</td>
-                    </tr>
-                    <tr>
+                      </tr>
+                      <tr>
                         <th>Direccion :</th>
                         <td>{{pedido.direccion}}</td>
-                    </tr>
-                    <tr>
+                      </tr>
+                      <tr>
                         <th>Estado :</th>
                         <td>{{pedido.estadoPedido}}</td>
-                    </tr>
-                </tbody>
-            </table>
+                      </tr>
+                    </tbody>
+                  </table>
         </main>
         <footer class="d-flex align-items-center flex-wrap justify-content-around flex-column">
             <section>
