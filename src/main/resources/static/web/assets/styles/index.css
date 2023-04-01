@@ -17,7 +17,7 @@ body {
 }
 
 header{
-    background-image: url(/assets/imgs/cervezahe.jpg);
+    background-image: url(../imgs/cervezahe.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -54,7 +54,7 @@ header{
     justify-content: center;
     font-family: 'Allerta Stencil', sans-serif;
     background: rgba(0, 0, 0, 0.700) !important;
-    font-size: 17px;
+    font-size: 22px;
     text-align: center;
     border: 1px solid rgba(255, 0, 0, 0.500);
     box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
@@ -84,7 +84,7 @@ header{
 .button {
     position: relative;
     padding: 0;
-    width: 115px;
+    /* width: 115px; */
     /* height: 65px; */
     background: transparent;
     font-size: 17px;
@@ -679,7 +679,7 @@ h5 {
     color: #fff;
     font-size: 2em;
     /* border: 1px solid rgba(255, 0, 0, 0.500); */
-    box-shadow: rgba(236, 217, 45, 0.200) -1px -4px 20px;
+    /* box-shadow: rgba(236, 217, 45, 0.200) -1px -4px 20px; */
     backdrop-filter: blur(2px);
     transition: 0.5s;
     overflow: hidden;
@@ -718,7 +718,7 @@ h5 {
     font-size: 20px;
 } */
 footer{
-    background-image: url(/assets/imgs/cervezahe.jpg);
+    background-image: url(../imgs/cervezahe.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -746,12 +746,17 @@ footer{
 
 .p {
     position: relative;
-    color: white;
+    color: #F5C800;
+    background: #00000082;
+    border: outset rgb(233 12 12 / 30%);
+    /* background-color: #120f01f9;
     background: -webkit-linear-gradient(#F5C800, var(--bs-orange));
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    /* -webkit-background-clip: text; */
     justify-content: center;
     text-align: center;
+    /* box-shadow: rgb(233 12 12 / 30%) 0px 4px 29px; */
+    text-shadow: 1px 1px 2px var(--bs-orange);
 }
 
 .p::after {
