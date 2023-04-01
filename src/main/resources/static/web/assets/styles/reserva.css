@@ -742,7 +742,11 @@ nav .material-symbols-outlined{
 .formula2{
     max-width: 60%;
 }
-
+.active-1{
+    color: rgba(236, 217, 45, 0.861) !important;
+    box-shadow: rgba(236, 217, 45, 0.861) -1px -4px 43px;
+    border: 1px solid rgba(236, 217, 45, 0.861);
+}
 
 
 @media (max-width: 650px) {
