@@ -7,12 +7,10 @@
 body {
     min-width: 90vw;
     min-height: 90vh;
-    /* background: black; */
     background-image: url(../imgs/3d-render-focos-pared-ladrillo-grunge.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    /* font-family: 'Arizonia', cursive; */
     cursor: url(../imgs/hotdog-icon.png), auto;
 }
 
@@ -333,7 +331,6 @@ header{
     font-size: 90px;
     /* font-family: 'Arizonia', cursive; */
     font-family: 'Allerta Stencil', sans-serif;
-
     height: 140px;
     left: 0;
     letter-spacing: 5px;
@@ -411,7 +408,7 @@ header{
 
 /* CARRUSEL */
 .carousel-inner {
-    width: 1200px;
+    width: 1000px;
     box-shadow: 13px 13px 25px black;
     border: 1px white;
     background-size: cover;
@@ -431,7 +428,8 @@ h2 {
     -webkit-background-clip: text;
     background-clip: text;
     font-size: 70px;
-    font-family: 'Arizonia', cursive;
+    font-family: 'Allerta Stencil', sans-serif;
+    /* font-family: 'Arizonia', cursive; */
     -webkit-animation: reveal 500ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
 }
@@ -476,7 +474,7 @@ h2::after,
 h2::before {
     content: '';
     position: relative;
-    width: 100px;
+    width: 30px;
     height: 2px;
     background-color: #F5C800;
     box-shadow: 1px 2px 5px var(--bs-orange);
@@ -512,6 +510,7 @@ h5 {
     color: var(--bs-orange);
     text-shadow: 2px 1px 6px black;
     font-family: 'Allerta Stencil', sans-serif;
+    padding: 10px;
 }
 
 .p {
@@ -532,9 +531,9 @@ h5 {
 
 .text-info {
     background: rgba(0, 0, 0, 0.728) !important;
-    border-bottom: 1px solid rgba(255, 0, 0, 0.500);
-    border-left: 1px solid rgba(255, 0, 0, 0.500);
-    border-right: 1px solid rgba(255, 0, 0, 0.500);
+    border: 1px solid rgba(255, 0, 0, 0.500);
+/*     border-left: 1px solid rgba(255, 0, 0, 0.500);
+    border-right: 1px solid rgba(255, 0, 0, 0.500); */
     box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
     max-width: 75rem;
     text-align: center;

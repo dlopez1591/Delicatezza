@@ -25,7 +25,8 @@ header{
     background-position: center;
     background-size: cover;
     min-height: 30vh;
-    border-bottom: 1px solid rgba(255, 0, 0, 0.500);;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.500);
+    box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
 }
 .main-basura{
     max-width: 90vw;
@@ -464,8 +465,6 @@ footer{
 }
 
 
-
-
 .img-comida {
 
     width: 100%;
@@ -525,19 +524,25 @@ footer{
 
 .navbarcito {
     margin-top: 2rem;
-    padding: 1rem;
+    padding: 3em;
     background-image: url(../imgs/bebida-sin-alcoho.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    /* border-radius: 0 0 10px 10px; */
+    border: 1px solid rgba(255, 0, 0, 0.500);
+    box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
+    /* border-left: 1px solid rgba(255, 0, 0, 0.500);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.500); */
+    
 }
 
 .list-style {
     list-style: none;
-    border-right: 1px solid rgba(255, 0, 0, 0.500);
+    /* border-right: 1px solid rgba(255, 0, 0, 0.500);
     border-left: 1px solid rgba(255, 0, 0, 0.500);
-    border-bottom: 1px solid rgba(255, 0, 0, 0.500);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.500); */
 }
 
 .linksitos {
