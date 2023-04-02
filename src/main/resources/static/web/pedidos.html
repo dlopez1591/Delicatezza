@@ -155,29 +155,29 @@
             <table class="table" v-for="pedido in usuarioAutenticado.pedidos">
                 <thead>
                     <tr>
-                        <th>Fecha :</th>
+                        <th>Fecha:</th>
                         <td>{{pedido.localDateTime.split('T')[0]}}</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th>Hora</th>
+                        <th>Hora:</th>
                         <td>{{pedido.localDateTime.split('T')[1].substring(0, 8)}}</td>
                     </tr>
                     <tr>
-                        <th>Precio Total :</th>
+                        <th>Precio Total:</th>
                         <td>${{pedido.precioTotal}}</td>
                     </tr>
                     <tr>
-                        <th>Tipo de Retiro :</th>
+                        <th>Tipo de Retiro:</th>
                         <td>{{pedido.tipoRetiro}}</td>
                     </tr>
                     <tr>
-                        <th>Direccion :</th>
+                        <th>Direccion:</th>
                         <td>{{pedido.direccion}}</td>
                     </tr>
                     <tr>
-                        <th>Estado :</th>
+                        <th>Estado:</th>
                         <td>{{pedido.estadoPedido}}</td>
                     </tr>
                 </tbody>

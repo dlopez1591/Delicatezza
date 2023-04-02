@@ -397,19 +397,21 @@ footer{
     color: #F5C800;
     border: 1px solid rgba(255, 0, 0, 0.500);
     box-shadow: rgb(233 12 12 / 15%) -1px -4px 30px;
-    background: rgba(0, 0, 0, 0.728) !important;
+    background: rgba(0, 0, 0, 0.905) !important;
     max-width: 65rem;
     margin-top: 2rem;
 }
 
 .table th {
-    width: 40% !important;
+    width: 25% !important;
     font-size: 22px;
     border-right: 1px solid rgba(255, 0, 0, 0.500) !important;
+    text-align: center;
 }
 
 .table td {
     font-size: 20px;
+    text-align: center;
 }
 .seccionComida{
     max-width: 80rem;
@@ -583,11 +585,11 @@ nav .material-symbols-outlined {
 
 }
 
-::placeholder {
+/* ::placeholder {
     color: #F5C800 !important;
     font-family: 'Arizonia', cursive !important;
 
-}
+} */
 
 .mini-bar {
     width: 95%;
