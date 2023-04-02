@@ -331,15 +331,9 @@ header{
 .animated-shadow {
     /* color: #ffffff; */
     font-size: 90px;
-    /* font-family: 'Arizonia', cursive; */
     font-family: 'Allerta Stencil', sans-serif;
-
-    height: 140px;
     left: 0;
-    letter-spacing: 5px;
     text-align: center;
-    text-transform: uppercase;
-    width: 100%;
     animation: move linear 2800ms infinite;
     z-index: 2
 }

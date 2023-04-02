@@ -36,15 +36,12 @@ header{
     /* color: #ffffff; */
     font-size: 90px;
     font-family: 'Allerta Stencil', sans-serif;
-    height: 140px;
     left: 0;
-    letter-spacing: 5px;
     text-align: center;
-    text-transform: uppercase;
-    width: 100%;
     animation: move linear 2800ms infinite;
     z-index: 2
 }
+
 
 /*Animación para rotar las sombras*/
 @keyframes move {
@@ -406,7 +403,7 @@ footer{
 }
 
 .table th {
-    width: 45% !important;
+    width: 40% !important;
     font-size: 22px;
     border-right: 1px solid rgba(255, 0, 0, 0.500) !important;
 }
@@ -520,20 +517,25 @@ footer{
 /*  filtros */
 
 .navbarcito {
-    margin-top: 2rem;
-    padding: 1rem;
+    padding: 2em;
     background-image: url(../imgs/bebida-sin-alcoho.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    /* border-radius: 0 0 10px 10px; */
+    border: 1px solid rgba(255, 0, 0, 0.500);
+    box-shadow: rgb(233 12 12 / 30%) -1px -4px 43px;
+    /* border-left: 1px solid rgba(255, 0, 0, 0.500);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.500); */
+    
 }
 
 .list-style {
     list-style: none;
-    border-right: 1px solid rgba(255, 0, 0, 0.500);
+    /* border-right: 1px solid rgba(255, 0, 0, 0.500);
     border-left: 1px solid rgba(255, 0, 0, 0.500);
-    border-bottom: 1px solid rgba(255, 0, 0, 0.500);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.500); */
 }
 
 .linksitos {
@@ -657,6 +659,12 @@ nav .material-symbols-outlined {
 
 .button:hover p {
     animation: lightText 1s ease-in-out forwards;
+}
+
+.crear_pedido_input{
+    background-color: #935d2851 !important;
+    color: white;
+    padding: 5px;
 }
 
 @keyframes lightBox {
@@ -907,7 +915,7 @@ nav .material-symbols-outlined {
     }
 
     .img-comida{
-        -webkit-mask-image: linear-gradient(to bottom , transparent 0%, black 10%, black 50%,transparent 80%);
+        -webkit-mask-image: linear-gradient(to bottom , transparent 0%, black 10%, black 75%,transparent 100%);
     }
 
     .table td {
@@ -938,3 +946,6 @@ nav .material-symbols-outlined {
         animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
     }
 }
+
+
+
