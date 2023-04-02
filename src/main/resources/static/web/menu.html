@@ -92,7 +92,7 @@
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" data-bs-theme="dark">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">
                     Crear Reservacion</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -131,13 +131,13 @@
             aria-hidden="true">
             <div class="modal-dialog fondo-modal">
               <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" data-bs-theme="dark">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">Carrito de Compras</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
-                  pum babe
+                  
                   <ul class="w-100">
                     <li v-for="item of listaCarrito" class="item-carrito d-flex justify-content-between gap-2">
                       <div>{{item.producto}} x {{item.cantidad}}</div>
@@ -203,7 +203,7 @@
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" data-bs-theme="dark">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">
                     Tu Producto <span class="material-symbols-outlined">fastfood</span></h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -236,9 +236,9 @@
             aria-hidden="true">
             <div class="modal-dialog fondo-modal">
               <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" data-bs-theme="dark">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">Realizar Pedido</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   <form @submit.prevent>
@@ -248,7 +248,7 @@
                     <p>
                     <div class="form-check">
                       <input v-model="tipoRetiro" value="LOCAL" class="form-check-input" type="radio"
-                        name="flexRadioDefault" id="flexRadioDefault1" checked>
+                        name="flexRadioDefault" id="flexRadioDefault1">
                       <label class="form-check-label" for="flexRadioDefault1">
                         LOCAL
                       </label>
@@ -268,19 +268,19 @@
                       </label>
                     </div>
                     </p>
-                    <div class="user-box">
-                      Direccion
-                      <input v-model="direccion" required="" name="" type="text">
+                    <div class="user-box mb-2">
+                      <p>Direccion: </p>
+                      <input class="crear_pedido_input" v-model="direccion" required="" name="" type="text">
                     </div>
 
                     <div class="mb-2 space2">
-                      Numero de tarjeta:
-                      <input type="text" v-model="number">
+                      <p>N° de tarjeta: </p> 
+                      <input class="crear_pedido_input" type="text" v-model="number">
                     </div>
 
                     <div class="mb-2 space2">
-                      Numero de cvv:
-                      <input type="text" v-model="cvv">
+                       <p>N° de cvv: </p>
+                      <input class="crear_pedido_input" type="text" v-model="cvv">
                     </div>
 
                   </form>

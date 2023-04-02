@@ -36,12 +36,8 @@ header{
     /* color: #ffffff; */
     font-size: 90px;
     font-family: 'Allerta Stencil', sans-serif;
-    height: 140px;
     left: 0;
-    letter-spacing: 5px;
     text-align: center;
-    text-transform: uppercase;
-    width: 100%;
     animation: move linear 2800ms infinite;
     z-index: 2
 }
@@ -177,7 +173,7 @@ h2::after,
 h2::before {
     content: '';
     position: relative;
-    width: 40px;
+    width: 25px;
     height: 2px;
     background-color: #F5C800;
     box-shadow: 1px 2px 5px var(--bs-orange);
@@ -404,7 +400,7 @@ footer{
 }
 
 .table th {
-    width: 45% !important;
+    width: 40% !important;
     font-size: 22px;
     border-right: 1px solid rgba(255, 0, 0, 0.500) !important;
 }
@@ -671,7 +667,11 @@ nav .material-symbols-outlined {
 .button:hover p {
     animation: lightText 1s ease-in-out forwards;
 }
-
+.crear_pedido_input{
+    background-color: #935d2851 !important;
+    color: white;
+    padding: 5px;
+}
 @keyframes lightBox {
     0% {
         border: 1px solid rgba(255, 0, 0, 0.500);
@@ -870,8 +870,9 @@ nav .material-symbols-outlined {
 
 
 @media (max-width: 650px) {
-/*     body {
-        background-image: url(../imgs/fondo-pared-ladrillo-grunge.jpg);
+
+/*     .animated-shadow{
+        font-size: 50px;
     } */
 
     .nav-item {
@@ -886,7 +887,7 @@ nav .material-symbols-outlined {
     h2::before {
         content: '';
         position: relative;
-        width: 60px;
+        width: 20px;
         height: 2px;
         background-color: #ffbc00db;
         align-items: center;
@@ -916,6 +917,9 @@ nav .material-symbols-outlined {
 
 }
 @media (max-width: 991px) {
+/*     .animated-shadow{
+        font-size: 75px;
+    } */
 
     .table th {
         width: 45% !important;
@@ -954,4 +958,9 @@ nav .material-symbols-outlined {
         -webkit-animation: reveal 1000ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
         animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
     }
+}
+@media (min-width:992px) {
+/*     .animated-shadow{
+        font-size: 91px;
+    } */
 }

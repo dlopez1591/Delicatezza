@@ -114,24 +114,32 @@
         <main class="d-flex flex-column w-100 justify-content-center align-items-center">
            
 
-            <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">
-                Resumen</h2>
-                <table class="table" v-for="pedido in usuarioAutenticado.pedidos">
+            <h2 class=" d-flex justify-content-center t-stroke" style="color: #ffbc00db;" data-aos="fade-down-right">Reservas</h2>
+                  <table class="table" >
                     <thead>
                       <tr>
-                        <th>Mi Pedido : {{pedido.id}}</th>
-                        <td>Estado de Orden: {{pedido.estadoPedido}}</td>
+                        <th>
+                          Número
+                        </th>
+                        <th>
+                          Estado
+                        </th>
+                        <th>
+                          Fecha
+                        </th>
+                        <th>Comensales</th>
                       </tr>
                     </thead>
                     <tbody>
                         <tr v-for="reserva in usuarioAutenticado.reservas">
-                            <th>Mis Reserva: {{reserva.id}} </th>
-                            <td>Estado de Reserva: 
+                            <th>{{reserva.id}} </th>
+                            <th>
                               <span v-if="reserva.estado">{{'Activa'}}</span>
-                              <span v-else>{{reserva.estado}}</span>
-                            </td>
-                            <td>Fecha: {{reserva.fecha}}
-                              </td>
+                              <span v-else>{{'desactivada'}}</span>
+                            </th>
+                            <th>{{reserva.fecha}}
+                              </th>
+                              <th>{{reserva.cantidad_De_Personas}}</th>
                           </tr>
                           
                     </tbody>

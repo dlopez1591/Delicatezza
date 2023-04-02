@@ -14,6 +14,7 @@ const app = Vue.createApp({
         axios.get("/api/usuario/autenticado")
           .then((response) => {
             this.usuarioAutenticado = response.data;
+            console.log(this.usuarioAutenticado.pedidos);
           })
           .catch((error) => console.log("Something went wrong"));
       },

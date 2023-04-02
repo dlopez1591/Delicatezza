@@ -2,7 +2,7 @@ const { createApp } = Vue
 createApp({
     data() {
       return {
-        tipoRetir:undefined,
+        tipoRetiro:undefined,
         direccion:undefined,
         listaComida:undefined,
         listaBebida:undefined,

@@ -113,6 +113,10 @@ body {
 .button:hover p {
     animation: lightText 1s ease-in-out forwards;
 }
+.crear_pedido_input{
+    background-color: #935d2851 !important;
+}
+
 
 @keyframes lightBox {
     0% {
