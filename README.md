@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xml>
-<root>
-  <title>Delicatezza</title>
-  <descripcion>Simulador de restaurante</descripcion>
-  <desarrolladores>
-    <nombre>Joaquin Fleitas</nombre>
-    <nombre>Fernando Marizialeti</nombre>
-    <nombre>Matias Loaiza</nombre>
-    <nombre>Yasmin Ledezma</nombre>
-    <nombre>Daniel Lopez</nombre>
-  </desarrolladores>
-  <tecnologias>
-    <tecnologia>HTML</tecnologia>
-    <tecnologia>CSS</tecnologia>
-    <tecnologia>Bootstrap</tecnologia>
-    <tecnologia>JavaScript</tecnologia>
-    <tecnologia>Vue</tecnologia>
-    <tecnologia>Java</tecnologia>
-    <tecnologia>Spring</tecnologia>
-    <tecnologia>SpringBoot</tecnologia>
-    <tecnologia>Spring Security</tecnologia>
-  </tecnologias>
-  <video>https://www.youtube.com/watch?v=mDJtZIkIB68</video>
-</root>
+<project>
+  <header>
+    <h1><strong>Delicatezza</strong></h1>
+    <hr>
+    <subtitle>Simulador de restaurante</subtitle>
+  </header>
+  <body>
+    <p>Delicatezza es una web app que simula el día a día de un restaurante. Permite la creación de usuarios, crear pedidos, reservas, carrito de compra funcional y permite la conexión a una web api de un homebanking.</p>
+    <p>Este proyecto fue desarrollado por:</p>
+    <ul>
+      <li>Joaquin Fleitas</li>
+      <li>Fernando Marizialeti</li>
+      <li>Matias Loaiza</li>
+      <li>Yasmin Ledezma</li>
+      <li>Daniel Lopez</li>
+    </ul>
+    <p>Las tecnologías utilizadas en este proyecto son:</p>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>Bootstrap</li>
+      <li>JavaScript</li>
+      <li>Vue</li>
+      <li>Java</li>
+      <li>Spring</li>
+      <li>SpringBoot</li>
+      <li>Spring Security</li>
+    </ul>
+    <p>Video demostrativo:</p>
+    <a href="https://www.youtube.com/watch?v=mDJtZIkIB68">Ver video</a>
+  </body>
+</project>
+
+
+
 
