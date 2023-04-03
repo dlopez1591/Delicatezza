@@ -31,7 +31,7 @@ header{
     max-width: 90vw;
 }
 /* "LOGOXD" */
-
+/* actualizado */
 .animated-shadow {
     /* color: #ffffff; */
     font-size: 90px;
@@ -667,6 +667,7 @@ nav .material-symbols-outlined {
 .button:hover p {
     animation: lightText 1s ease-in-out forwards;
 }
+/* modificacion de modal */
 .crear_pedido_input{
     background-color: #935d2851 !important;
     color: white;
