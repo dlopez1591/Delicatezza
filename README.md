@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
   <header>
-    <title>Delicatezza</title>
+    <h1><strong>Delicatezza</strong></h1>
+    <hr>
     <subtitle>Simulador de restaurante</subtitle>
   </header>
   <body>
