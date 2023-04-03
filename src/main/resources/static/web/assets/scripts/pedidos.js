@@ -24,7 +24,9 @@ const app = Vue.createApp({
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Su reserva fue exitosa',
+                    color: 'var(--bs-highlight-bg)',
+                    background: '#000000c1',
+                    text: 'Su reserva fue exitosa',
                     confirmButtonText: 'ir a mis pedidos',
                     showConfirmButton: true,
                   }).then((result) => {
@@ -50,7 +52,9 @@ const app = Vue.createApp({
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'cierre de sesion exitosa',
+            color: 'var(--bs-highlight-bg)',
+            background: '#000000c1',
+            text: 'cierre de sesion exitosa',
             confirmButtonText: 'ok',
             showConfirmButton: true,
           }).then((result) =>{

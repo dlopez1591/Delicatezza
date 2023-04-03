@@ -47,34 +47,34 @@
             <div class="logo_img bg-5">
                 <p class="logo_img animated-shadow">DELICATEZZA</p>
             </div>
-                <nav class="navbar navbar-expand-lg ">
-                    <div class="container-fluid">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="material-symbols-outlined">
-                                lunch_dining
-                            </span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                            <ul class="navbar-nav gap-3">
-                                <li class="nav-item button" type="button">
-                                    <a class="nav-link active active-1" href="#"><i class="bi bi-house"></i> Inicio</a>
-                                </li>
-                                <li class="nav-item button" type="button">
-                                    <a class="nav-link" href="./menu.html"><i class="bi bi-egg-fried"></i>Menu</a>
-                                </li>
-                                <button type="button" class="nav-item button " data-bs-toggle="modal"
-                                    data-bs-target="#hacerReserva" >
-                                    <a class="nav-link"><i class="bi bi-check2-circle"></i> Reserva</a>
-                                </button>
-                                <button type="button" class="nav-item button " data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop">
-                                    <a class="nav-link"><i class="bi bi-person-fill"></i>Login</a>
-                                </button>
-                            </ul>
-                        </div>
+            <nav class="navbar navbar-expand-lg ">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="material-symbols-outlined">
+                            lunch_dining
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav gap-3">
+                            <li class="nav-item button" type="button">
+                                <a class="nav-link active active-1" href="#"><i class="bi bi-house"></i> Inicio</a>
+                            </li>
+                            <li class="nav-item button" type="button">
+                                <a class="nav-link" href="./menu.html"><i class="bi bi-egg-fried"></i>Menu</a>
+                            </li>
+                            <button type="button" class="nav-item button " data-bs-toggle="modal"
+                                data-bs-target="#hacerReserva">
+                                <a class="nav-link"><i class="bi bi-check2-circle"></i> Reserva</a>
+                            </button>
+                            <button type="button" class="nav-item button " data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                                <a class="nav-link"><i class="bi bi-person-fill"></i>Login</a>
+                            </button>
+                        </ul>
                     </div>
-                </nav>
+                </div>
+            </nav>
         </header>
         <!-- NAV BAR, POR EL MOMENTO DE PRUEBA pendiente por arreglar -->
         <!-- Navbar content -->
@@ -155,54 +155,52 @@
         </div>
 
         <!-- hacer Reserva -->
-          <!-- Modal -->
-          <div class="modal fade" id="hacerReserva" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <!-- Modal -->
+        <div class="modal fade" id="hacerReserva" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">
-                    Crear Reservacion</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="formu">
-                        <form @submit.prevent>
-                            <p>
-                                Seleccione la cantidad de personas:
-                            </p>
-                            <p><input v-model="cantidadPersonas" id="numero" type="number" min="1" pattern="^[0-9]+"
-                                    placeholder="Cantidad de personas" class="inputs"></p>
-                            <p>
-                                Seleccione la fecha:
-                            </p>
-                            <p> <input v-model="fechaString"
-                                 type="date" id="start" name="trip-start"
-                                       value="2018-07-22"
-                                       min="2023-01-04" max="2029-12-31"></p>
-                                
-                           
-                        </form>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            Crear Reservacion</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+                        <div class="formu">
+                            <form @submit.prevent>
+                                <p>
+                                    Seleccione la cantidad de personas:
+                                </p>
+                                <p><input v-model="cantidadPersonas" id="numero" type="number" min="1" pattern="^[0-9]+"
+                                        placeholder="Cantidad de personas" class="inputs"></p>
+                                <p>
+                                    Seleccione la fecha:
+                                </p>
+                                <p> <input v-model="fechaString" type="date" id="start" name="trip-start"
+                                        value="2018-07-22" min="2023-01-04" max="2029-12-31"></p>
 
+
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal">Cancelar</button>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-outline-warning "
+                                v-on:click="hacerReserva">Enviar</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <div class="d-flex justify-content-center">
-                    <button type="button" class="btn btn-outline-warning " v-on:click="hacerReserva">Enviar</button>         
-                </div>
-                </div>
-              </div>
             </div>
-          </div>
+        </div>
 
     </div>
     <!-- aca viene el multilenguaje, su implementacion sera de ultimas -->
     <!-- main, contendra todos los carrousel menos el footer  -->
     <main class="d-flex flex-column w-100 justify-content-center align-items-center">
         <!-- articulo con titulo principal de platos fuertes -->
-        <h2 class=" d-flex justify-content-center h2-text" style="color: #F5C800;" data-aos="fade-right">Menu
-        </h2>
+        <h2 class=" d-flex justify-content-center h2-text" style="color: #F5C800;" data-aos="fade-right">Bienvenidos</h2>
         <div class="d-flex justify-content-center flex-column align-items-center text-info" data-aos="flip-up">
             <h5 class="text-menu">¿Buscas un delicioso menú de comida rápida?</h5>
             <p class=" p-carrusel">Tenemos opciones increíbles para ti. Comienza con una jugosa hamburguesa hecha
@@ -217,7 +215,8 @@
         </div>
         <article class="d-flex flex-column w-100">
             <!-- aca se implementa carousel de bootstrap manejamos autoplaying e indicators por default tiene 3 imagenes -->
-            <div id="carouselExampleIndicators" class="carousel slide d-flex justify-content-center align-items-center background-carrusel-1"
+            <div id="carouselExampleIndicators"
+                class="carousel slide d-flex justify-content-center align-items-center background-carrusel-1"
                 data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
@@ -268,7 +267,7 @@
             data-aos="fade-down-right">
             Bebidas</h2>
         <div class="d-flex justify-content-center flex-column align-items-center text-info" data-aos="flip-left"
-            data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+            data-aos-easing="ease-out-cubic" data-aos-duration="1000">
             <h5 class=" text-menu">¿Estás buscando una bebida rápida para refrescarte?</h5>
             <p class=" p-carrusel">tenemos opciones para todos los gustos. Comienza con una cerveza bien fría, perfecta
                 para disfrutar con amigos en una tarde de verano. Tenemos una amplia variedad de marcas y estilos para
@@ -283,7 +282,8 @@
 
         <article class="d-flex flex-column w-100">
             <!-- aca se implementa carousel de bootstrap manejamos autoplaying e indicators por default tiene 3 imagenes -->
-            <div id="carouselExampleIndicators2" class="carousel slide d-flex justify-content-center align-items-center background-carrusel-2"
+            <div id="carouselExampleIndicators2"
+                class="carousel slide d-flex justify-content-center align-items-center background-carrusel-2"
                 data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="0"
@@ -298,21 +298,24 @@
                         <img src="./assets/imgs/bebidas-alco-(1).jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5 class="w-100">Sodas</h5>
-                            <p class="w-100 p-carrusel">¡Refresca tu día con nuestras sodas deliciosamente burbujeantes! </p>
+                            <p class="w-100 p-carrusel">¡Refresca tu día con nuestras sodas deliciosamente burbujeantes!
+                            </p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="./assets/imgs/bebidas-alcoh-(2).jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5 class="w-100">El Petiso</h5>
-                            <p class="w-100 p-carrusel">¡Prueba nuestras deliciosas bebidas alcohólicas refrescantes y disfruta de una experiencia única y refrescante!</p>
+                            <p class="w-100 p-carrusel">¡Prueba nuestras deliciosas bebidas alcohólicas refrescantes y
+                                disfruta de una experiencia única y refrescante!</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="./assets/imgs/juguito.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block texto-carrusel">
                             <h5 class="w-100">Jugos</h5>
-                            <p class="w-100 p-carrusel">¡Prueba nuestros jugos naturales y descubre la deliciosa frescura de la fruta en cada sorbo! </p>
+                            <p class="w-100 p-carrusel">¡Prueba nuestros jugos naturales y descubre la deliciosa
+                                frescura de la fruta en cada sorbo! </p>
                         </div>
                     </div>
                 </div>
@@ -332,7 +335,7 @@
         <!-- aca viene articulo con titulo de postres -->
         <h2 class=" d-flex justify-content-center h2-text" style="color: #ffbc00db;" data-aos="fade-right"> Postres</h2>
         <div class="d-flex justify-content-center flex-column align-items-center text-info" data-aos="fade-down"
-            data-aos-easing="linear" data-aos-duration="1500">
+            data-aos-easing="linear" data-aos-duration="1000">
             <h5 class=" text-menu">¿Buscas algo dulce y delicioso para terminar tu comida?</h5>
             <p class=" p-carrusel">Tenemos opciones increíbles para ti. Comienza con nuestro flan de dulce de leche, una
                 variante del clásico postre latinoamericano, hecho con leche condensada y caramelo. Es cremoso y dulce,
@@ -349,7 +352,8 @@
         <article class="d-flex flex-column w-100">
 
             <!-- aca se implementa carousel de bootstrap manejamos autoplaying e indicators por default tiene 3 imagenes -->
-            <div id="carouselExampleIndicators3" class="carousel slide d-flex justify-content-center align-items-center background-carrusel-3"
+            <div id="carouselExampleIndicators3"
+                class="carousel slide d-flex justify-content-center align-items-center background-carrusel-3"
                 data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="0"
@@ -364,21 +368,24 @@
                         <img src="./assets/imgs/postre2.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5 class="w-100">Flan</h5>
-                            <p class="w-100 p-carrusel">¡Disfruta de la suavidad y dulzura de nuestro flan, el postre perfecto para satisfacer tu paladar!</p>
+                            <p class="w-100 p-carrusel">¡Disfruta de la suavidad y dulzura de nuestro flan, el postre
+                                perfecto para satisfacer tu paladar!</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="./assets/imgs/postre1.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5 class="w-100">Helados</h5>
-                            <p class="w-100 p-carrusel">¡Disfruta de nuestro delicioso helado y refréscate con cada cucharada! </p>
+                            <p class="w-100 p-carrusel">¡Disfruta de nuestro delicioso helado y refréscate con cada
+                                cucharada! </p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="./assets/imgs/postre.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5 class="w-100">Brownie con Helado</h5>
-                            <p class="w-100 p-carrusel">¡Disfruta de nuestro irresistible brownie con helado, la combinación perfecta de texturas y sabores que te encantará! </p>
+                            <p class="w-100 p-carrusel">¡Disfruta de nuestro irresistible brownie con helado, la
+                                combinación perfecta de texturas y sabores que te encantará! </p>
                         </div>
                     </div>
                 </div>
@@ -451,8 +458,9 @@
                         </div>
                         <div class="d-flex ">
                             <a href="https://joaquinfleitas71@gmail.com" target="_blank"><img
-                                    src="./assets/imgs/gmail.png" alt=""></a> <a href="https://github.com/joaquinfleitas"
-                                target="_blank"><img src="./assets/imgs/github.png" alt="" target="_blank"></a> <a
+                                    src="./assets/imgs/gmail.png" alt=""></a> <a
+                                href="https://github.com/joaquinfleitas" target="_blank"><img
+                                    src="./assets/imgs/github.png" alt="" target="_blank"></a> <a
                                 href="https://www.linkedin.com/in/joaquin-fleitas-7b0222174/" target="_blank"><img
                                     src="./assets/imgs/linkedin.png" alt=""></a>
                             <p>| Joaquin Alain Fleitas</p>
@@ -466,16 +474,16 @@
                             <p>| Daniel Lopez</p>
                         </div>
                         <div class="d-flex ">
-                            <a href="https://yasminledesma9@gmail.com" target="_blank"><img src="./assets/imgs/gmail.png"
-                                    alt=""></a> <a href="https://github.com/YasminLedesma" target="_blank"><img
-                                    src="./assets/imgs/github.png" alt=""></a> <a
+                            <a href="https://yasminledesma9@gmail.com" target="_blank"><img
+                                    src="./assets/imgs/gmail.png" alt=""></a> <a href="https://github.com/YasminLedesma"
+                                target="_blank"><img src="./assets/imgs/github.png" alt=""></a> <a
                                 href="https://www.linkedin.com/in/yasm%C3%ADn-ledesma-b3b5a7238/" target="_blank"><img
                                     src="./assets/imgs/linkedin.png" alt=""></a>
                             <p>| Yasmin Ledesma</p>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

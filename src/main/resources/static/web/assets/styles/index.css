@@ -425,7 +425,7 @@ h2 {
     -webkit-background-clip: text;
     background-clip: text;
     font-size: 70px;
-    font-family: 'Arizonia', cursive;
+    font-family: 'Allerta Stencil', sans-serif;
     -webkit-animation: reveal 500ms ease-in-out forwards 100ms, glow 1500ms linear infinite 1500ms;
     animation: reveal 1000ms ease-in-out forwards 150ms, glow 1500ms linear infinite 1500ms;
 }
@@ -470,13 +470,12 @@ h2::after,
 h2::before {
     content: '';
     position: relative;
-    width: 100px;
+    width: 30px;
     height: 2px;
     background-color: #F5C800;
     box-shadow: 1px 2px 5px var(--bs-orange);
     align-items: center;
     top: 0.1em;
-
 }
 
 h2::before {
@@ -785,7 +784,7 @@ footer{
     h2::before {
         content: '';
         position: relative;
-        width: 60px;
+        width: 30px;
         height: 2px;
         background-color: #ffbc00db;
         align-items: center;

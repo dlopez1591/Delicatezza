@@ -34,7 +34,9 @@ createApp({
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
-                        title: 'Su reserva fue exitosa',
+                        color: 'var(--bs-highlight-bg)',
+                        background: '#000000c1',
+                        text: 'Su reserva fue exitosa',
                         showConfirmButton: false,
                         timer: 1500
                       })
@@ -45,6 +47,8 @@ createApp({
                     console.log(error.response.data)
                     Swal.fire({
                         icon: 'error',
+                        color: 'var(--bs-highlight-bg)',
+                        background: '#000000c1',
                         title: 'Oops...',
                         text: error.response.data
                         
