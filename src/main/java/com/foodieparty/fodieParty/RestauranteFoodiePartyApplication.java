@@ -38,12 +38,13 @@ public class RestauranteFoodiePartyApplication {
 			Usuario cosme = new Usuario("cosme","fulanito","cosme@fulanito.com", passwordEncoder.encode("cosme") ,"221314242");
 			usuarioRepositorio.save(cosme);
 			Usuario pepito = new Usuario("pepito","pepe","pepe@pepe.com",passwordEncoder.encode("pepe"),"1111");
-
 			usuarioRepositorio.save(pepito);
 			Usuario juan = new Usuario("juan", "cardenas", "juancardenas123@hotmail.com", passwordEncoder.encode("juan123"), "123456");
 			usuarioRepositorio.save(juan);
 			Usuario daniel = new Usuario("daniel", "lopez", "dlopez1591@gmail.com", passwordEncoder.encode("daniel123"), "123456");
 			usuarioRepositorio.save(daniel);
+			Usuario admin = new Usuario("admin","admin","admin@fdparty.com", passwordEncoder.encode("admin"),"123456789" );
+			usuarioRepositorio.save(admin);
 			Bebida bebida1 = new Bebida("Jugo","Exprimido, fresco y natural, lleno de vitaminas y para mantenerte saludable. Disfruta de su equilibrado sabor dulce y ácido como una opción refrescante para complementar tu comida o empezar tu día!","https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/42bb3965-1df3-47cf-a0d4-cb436a9601a2.jpg?alt=media", TipoBebida.AGUA,40,100.0);
 			Bebida bebida2 = new Bebida("Birra","¿Estás buscando una cerveza suave y refrescante para acompañar tu comida? Nuestra pilsner fría y fresca que complementará perfectamente tu comida. ¿Queres probar algo un poco más audaz? Nuestra IPA con lúpulo amargo será una opción ideal.","https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/5d6a3d6d-fdaf-45ff-81cc-389f6a816971.jpg?alt=media", TipoBebida.ALCOHOLICA,40,350.0);
 			Bebida bebida3 = new Bebida ("Gaseosa", "Bebida burbujeante está hecha con los mejores ingredientes para ofrecerte un sabor inigualable. Disfruta de su textura suave y refrescante que te hará sentir revitalizado en cualquier momento del día.","https://firebasestorage.googleapis.com/v0/b/delicatezza-20007.appspot.com/o/e39f9c84-1c88-4cb7-bbe7-1d8e0aa920ed.jpg?alt=media",TipoBebida.GASEOSA,40,150.0);

@@ -56,7 +56,14 @@ createApp({
                 this.cambio = 0
         },
         register() {
-                axios.post('/api/crear/usuario', `nombre=${this.nombre}&apellido=${this.apellido}&email=${this.email}&password=${this.password}&telefono=${this.telefono}`, {
+                console.log(
+                    this.nombre+" "+
+                    this.apellido+" "+
+                    this.email+" "+
+                    this.password+" "+
+                    this.telefono
+                )
+                axios.post( `/api/crear/usuario?nombre=${this.nombre}&apellido=${this.apellido}&email=${this.email}&password=${this.password}&telefono=${this.telefono}`, {
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
@@ -74,7 +81,7 @@ createApp({
                         this.login();
                     })
                     .catch(error => {
-                        this.error = error.response.data.message;
+                        console.log(error.response.data.message);
                     });
         },
         hacerReserva() {
