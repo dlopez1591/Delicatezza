@@ -57,6 +57,9 @@ import static java.util.stream.Collectors.toList;
     public ResponseEntity<Object> crearReserva(Authentication authentication, Integer cantidadPersonas, String fechaString) {
         Usuario usuario = usuarioRepositorio.findByEmail(authentication.getName());
         LocalDate fecha = LocalDate.parse(fechaString);
+        if (fecha.isAfter(LocalDate.now())||fecha.equals(LocalDate.now())){
+            return new ResponseEntity<>("las reservas se realizan con 1 dia de anticipacion",HttpStatus.FORBIDDEN);
+        }
         Integer capacidadOcupada = 0;
         Capacidad capacidad = capacidadRepositorio.findAll().get(0);
         List<Reserva> reservaALaFecha = reservaRepositorio.findAll()
