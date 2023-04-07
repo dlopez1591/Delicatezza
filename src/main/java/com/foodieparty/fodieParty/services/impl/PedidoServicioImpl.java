@@ -65,6 +65,36 @@ public class PedidoServicioImpl implements PedidosServicio {
     public ResponseEntity<Object> crearPedido(DetallePedidoDTO detallePedidoDTO, Authentication authentication) {
         {
             Usuario usuario = usuarioRepositorio.findByEmail(authentication.getName());
+            if (usuario==null){
+                return new ResponseEntity<>("debe ingresar con su usuario para realizar un pedido",HttpStatus.FORBIDDEN);
+            }
+            if(detallePedidoDTO.getDireccion()==null&&detallePedidoDTO.getTipoRetiro()==TipoRetiro.DOMICILIO){
+                return new ResponseEntity<>("no se ingreso la direccion a cual hay que enviarla",HttpStatus.FORBIDDEN);
+            }
+            if (detallePedidoDTO.getTipoRetiro()==null){
+                return new ResponseEntity<>("no a seleccionado el tipo de retiro",HttpStatus.FORBIDDEN);
+            }
+            if (detallePedidoDTO.getListaBebidasId().size()==0&&detallePedidoDTO.getListaComidasId().size()==0){
+                return new ResponseEntity<>("no se pueden realizar pedidos vacios",HttpStatus.FORBIDDEN);
+            }
+            //verificacion de stock comidas
+            for (long[] comida:detallePedidoDTO.getListaComidasId()){
+                if (comidaRepositorio.findById(comida[0]).get()==null){
+                    return new ResponseEntity<>("la comida ingresada no existe",HttpStatus.FORBIDDEN);
+                }
+                if (comidaRepositorio.findById(comida[0]).get().getDisponibilidad()){
+                    return new ResponseEntity<>("no hay disponibilidad para esta comida"+comidaRepositorio.findById(comida[0]).get().getNombre(),HttpStatus.FORBIDDEN);
+                }
+            }
+            //verificacion de stock bebidas
+            for (long[] bebida:detallePedidoDTO.getListaBebidasId()){
+                if (bebidaRepositorio.findById(bebida[0]).get()==null){
+                    return new ResponseEntity<>("la bebida ingresada no existe",HttpStatus.FORBIDDEN);
+                }
+                if (bebidaRepositorio.findById(bebida[0]).get().getDisponibilidad()<bebida[1]){
+                    return new ResponseEntity<>("no hay disponibilidad para esta bebida"+bebidaRepositorio.findById(bebida[0]).get().getNombre(),HttpStatus.FORBIDDEN);
+                }
+            }
             //detallePedidoDTO:
             //  listaComidasId ----> [0]=idComida, [1]=cantidadSolicitada.
             //  listaBebidasId ----> [0]=idBebida, [1]=cantidadSolicitada.
